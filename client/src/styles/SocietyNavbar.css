@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.society-navbar {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 10px #ccc;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.routes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.route {
+    transition: all 0.3s;
+}
+
+.route:hover {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.join-us {
+    background-color: #0832ff;
+    color: white;
+    border: 2px solid transparent;
+    padding: 0 1.25em;
+    height: 60%;
+    border-radius: 999px;
+    transition: all 0.2s;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.join-us:hover {
+    background-color: white;
+    color: #0832ff;
+    border: 2px solid #0832ff;
+    cursor: pointer;
+}
+
