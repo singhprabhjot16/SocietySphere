@@ -55,7 +55,7 @@
 }
 
 .navbar-route-name {
-    margin-left: 0.5em;
+    margin: 0 0.5em;
     transition: all 0.3s;
 }
 
@@ -64,7 +64,8 @@
 }
 
 .profile {
-    margin-left: 120px;
+    margin-left: 112px;
+    height: 2.5em;
 }
 
 
