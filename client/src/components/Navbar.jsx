@@ -6,7 +6,7 @@ import "../styles/index.css";
 
 function Navbar() {
     return (
-        <div className="navbar div-padding ">
+        <div className="navbar div-padding">
             <p className="website-name dm-serif-display-regular">SocietySphere</p>
             <div className="navbar-routes">
                 <div className="navbar-route">
@@ -18,7 +18,10 @@ function Navbar() {
                     <p className="navbar-route-name inter">Search</p>
                 </div>
             </div>
-            <img src={profile} alt="" className="navbar-route-logo profile"/>
+            <div className="navbar-right-div">
+                <button className="register-society inter">+ Register Society</button>
+                <img src={profile} alt="" className="navbar-route-logo profile"/>
+            </div>
         </div>
     )
 }

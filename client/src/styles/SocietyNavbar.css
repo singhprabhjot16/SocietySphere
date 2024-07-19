@@ -8,7 +8,7 @@
     box-shadow: 0 1px 10px #ccc;
 }
 
-.inter {
+.Inter {
     font-family: "Inter", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -27,7 +27,8 @@
 
 .route:hover {
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 700;
+    color: #0832ff;
 }
 
 .join-us {

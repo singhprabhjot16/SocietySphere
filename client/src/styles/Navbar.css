@@ -11,6 +11,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 1.5em;
+    margin-right: 70px;
 }
 
 .inter {
@@ -63,8 +64,32 @@
     cursor: pointer;
 }
 
+.navbar-right-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-society {
+    background-color: white;
+    color: #0832ff;
+    border: 2px solid #0832ff;
+    padding: 0.25em 1em;
+    border-radius: 999px;
+    transition: all 0.2s;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.register-society:hover {
+    background-color: #0832ff;
+    color: white;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
 .profile {
-    margin-left: 112px;
+    margin-left: 1em;
     height: 2.5em;
 }
 

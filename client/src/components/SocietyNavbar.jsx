@@ -13,7 +13,7 @@ function SocietyNavbar() {
                 <p className="route inter">Photo Gallery</p>
                 <p className="route inter">FAQs</p>
             </div>
-            <button className="inter join-us">Join Us</button>
+            <button className="Inter join-us">Join Us</button>
         </div>
     )
 }
