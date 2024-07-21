@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model State {
+  id   Int     @id @default(autoincrement())
+  name String  @unique
+
+  cities City[]
+}
+
+model City {
+  id      Int     @id @default(autoincrement())
+  name    String
+  state   State   @relation(fields: [stateId], references: [id], onDelete: Cascade)
+  stateId Int
+
+  colleges College[]
+}
+
+model College {
+  id            Int      @id @default(autoincrement())
+  name          String
+  collegeHead   String
+  adminEmail    String   @unique
+  collegeEmail  String   @unique
+  passwordHash  String
+  city          City     @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  cityId        Int
+
+  societies     Society[]
+}
+
+model Society {
+  id            Int       @id @default(autoincrement())
+  name          String
+  societyHead   String
+  societyEmail  String
+  adminEmail    String    @unique
+  passwordHash  String
+  college       College   @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  collegeId     Int
+  type          String
+
+  teams         Team[]
+  galleries     Gallery[]
+  announcements Announcement[]
+  achievements  Achievement[]
+  faqs          FAQ[]
+}
+
+model Team {
+  id         Int      @id @default(autoincrement())
+  memberName String
+  memberRole String
+  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+  imageUrl   String?
+  caption    String?  @default("default_url")
+}
+
+model Gallery {
+  id         Int      @id @default(autoincrement())
+  imageUrl   String
+  caption    String?
+  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+}
+
+model Announcement {
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String
+  date       DateTime  @default(now())
+  society    Society   @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+}
+
+model Achievement {
+  id         Int       @id @default(autoincrement())
+  title      String
+  description String
+  date       DateTime  @default(now())
+  society    Society   @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+  imageUrl   String?
+  caption    String?
+}
+
+model FAQ {
+  id         Int       @id @default(autoincrement())
+  question   String
+  answer     String
+  date       DateTime  @default(now())
+  society    Society   @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+}
