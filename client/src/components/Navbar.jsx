@@ -1,3 +1,4 @@
+import { useState } from "react";
 import explore from "../assets/explore.svg";
 import profile from "../assets/profile.svg";
 import search from "../assets/search.svg";
@@ -5,6 +6,8 @@ import "../styles/Navbar.css";
 import "../styles/index.css";
 
 function Navbar() {
+    const [isLogin, setIsLogin] = useState(false);
+
     return (
         <div className="navbar div-padding">
             <p className="website-name dm-serif-display-regular">SocietySphere</p>
@@ -19,8 +22,7 @@ function Navbar() {
                 </div>
             </div>
             <div className="navbar-right-div">
-                <button className="register-society inter">+ Register Society</button>
-                <img src={profile} alt="" className="navbar-route-logo profile"/>
+                {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society inter">Login as Admin</button>}
             </div>
         </div>
     )

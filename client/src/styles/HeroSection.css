@@ -1,0 +1,10 @@
+.hero-section {
+    height: 250px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.hero-section-image {
+    width: 100%;
+    object-fit:fill;
+}
