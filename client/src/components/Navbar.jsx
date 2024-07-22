@@ -4,11 +4,18 @@ import profile from "../assets/profile.svg";
 import search from "../assets/search.svg";
 import "../styles/Navbar.css";
 import "../styles/index.css";
+import SearchDropdown from "./SearchDropdown";
 
 function Navbar() {
     const [isLogin, setIsLogin] = useState(false);
+    const [display, setDisplay] = useState("none");
+
+    function showSearchDropdown(display) {
+        setDisplay(() => display === "flex" ? "none" : "flex");
+    }
 
     return (
+        <>
         <div className="navbar div-padding">
             <p className="website-name dm-serif-display-regular">SocietySphere</p>
             <div className="navbar-routes">
@@ -16,7 +23,7 @@ function Navbar() {
                     <img src={explore} alt="" className="navbar-route-logo"/>
                     <p className="navbar-route-name inter">Explore</p>
                 </div>
-                <div className="navbar-route">
+                <div className="navbar-route" onClick={() => showSearchDropdown(display)}>
                     <img src={search} alt="" className="navbar-route-logo"/>
                     <p className="navbar-route-name inter">Search</p>
                 </div>
@@ -25,6 +32,10 @@ function Navbar() {
                 {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society inter">Login as Admin</button>}
             </div>
         </div>
+        <div className="search-dropdown-container">
+            <SearchDropdown display={display}/>
+        </div>
+        </>
     )
 }
 

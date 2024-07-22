@@ -94,6 +94,12 @@
     height: 2.5em;
 }
 
+.search-dropdown-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 
 
 

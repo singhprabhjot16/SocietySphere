@@ -9,7 +9,7 @@ function App() {
     <>
     <Navbar />
     {/* <HeroSection /> */}
-    <SearchDropdown />
+    {/* <SearchDropdown /> */}
     <SocietyNavbar />
     </>
   )

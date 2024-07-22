@@ -4,17 +4,25 @@ import colorMapping from "../colorMapping.json";
 import "../styles/SearchDropdown.css";
 import Tag from "./Tag";
 
-function SearchDropdown() {
-    const [cities, setCities] = useState([...dummyData.cities]);
+function SearchDropdown({display}) {
+    const [states, setStates] = useState([...dummyData.states]);
+    const [cities, setCities] = useState([]);
     const [colleges, setColleges] = useState([]);
     const [societies, setSocieties] = useState([]);
-    const [display, setDisplay] = useState("flex");
+
+    function handleCities(id) {
+        setCities(() => {
+            const newCities = [...dummyData.cities].filter(item => item.state_id === id);
+            return newCities;
+        });
+        setColleges(() => {
+            return [];
+        })
+    }
 
     function handleColleges(id) {
-        // console.log(id);
         setColleges(() => {
             const newColleges = [...dummyData.colleges].filter(item => item.city_id === id);
-            // console.log(newColleges);
             return newColleges;
         });
         setSocieties(() => {
@@ -23,16 +31,25 @@ function SearchDropdown() {
     }
 
     function handleSocieties(id) {
-        // console.log(id);
         setSocieties(() => {
             const newSocieties = [...dummyData.societies].filter(item => item.college_id === id);
-            // console.log(newSocieties);
             return newSocieties;
         });
     }
 
     return (
         <div className="search-dropdown-container" style={{display: display}}>
+            <div className="states search-dropdown">
+                <div className="state dropdown-headline">
+                    <p className="inter">States</p>
+                </div>
+                <div className="state-names dropdown-values">
+                    {states.map(item => {
+                        return <div className="state-name inter dropdown-value" key={item.id} onMouseEnter={() => handleCities(item.id)}>{item.name}</div>
+                    })}
+                </div>
+                {states.length > 5 && <p className="see-more inter">See More</p>}
+            </div>
             <div className="cities search-dropdown">
                 <div className="city dropdown-headline">
                     <p className="inter">City</p>
@@ -42,7 +59,7 @@ function SearchDropdown() {
                         return <div className="city-name inter dropdown-value" key={item.id} onMouseEnter={() => handleColleges(item.id)}>{item.name}</div>
                     })}
                 </div>
-                <p className="see-more inter">See More</p>
+                {cities.length > 5 && <p className="see-more inter">See More</p>}
             </div>
             <div className="colleges search-dropdown">
                 <div className="college dropdown-headline">
@@ -53,7 +70,7 @@ function SearchDropdown() {
                         return <div className="college-name inter dropdown-value" key={item.id} onMouseEnter={() => handleSocieties(item.id)}>{item.name}</div>
                     })}
                 </div>
-                <p className="see-more inter">See More</p>
+                {colleges.length > 5 && <p className="see-more inter">See More</p>}
             </div>
             <div className="societies search-dropdown">
                 <div className="society dropdown-headline">
@@ -67,7 +84,7 @@ function SearchDropdown() {
                             </div>
                     })}
                 </div>
-                <p className="see-more inter">See More</p>
+                {societies.length > 5 && <p className="see-more inter">See More</p>}
             </div>
         </div>
     );

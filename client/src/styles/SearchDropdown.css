@@ -1,13 +1,14 @@
 .search-dropdown-container {
-    width: 700px;
+    width: 1000px;
     justify-content: space-between;
 }
 
 .search-dropdown {
-    width: 33%;
+    width: 24.5%;
     border-radius: 20px;
     box-shadow: 5px 0px 10px #ccc;
     border: 1px solid #333;
+    padding-bottom: 1em;
 }
 
 .dropdown-headline {
