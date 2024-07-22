@@ -63,6 +63,16 @@
       },
       {
         "id": 3,
+        "name": "Litum",
+        "society_head": "Bob Odenkirk",
+        "society_email": "litum@ucla.edu",
+        "admin_email": "bob@ucla.edu",
+        "password_hash": "hashedpassword209",
+        "college_id": 1,
+        "type": "Literary"
+      },
+      {
+        "id": 4,
         "name": "Dance Society",
         "society_head": "Carol White",
         "society_email": "dance@nyu.edu",

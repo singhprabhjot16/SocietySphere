@@ -11,10 +11,10 @@ function SearchDropdown() {
     const [display, setDisplay] = useState("flex");
 
     function handleColleges(id) {
-        console.log(id);
+        // console.log(id);
         setColleges(() => {
             const newColleges = [...dummyData.colleges].filter(item => item.city_id === id);
-            console.log(newColleges);
+            // console.log(newColleges);
             return newColleges;
         });
         setSocieties(() => {
@@ -23,10 +23,10 @@ function SearchDropdown() {
     }
 
     function handleSocieties(id) {
-        console.log(id);
+        // console.log(id);
         setSocieties(() => {
             const newSocieties = [...dummyData.societies].filter(item => item.college_id === id);
-            console.log(newSocieties);
+            // console.log(newSocieties);
             return newSocieties;
         });
     }
@@ -44,24 +44,24 @@ function SearchDropdown() {
                 </div>
                 <p className="see-more inter">See More</p>
             </div>
-            <div className="cities search-dropdown">
-                <div className="city dropdown-headline">
+            <div className="colleges search-dropdown">
+                <div className="college dropdown-headline">
                     <p className="inter">Colleges</p>
                 </div>
-                <div className="city-names dropdown-values">
+                <div className="college-names dropdown-values">
                     {colleges.map(item => {
-                        return <div className="city-name inter dropdown-value" key={item.id} onMouseEnter={() => handleSocieties(item.id)}>{item.name}</div>
+                        return <div className="college-name inter dropdown-value" key={item.id} onMouseEnter={() => handleSocieties(item.id)}>{item.name}</div>
                     })}
                 </div>
                 <p className="see-more inter">See More</p>
             </div>
-            <div className="cities search-dropdown">
-                <div className="city dropdown-headline">
-                    <p className="inter">City</p>
+            <div className="societies search-dropdown">
+                <div className="society dropdown-headline">
+                    <p className="inter">Society</p>
                 </div>
-                <div className="city-names dropdown-values">
+                <div className="society-names dropdown-values">
                     {societies.map(item => {
-                        return <div className="city-name inter dropdown-value" key={item.id}>
+                        return <div className="society-name inter dropdown-value" key={item.id}>
                             <p>{item.name}</p>
                             <Tag tag={item.type} color={colorMapping[[item.type]]} />
                             </div>
@@ -70,7 +70,7 @@ function SearchDropdown() {
                 <p className="see-more inter">See More</p>
             </div>
         </div>
-    )
+    );
 }
 
 export default SearchDropdown;

@@ -8,10 +8,9 @@ function App() {
   return (
     <>
     <Navbar />
-    {/* <HeroSection />
-    <SocietyNavbar />
-    <Tag /> */}
+    {/* <HeroSection /> */}
     <SearchDropdown />
+    <SocietyNavbar />
     </>
   )
 }
