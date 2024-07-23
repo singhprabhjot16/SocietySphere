@@ -34,7 +34,7 @@
 }
 
 .dropdown-value:hover {
-    background-color: #c0dfff;
+    background-color: #ddddff;
     cursor: pointer;
 }
 
@@ -46,5 +46,9 @@
 
 .see-more:hover {
     cursor: pointer; 
+}
+
+.selected-item {
+    background-color:  #c0dfff;
 }
 
