@@ -1,0 +1,30 @@
+// 
+frontend
+
+
+backend
+states/
+  :state/
+    :city/
+      :college/
+        :society
+          /SocietyHeadSignIn
+          /AddAnnouncement
+          /Uploadtogallery
+          /AddAchievement
+          /UpdateTeam
+          /Alumni
+          /FAQ
+          /AboutUs
+          /CollegeSignIn
+        /PartialAddSociety (protected Route: Post Sign In by College head)
+        /SignUp
+            /AddAnnouncement
+            /Uploadtogallery
+            /AddAchievement
+            /UpdateTeam
+            /Alumni
+            /FAQ
+            /AboutUs
+
+/Delhi/rohini/BPIT/SignUp

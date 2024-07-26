@@ -45,6 +45,7 @@ model College {
 model Society {
   id            Int       @id @default(autoincrement())
   name          String
+  aboutSociety  String
   societyHead   String
   societyEmail  String
   adminEmail    String    @unique
@@ -58,6 +59,7 @@ model Society {
   announcements Announcement[]
   achievements  Achievement[]
   faqs          FAQ[]
+  alumni        Alumni[]
 }
 
 model Team {
@@ -105,4 +107,14 @@ model FAQ {
   date       DateTime  @default(now())
   society    Society   @relation(fields: [societyId], references: [id], onDelete: Cascade)
   societyId  Int
+}
+
+model Alumni {
+  id         Int       @id @default(autoincrement())
+  alumniName      String
+  role String
+  society    Society   @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+  imageUrl   String?
+  caption    String?
 }
