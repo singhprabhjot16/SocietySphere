@@ -53,3 +53,9 @@
     font-weight: 500 !important;
 }
 
+.length-zero {
+    color: #888;
+    font-size: 0.75em;
+    margin: 1.2em 0em 1em 1.2em;
+}
+

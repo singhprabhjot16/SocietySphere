@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dummyData from "../../dummyData.json";
 import colorMapping from "../colorMapping.json";
 import "../styles/SearchDropdown.css";
@@ -68,10 +68,11 @@ function SearchDropdown({display}) {
             ...prevSelected,
             society: item.name
         }));
-        // setSearchURL(() => `http://localhost:5173/search?state=${selected.state}&city=${selected.city}&college=${selected.college}&society=${selected.society}`);
     }
 
-    // console.log(searchURL);
+    useEffect(() => {
+        setSearchURL(() => `http://localhost:5173/search?state=${selected.state}&city=${selected.city}&college=${selected.college}&society=${selected.society}`);
+    }, [selected.society]);
 
     return (
         <div className="search-dropdown-container" style={{display: display}}>
@@ -84,7 +85,6 @@ function SearchDropdown({display}) {
                         return <div className={`state-name inter dropdown-value ${selected.state === item.name && 'selected-item'}`} key={item.id} onClick={() => handleCities(item)}>{item.name}</div>
                     })}
                 </div>
-                {/* {data.states.length > 5 && <p className="see-more inter">See More</p>} */}
             </div>
             <div className="cities search-dropdown">
                 <div className="city dropdown-headline">
@@ -95,6 +95,7 @@ function SearchDropdown({display}) {
                         return <div className={`city-name inter dropdown-value ${selected.city === item.name && 'selected-item'}`} key={item.id} onClick={() => handleColleges(item)}>{item.name}</div>
                     })}
                 </div>
+                {data.cities.length === 0 && <p className="length-zero inter">Select a state to view its cities</p>}
             </div>
             <div className="colleges search-dropdown">
                 <div className="college dropdown-headline">
@@ -105,6 +106,7 @@ function SearchDropdown({display}) {
                         return <div className={`college-name inter dropdown-value ${selected.college === item.name && 'selected-item'}`} key={item.id} onClick={() => handleSocieties(item)}>{item.name}</div>
                     })}
                 </div>
+                {data.colleges.length === 0 && <p className="length-zero inter">Select a city to view its colleges</p>}
             </div>
             <div className="societies search-dropdown">
                 <div className="society dropdown-headline">
@@ -118,7 +120,7 @@ function SearchDropdown({display}) {
                             </div>
                     })}
                 </div>
-                {data.societies.length > 5 && <p className="see-more inter">See More</p>}
+                {data.societies.length === 0 && <p className="length-zero inter">Select a college to view its societies</p>}
             </div>
         </div>
     );
