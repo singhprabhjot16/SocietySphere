@@ -75,7 +75,8 @@ function SearchDropdown({display}) {
     }, [selected.society]);
 
     return (
-        <div className="search-dropdown-container" style={{display: display}}>
+        <div className="search-dropdown-super-container" style={{display: display}}>
+        <div className="search-dropdown-container">
             <div className="states search-dropdown">
                 <div className="state dropdown-headline">
                     <p className="inter">States</p>
@@ -122,6 +123,7 @@ function SearchDropdown({display}) {
                 </div>
                 {data.societies.length === 0 && <p className="length-zero inter">Select a college to view its societies</p>}
             </div>
+        </div>
         </div>
     );
 }

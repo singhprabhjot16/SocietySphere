@@ -1,0 +1,31 @@
+.back-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c0dfff;
+    color: #0832ff;
+    font-size: 0.75em;
+    height: 30px;
+}
+
+.footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-end {
+    width: 100%;
+    height: 60px;
+    background-color: #0832ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.copyright {
+    font-size: 0.75em;
+}
+
+

@@ -24,9 +24,12 @@
     display: flex;
     align-items: center;
     height: 60px;
+    width: 100%;
     justify-content: space-between;
     box-shadow: 0 1px 10px #ccc;
-    position: sticky;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
 }
 
 .navbar-routes {
