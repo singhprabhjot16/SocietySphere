@@ -21,15 +21,15 @@ function Navbar() {
             <div className="navbar-routes">
                 <div className="navbar-route">
                     <img src={explore} alt="" className="navbar-route-logo"/>
-                    <p className="navbar-route-name inter">Explore</p>
+                    <p className="navbar-route-name poppins-regular">Explore</p>
                 </div>
                 <div className="navbar-route" onClick={() => showSearchDropdown(display)}>
                     <img src={search} alt="" className="navbar-route-logo"/>
-                    <p className="navbar-route-name inter">Search</p>
+                    <p className="navbar-route-name poppins-regular">Search</p>
                 </div>
             </div>
             <div className="navbar-right-div">
-                {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society inter">Login as Admin</button>}
+                {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society poppins-regular">Login as Admin</button>}
             </div>
         </div>
         <div className="search-dropdown-container">

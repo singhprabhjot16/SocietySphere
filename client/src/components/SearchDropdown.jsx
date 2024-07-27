@@ -79,49 +79,49 @@ function SearchDropdown({display}) {
         <div className="search-dropdown-container">
             <div className="states search-dropdown">
                 <div className="state dropdown-headline">
-                    <p className="inter">States</p>
+                    <p className="poppins-regular">States</p>
                 </div>
                 <div className="state-names dropdown-values">
                     {data.states.map(item => {
-                        return <div className={`state-name inter dropdown-value ${selected.state === item.name && 'selected-item'}`} key={item.id} onClick={() => handleCities(item)}>{item.name}</div>
+                        return <div className={`state-name poppins-regular dropdown-value ${selected.state === item.name && 'selected-item'}`} key={item.id} onClick={() => handleCities(item)}>{item.name}</div>
                     })}
                 </div>
             </div>
             <div className="cities search-dropdown">
                 <div className="city dropdown-headline">
-                    <p className="inter">City</p>
+                    <p className="poppins-regular">City</p>
                 </div>
                 <div className="city-names dropdown-values">
                     {data.cities.map(item => {
-                        return <div className={`city-name inter dropdown-value ${selected.city === item.name && 'selected-item'}`} key={item.id} onClick={() => handleColleges(item)}>{item.name}</div>
+                        return <div className={`city-name poppins-regular dropdown-value ${selected.city === item.name && 'selected-item'}`} key={item.id} onClick={() => handleColleges(item)}>{item.name}</div>
                     })}
                 </div>
-                {data.cities.length === 0 && <p className="length-zero inter">Select a state to view its cities</p>}
+                {data.cities.length === 0 && <p className="length-zero poppins-regular">Select a state to view its cities</p>}
             </div>
             <div className="colleges search-dropdown">
                 <div className="college dropdown-headline">
-                    <p className="inter">Colleges</p>
+                    <p className="poppins-regular">Colleges</p>
                 </div>
                 <div className="college-names dropdown-values">
                     {data.colleges.map(item => {
-                        return <div className={`college-name inter dropdown-value ${selected.college === item.name && 'selected-item'}`} key={item.id} onClick={() => handleSocieties(item)}>{item.name}</div>
+                        return <div className={`college-name poppins-regular dropdown-value ${selected.college === item.name && 'selected-item'}`} key={item.id} onClick={() => handleSocieties(item)}>{item.name}</div>
                     })}
                 </div>
-                {data.colleges.length === 0 && <p className="length-zero inter">Select a city to view its colleges</p>}
+                {data.colleges.length === 0 && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
             </div>
             <div className="societies search-dropdown">
                 <div className="society dropdown-headline">
-                    <p className="inter">Society</p>
+                    <p className="poppins-regular">Society</p>
                 </div>
                 <div className="society-names dropdown-values">
                     {data.societies.map(item => {
-                        return <div className={`society-name inter dropdown-value ${selected.society === item.name && 'selected-item'}`} key={item.id} onClick={() => handleQuery(item)}>
+                        return <div className={`society-name poppins-regular dropdown-value ${selected.society === item.name && 'selected-item'}`} key={item.id} onClick={() => handleQuery(item)}>
                             <p>{item.name}</p>
                             <Tag tag={item.type} color={colorMapping[[item.type]]} />
                             </div>
                     })}
                 </div>
-                {data.societies.length === 0 && <p className="length-zero inter">Select a college to view its societies</p>}
+                {data.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
             </div>
         </div>
         </div>

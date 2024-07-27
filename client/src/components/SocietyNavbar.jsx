@@ -5,15 +5,15 @@ function SocietyNavbar() {
     return (
         <div className="society-navbar div-padding">
             <div className="routes">
-                <p className="route inter">About Us</p>
-                <p className="route inter">Coordinators</p>
-                <p className="route inter">Achievements</p>
-                <p className="route inter">Announcements</p>
-                <p className="route inter">Alumni</p>
-                <p className="route inter">Photo Gallery</p>
-                <p className="route inter">FAQs</p>
+                <p className="route poppins-regular">About Us</p>
+                <p className="route poppins-regular">Coordinators</p>
+                <p className="route poppins-regular">Achievements</p>
+                <p className="route poppins-regular">Announcements</p>
+                <p className="route poppins-regular">Alumni</p>
+                <p className="route poppins-regular">Photo Gallery</p>
+                <p className="route poppins-regular">FAQs</p>
             </div>
-            <button className="Inter join-us">Join Us</button>
+            <button className="poppins-regular join-us">Join Us</button>
         </div>
     )
 }

@@ -1,17 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
 .society-navbar {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 1px 10px #ccc;
-}
-
-.Inter {
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
-    font-style: normal;
 }
 
 .routes {
