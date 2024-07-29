@@ -1,0 +1,32 @@
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.5em 0.75em;
+    margin: 1.5em 0em;
+}
+
+.accordion-container:hover {
+    border: 1px solid #0832ff;
+    cursor: pointer;
+}
+
+.question-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.expand-contract-icon {
+    height: 1.5em;
+}
+
+.question-date {
+    font-size: 0.75em;
+}
+
+.answer-title-container {
+    padding-top: 0.5em;
+}

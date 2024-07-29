@@ -22,9 +22,9 @@ function QueryForm() {
             <form action="POST" className="query-form">
                 <p className="form-headline poppins-medium">Have a question? Feel free to ask
                 and we will get back to you.</p>
-                <input type="text" onChange={handleChange} value={formData.name} name="name" placeholder="Name" className="poppins-regular input-field"/>
-                <input type="email" onChange={handleChange} value={formData.email} name="email" placeholder="Email" className="poppins-regular input-field"/>
-                <textarea type="" onChange={handleChange} value={formData.query} name="query" placeholder="Query" className="poppins-regular input-field"/>
+                <input type="text" onChange={handleChange} value={formData.name} name="name" placeholder="Name" className="poppins-regular input-field" required/>
+                <input type="email" onChange={handleChange} value={formData.email} name="email" placeholder="Email" className="poppins-regular input-field" required/>
+                <textarea type="" onChange={handleChange} value={formData.query} name="query" placeholder="Query" className="poppins-regular input-field" required/>
                 <button type="submit" className="submit-button poppins-regular">Submit</button>
             </form>
         </div>

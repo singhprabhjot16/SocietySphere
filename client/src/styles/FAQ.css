@@ -1,0 +1,15 @@
+.faqs-container {
+    display: flex;
+    width: 100%;
+}
+
+.sorting {
+    width: 15%;
+    background-image: linear-gradient(to bottom, #0832ff, hsla(230, 100%, 52%, 0.6));
+}
+
+.faq-container {
+    width: 80%;
+    margin: 1em 0em;
+    margin-left: 2em;
+}
