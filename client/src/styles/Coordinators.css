@@ -1,0 +1,17 @@
+.coordinators-container {
+    display: flex;
+    width: 100%;
+}
+
+.filler {
+    width: 5%;
+    background-image: linear-gradient(to bottom, #0832ff, hsla(230, 100%, 52%, 0.6));
+}
+
+.members-container {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3em 1em;
+}

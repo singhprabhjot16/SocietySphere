@@ -14,7 +14,13 @@
 }
 
 .route {
-    transition: all 0.3s;
+    text-decoration: none;
+    height: 100%;
+    padding: 0.7em 0em;
+}
+
+.route:visited {
+    color: black;
 }
 
 .route:hover {
@@ -39,5 +45,11 @@
     color: #0832ff;
     border: 2px solid #0832ff;
     cursor: pointer;
+}
+
+.selected {
+    font-weight: 500;
+    color: #0832ff !important;
+    border-bottom: 4px solid #0832ff;
 }
 

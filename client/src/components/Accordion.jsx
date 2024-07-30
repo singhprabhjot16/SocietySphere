@@ -15,7 +15,7 @@ function Accordian({question}) {
         <div className="accordion-container" onClick={handleExpand}>
             <div className="question-title-container"  style={{borderBottom: isExpanded && "1px solid black", paddingBottom: isExpanded && "0.5em"}}>
                 <div className="question-title">
-                    <span className="question-title-content poppins-regular" style={{fontWeight: isExpanded && "500"}}>{question.title}</span>
+                    <span className="question-title-content poppins-regular" style={{fontWeight: isExpanded && "500"}}>{question.question}</span>
                     <span className="pipe poppins-thin">  |  </span>
                     <span className="question-date poppins-thin">{question.date}</span>
                 </div>
