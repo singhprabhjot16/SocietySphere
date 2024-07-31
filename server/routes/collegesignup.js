@@ -1,0 +1,5 @@
+/signup
+/signin
+
+/addSociety
+/'delete'

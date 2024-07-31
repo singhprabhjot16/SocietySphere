@@ -1,0 +1,6 @@
+/state.
+/city 
+/college
+
+
+// /society
