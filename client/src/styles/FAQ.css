@@ -5,7 +5,7 @@
 
 .filler {
     width: 5%;
-    background-image: linear-gradient(to bottom, #0832ff, hsla(230, 100%, 52%, 0.6));
+    background-image: linear-gradient(to bottom, #0b86ca, hsl(201, 90%, 38%));
 }
 
 .faq-container {

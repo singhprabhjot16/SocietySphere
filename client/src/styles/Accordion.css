@@ -9,7 +9,7 @@
 }
 
 .accordion-container:hover {
-    border: 1px solid #0832ff;
+    border: 1px solid #0b86ca;
     cursor: pointer;
 }
 
@@ -21,6 +21,7 @@
 
 .expand-contract-icon {
     height: 1.5em;
+    filter: invert(42%) sepia(10%) saturate(14%) hue-rotate(314deg) brightness(60%) contrast(88%);
 }
 
 .question-date {
@@ -30,3 +31,33 @@
 .answer-title-container {
     padding-top: 0.5em;
 }
+
+.animate-forwards {
+    animation: rotate-forwards 0.4s forwards;
+}
+
+@keyframes rotate-forwards {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+.animate-backwards {
+    animation: rotate-backwards 0.4s backwards;
+}
+
+@keyframes rotate-backwards {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+

@@ -25,11 +25,11 @@
 
 .route:hover {
     cursor: pointer;
-    color: #0832ff;
+    color: #0b86ca;
 }
 
 .join-us {
-    background-color: #0832ff;
+    background-color: #0b86ca;
     color: white;
     border: 2px solid transparent;
     padding: 0 1.25em;
@@ -42,14 +42,14 @@
 
 .join-us:hover {
     background-color: white;
-    color: #0832ff;
-    border: 2px solid #0832ff;
+    color: #0b86ca;
+    border: 2px solid #0b86ca;
     cursor: pointer;
 }
 
 .selected {
     font-weight: 500;
-    color: #0832ff !important;
-    border-bottom: 4px solid #0832ff;
+    color: #0b86ca !important;
+    border-bottom: 4px solid #0b86ca;
 }
 

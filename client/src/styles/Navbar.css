@@ -47,7 +47,12 @@
     transition: all 0.3s;
 }
 
-.navbar-route-logo:hover, .website-name:hover {
+.navbar-route-logo:hover {
+    cursor: pointer;
+    animation: wobble 0.3s forwards;
+}
+
+.website-name:hover {
     cursor: pointer;
 }
 
@@ -84,6 +89,24 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+@keyframes wobble {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 

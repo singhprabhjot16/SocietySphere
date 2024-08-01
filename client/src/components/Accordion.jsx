@@ -4,11 +4,12 @@ import add from "../assets/add.svg";
 import cancel from "../assets/cancel.svg";
 
 function Accordian({question}) {
-    
     const [isExpanded, setIsExpanded] = useState(false);
+    const [animated, setAnimated] = useState(false);
 
     function handleExpand() {
         setIsExpanded(() => !isExpanded);
+        setAnimated(() => !animated);
     }
 
     return (
@@ -19,7 +20,7 @@ function Accordian({question}) {
                     <span className="pipe poppins-thin">  |  </span>
                     <span className="question-date poppins-thin">{question.date}</span>
                 </div>
-                <img src={isExpanded ? cancel : add} alt="" className="expand-contract-icon"/>
+                <img src={add} alt="" className={`${animated ? "animate-forwards" : "animate-backwards"} expand-contract-icon`} />
             </div>
             <div className="answer-title-container" style={{display: isExpanded ? "block" : "none"}}>
                 <p className='question-answer poppins-regular'>{question.answer}</p>
