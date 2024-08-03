@@ -47,11 +47,32 @@ model Team {
   societyId  Int
 }
 
-model Student{
-  studentId Int
-  rollNo    Int
-  noOfSocieties Int
-  memberName String
+model Student {
+  id         Int          @id @default(autoincrement())
+  name       String
+  rollNo     String       @unique
+  teams      SocietyTeam[]
+  alumni     SocietyAlumni[]
+}
+
+model Team {
+  id         Int      @id @default(autoincrement())
+  role       String
+  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId  Int
   imageUrl   String?
   caption    String?  @default("default_url")
+}
+
+model Alumni {
+  id         Int      @id @default(autoincrement())
+  role       String
+  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  societyId  Int
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId  Int
+  imageUrl   String?
+  caption    String?
 }

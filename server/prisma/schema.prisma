@@ -62,12 +62,21 @@ model Society {
   alumni        Alumni[]
 }
 
+model Student {
+  id         Int          @id @default(autoincrement())
+  name       String
+  rollNo     String       @unique
+  teams      Team[]
+  alumni     Alumni[]
+}
+
 model Team {
   id         Int      @id @default(autoincrement())
-  memberName String
   memberRole String
   society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
   societyId  Int
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId  Int
   imageUrl   String?
   caption    String?  @default("default_url")
 }
@@ -111,10 +120,11 @@ model FAQ {
 
 model Alumni {
   id         Int       @id @default(autoincrement())
-  alumniName      String
   role String
   society    Society   @relation(fields: [societyId], references: [id], onDelete: Cascade)
   societyId  Int
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId  Int
   imageUrl   String?
   caption    String?
 }
