@@ -1,5 +1,5 @@
-/signup
-/signin
+// /signup
+// /signin
 
-/addSociety
-/'delete'
+// /addSociety
+// /'delete'

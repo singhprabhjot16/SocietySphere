@@ -1,17 +1,19 @@
-/SocietyHeadSignIn
-/AddAnnouncement
-    get
-    delete
-    update
-/Uploadtogallery
-/AddAchievement
-/UpdateTeam
-/Alumni
-/FAQ
-/AboutUs
-/joinus
+// /SocietyHeadSignIn
+// /AddAnnouncement
+//     get
+//     delete
+//     update
+// /Uploadtogallery
+// /AddAchievement
+// /UpdateTeam
+// /Alumni
+// /FAQ
+// /AboutUs
+// /joinus
 
 
-Route: 
-    /state/city/society
-        edit        
+// Route: 
+//     /state/city/society
+//         edit        
+
+// /:society

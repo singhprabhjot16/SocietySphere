@@ -9,18 +9,16 @@ async function main() {
   //     stateId: 2
   //   },
   // })
-  await prisma.college.create({
+  await prisma.team.create({
     data: {
-      name: 'BPIT',
-      collegeHead: 'Achal Kaushik',
-      adminEmail: 'achal@bpit.edu.in',
-      collegeEmail: 'bpit@gmail.com',
-      passwordHash: '123',
-      cityId: 1
+      memberName: 'Sunaina Uppal',
+      memberRole: 'Vice President',
+      societyId: 1,
+      imageUrl: 'img.png'
     },
   })
 
-  const allUsers = await prisma.college.findMany()
+  const allUsers = await prisma.team.findMany()
   console.log(allUsers)
 }
 
