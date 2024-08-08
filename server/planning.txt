@@ -39,40 +39,51 @@ To be added
 3. 
 
 
-model Team {
-  id         Int      @id @default(autoincrement())
-  studentId  Int
-  memberRole String
-  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
-  societyId  Int
-}
+import { PrismaClient } from '@prisma/client'
 
-model Student {
-  id         Int          @id @default(autoincrement())
-  name       String
-  rollNo     String       @unique
-  teams      SocietyTeam[]
-  alumni     SocietyAlumni[]
-}
+const prisma = new PrismaClient()
 
-model Team {
-  id         Int      @id @default(autoincrement())
-  role       String
-  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
-  societyId  Int
-  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  studentId  Int
-  imageUrl   String?
-  caption    String?  @default("default_url")
-}
+async function main() {
+  await prisma.society.create({
+    data: {
+      name: 'BPIT',
+      collegeHead: 'Achal Kaushik',
+      adminEmail: 'achal@bpit.edu.in',
+      collegeEmail: 'bpit@gmail.com',
+      passwordHash: 'xxxx',
+      cityId: 1
+    },
+  })
 
-model Alumni {
-  id         Int      @id @default(autoincrement())
-  role       String
-  society    Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
-  societyId  Int
-  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  studentId  Int
-  imageUrl   String?
-  caption    String?
-}
+
+
+  await prisma.society.create({
+    data: {
+      name: 'Drishti',
+      aboutSociety: 'Rotaract club of BPIT',
+      societyHead: 'Abhigya',
+      societyEmail: 'drishti@bpit.edu.in',
+      adminEmail: 'admin@gmail.com',
+      passwordHash: 'xxx',
+      collegeId: 1,
+      type: 'Social Welfare'
+    },
+  })
+
+await prisma.student.create({
+    data: {
+      name: 'Sunaina',
+      rollNo: '06320802721'
+    },
+  })
+
+
+ await prisma.team.create({
+    data: {
+      memberRole: 'Vice President',
+      societyId: 1,
+      studentId: 1,
+      imageUrl: 'image.png',
+      caption: 'this is our first test...'
+    },
+  })

@@ -11,10 +11,11 @@ async function main() {
   // })
   await prisma.team.create({
     data: {
-      memberName: 'Sunaina Uppal',
       memberRole: 'Vice President',
       societyId: 1,
-      imageUrl: 'img.png'
+      studentId: 1,
+      imageUrl: 'image.png',
+      caption: 'this is our first test...'
     },
   })
 

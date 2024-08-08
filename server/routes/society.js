@@ -1,19 +1,12 @@
-// /SocietyHeadSignIn
-// /AddAnnouncement
-//     get
-//     delete
-//     update
-// /Uploadtogallery
-// /AddAchievement
-// /UpdateTeam
-// /Alumni
-// /FAQ
-// /AboutUs
-// /joinus
+import express from 'express';
+import addSocietyInfo from '../controllers/society/addSocietyInfo.js';
+import deleteSocietyInfo from '../controllers/society/deleteSocietyInfo.js';
+import updateSocietyInfo from '../controllers/society/updateSocietyInfo.js';
 
+const router = express.Router();
 
-// Route: 
-//     /state/city/society
-//         edit        
+router.delete('/:id', deleteSocietyInfo);
+router.post('/:id', addSocietyInfo);
+router.put('/:id', updateSocietyInfo);
 
-// /:society
+export default router;
