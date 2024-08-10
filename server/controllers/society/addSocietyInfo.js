@@ -5,34 +5,43 @@ const prisma = new PrismaClient();
 const addSocietyInfo = async (req, res) => {
   const { societyId } = req.params;
   const { teams, galleries, announcements, achievements, faqs, alumni } = req.body;
-
   try {
     if (teams) {
-      for (const team of teams) {
-        // Check if the student exists
-        let student = await prisma.student.findUnique({
-          where: { rollNo: team.rollNo },
-        });
-
-        // If the student doesn't exist, add them to the Student table
-        if (!student) {
-          student = await prisma.student.create({
+      try {
+        for (const team of teams) {
+          // Extract student details
+          const { name, rollNo, ...teamDetails } = team;
+          
+          // Check if the student exists
+          let student = await prisma.student.findUnique({
+            where: { rollNo: rollNo },
+          });
+          
+          // If the student doesn't exist, add them to the Student table
+          if (!student) {
+            student = await prisma.student.create({
+              data: {
+                name: name,
+                rollNo: rollNo,
+              },
+            });
+          }
+      
+          // Add the team record with studentId and societyId
+          await prisma.team.create({
             data: {
-              name: team.name,
-              rollNo: team.rollNo,
+              ...teamDetails, // Spread remaining team details
+              studentId: student.id, // Use the student ID for the relation
+              societyId: parseInt(societyId, 10), // Ensure societyId is an integer
             },
           });
-        }
-
-        // Add the team record
-        await prisma.team.create({
-          data: {
-            ...team,
-            studentId: student.id, // Use the student ID for the relation
-            societyId: parseInt(societyId, 10),
-          },
-        });
+        } 
+        console.log("work done")
+      } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: ' Teams info Failed to add society info' });
       }
+      
     }
     
     if (galleries) {
@@ -54,7 +63,7 @@ const addSocietyInfo = async (req, res) => {
     }
 
     if (faqs) {
-      await prisma.faq.createMany({
+      await prisma.fAQ.createMany({
         data: faqs.map((faq) => ({ ...faq, societyId: parseInt(societyId, 10) })),
       });
     }

@@ -10,17 +10,14 @@ async function main() {
   //   },
   // })
 
-  await prisma.team.create({
+  await prisma.student.create({
     data: {
-      memberRole: 'Vice President',
-      societyId: 2,
-      studentId: 1,
-      imageUrl: 'image.png',
-      caption: 'this is our first test...'
+      name: "Rakesh",
+      rollNo: '1'
     },
   })
 
-  const allUsers = await prisma.team.findMany()
+  const allUsers = await prisma.student.findMany()
   console.log(allUsers)
 }
 

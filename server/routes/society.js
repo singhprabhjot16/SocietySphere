@@ -5,8 +5,8 @@ import updateSocietyInfo from '../controllers/society/updateSocietyInfo.js';
 
 const router = express.Router();
 
-router.delete('/:id', deleteSocietyInfo);
-router.post('/:id', addSocietyInfo);
-router.put('/:id', updateSocietyInfo);
+router.delete('/:societyId', deleteSocietyInfo);
+router.post('/:societyId', addSocietyInfo);
+router.put('/:societyId', updateSocietyInfo);
 
 export default router;

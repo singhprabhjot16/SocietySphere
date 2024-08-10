@@ -45,7 +45,7 @@ const updateSocietyInfo = async (req, res) => {
 
     if (faqs) {
       await Promise.all(faqs.map(async (faq) => {
-        await prisma.faq.update({
+        await prisma.fAQ.update({
           where: { id: faq.id },
           data: { ...faq, societyId: parseInt(id, 10) },
         });
