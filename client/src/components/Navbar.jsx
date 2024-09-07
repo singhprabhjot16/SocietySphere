@@ -19,8 +19,8 @@ function Navbar() {
         <div className="navbar div-padding">
             <p className="website-name dm-serif-display-regular">SocietySphere</p>
             <div className="navbar-routes">
-                <div className="navbar-route">
-                    <img src={explore} alt="" className="navbar-route-logo" onClick={() => showSearchDropdown(display)}/>
+                <div className="navbar-route" onClick={() => showSearchDropdown(display)}>
+                    <img src={explore} alt="" className="navbar-route-logo"/>
                     <p className="navbar-route-name poppins-regular">Explore</p>
                 </div>
                 <div className="navbar-route">

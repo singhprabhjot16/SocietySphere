@@ -12,6 +12,7 @@ function SearchDropdown({display}) {
         societies: []
     });
 
+    // Use Selected IDs instead of Strings
     const [selected, setSelected] = useState({
         state: "",
         city: "",
