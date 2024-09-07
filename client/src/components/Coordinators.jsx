@@ -8,13 +8,20 @@ import AddCoordinator from "./AddCoordinator";
 
 function Coordinators() {
     const [coordinators, setCoordinators] = useState(dummyData.team);
+    const [isAdding, setIsAdding] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
     function handleAdd(formData) {
-        
+        setCoordinators(prevCoordinators => [...prevCoordinators, formData]);
+        setIsAdding(false);
     }
     
-    function handleEdit() {
+    function toggleAddCoordinator() {
+        setIsAdding(!isAdding);
+    }
 
+    function handleEdit() {
+        setIsEditing(true);
     }
 
     return (
@@ -23,10 +30,17 @@ function Coordinators() {
             <div className="members-container">
                 {coordinators.map((c, idx) => <CoordinatorCard info={c} key={idx} />)}
             </div>
+
             <div className="changes-container">
-                <button onClick={handleAdd} className="change-button poppins-regular"><img src={add} alt="" className="icon"/>Add</button>
-                <button onClick={handleEdit} className="change-button poppins-regular"><img src={edit}edit alt="" className="icon"/>Edit</button>
+                <button onClick={toggleAddCoordinator} className="change-button poppins-regular">
+                    <img src={add} alt="Add" className="icon"/>Add
+                </button>
+                <button onClick={handleEdit} className="change-button poppins-regular">
+                    <img src={edit} alt="Edit" className="icon"/>Edit
+                </button>
             </div>
+
+            {isAdding && <AddCoordinator handleAdd={handleAdd} toggleFunction={toggleAddCoordinator}/>}
         </div>
     );
 }
