@@ -6,9 +6,9 @@ export const getSocietyDetails = async (societyId) => {
   try {
     const society = await prisma.society.findUnique({
       where: { id: parseInt(societyId, 10) },
-      include: {
-        student: true, // Include student details
-      },
+      // include: {
+      //   student: true, // Include student details
+      // },
     });
     return society;
   } catch (error) {

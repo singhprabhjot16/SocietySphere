@@ -46,6 +46,7 @@ model Society {
   id            Int       @id @default(autoincrement())
   name          String
   aboutSociety  String
+  prerequisites String    @default("")
   societyHead   String
   societyEmail  String
   adminEmail    String    @unique
