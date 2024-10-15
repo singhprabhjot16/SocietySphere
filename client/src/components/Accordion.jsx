@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../styles/Accordion.css";
 import add from "../assets/add.svg";
-import cancel from "../assets/cancel.svg";
 
 function Accordian({question}) {
     const [isExpanded, setIsExpanded] = useState(false);

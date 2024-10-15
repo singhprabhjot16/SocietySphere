@@ -14,4 +14,16 @@
 
 .website-name-hero {
     font-size: 5em;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.website-tagline {
+    margin-top: 10px;
+    letter-spacing: 0.85em;
+}
+
+.hero-section-image-2 {
+    height: 60%;
+    margin-right: 3em;
 }

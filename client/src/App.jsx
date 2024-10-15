@@ -1,12 +1,6 @@
-import Accordian from "./components/Accordion"
-import CoordinatorCard from "./components/CoordinatorCard"
 import Footer from "./components/Footer"
 import HeroSection from "./components/HeroSection"
 import Navbar from "./components/Navbar"
-import SearchDropdown from "./components/SearchDropdown"
-import Tag from "./components/Tag"
-import Home from "./pages/Home"
-import {createBrowserRouter} from 'react-router-dom'
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SocietyNavbar from './components/SocietyNavbar';
@@ -17,6 +11,7 @@ import Announcements from './components/Announcements';
 import Alumni from './components/Alumni';
 import PhotoGallery from './components/PhotoGallery';
 import FAQ from './components/FAQ';
+import AddCoordinator from "./components/AddCoordinator";
 
 function App() {
   return (
@@ -36,6 +31,7 @@ function App() {
             </Routes>
         </BrowserRouter>
         <Footer />
+        {/* <AddCoordinator /> */}
     </>
   )
 }

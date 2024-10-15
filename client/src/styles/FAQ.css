@@ -1,11 +1,7 @@
 .faqs-container {
     display: flex;
     width: 100%;
-}
-
-.filler {
-    width: 5%;
-    background-image: linear-gradient(to bottom, #0b86ca, hsl(201, 90%, 38%));
+    min-height: 600px;
 }
 
 .faq-container {
