@@ -11,7 +11,6 @@ import Announcements from './components/Announcements';
 import Alumni from './components/Alumni';
 import PhotoGallery from './components/PhotoGallery';
 import FAQ from './components/FAQ';
-import AddCoordinator from "./components/AddCoordinator";
 
 function App() {
   return (

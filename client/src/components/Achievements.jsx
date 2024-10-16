@@ -1,7 +1,16 @@
+import { useState } from "react";
+import "../styles/Achievements.css";
+import dummyData from "../../dummyData.json";
+
 function Achievements() {
+    const [achievements, setAchievements] = useState(dummyData.achievements);
+
     return (
         <div className="achievements-container">
-            <p>hello</p>
+            <div className="filler"></div>
+            <div className="achievements">
+
+            </div>
         </div>
     );
 }

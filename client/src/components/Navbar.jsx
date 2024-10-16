@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Box } from "@mui/material";
 import explore from "../assets/explore.svg";
 import profile from "../assets/profile.svg";
 import search from "../assets/search.svg";
 import "../styles/Navbar.css";
 import "../styles/index.css";
 import SearchDropdown from "./SearchDropdown";
+import AppBar from "./mui-components/AppBar";
 
 function Navbar() {
     const [isLogin, setIsLogin] = useState(false);
