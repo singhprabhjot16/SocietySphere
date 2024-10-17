@@ -14,10 +14,10 @@ function SearchDropdown({display}) {
 
     // Use Selected IDs instead of Strings
     const [selected, setSelected] = useState({
-        state: "",
-        city: "",
-        college: "",
-        society: ""
+        stateId: null,
+        cityId: null,
+        collegeId: null,
+        societyId: null
     });
 
     const [searchURL, setSearchURL] = useState("");
@@ -31,10 +31,10 @@ function SearchDropdown({display}) {
         }));
         setSelected((prevSelected) => ({
             ...prevSelected,
-            state: item.name,
-            city: "",
-            college: "",
-            society: ""
+            stateId: item.id,
+            cityId: null,
+            collegeId: null,
+            societyId: null
         }));
     }
 
@@ -46,9 +46,9 @@ function SearchDropdown({display}) {
         }));
         setSelected((prevSelected) => ({
             ...prevSelected,
-            city: item.name,
-            college: "",
-            society: ""
+            cityId: item.id,
+            collegeId: null,
+            societyId: null
         }));
     }
 
@@ -59,21 +59,23 @@ function SearchDropdown({display}) {
         }));
         setSelected((prevSelected) => ({
             ...prevSelected,
-            college: item.name,
-            society: ""
+            collegeId: item.id,
+            societyId: null
         }));
     }
 
     function handleQuery(item) {
         setSelected((prevSelected) => ({
             ...prevSelected,
-            society: item.name
+            societyId: item.id
         }));
     }
 
     useEffect(() => {
-        setSearchURL(() => `http://localhost:5173/search?state=${selected.state}&city=${selected.city}&college=${selected.college}&society=${selected.society}`);
-    }, [selected.society]);
+        setSearchURL(() => `http://localhost:5173/search?stateId=${selected.stateId}&cityId=${selected.cityId}&collegeId=${selected.collegeId}&societyId=${selected.societyId}`);
+    }, [selected.societyId]);
+
+    console.log(searchURL);
 
     return (
         <div className="search-dropdown-super-container" style={{display: display}}>
@@ -84,7 +86,7 @@ function SearchDropdown({display}) {
                 </div>
                 <div className="state-names dropdown-values">
                     {data.states.map(item => {
-                        return <div className={`state-name poppins-regular dropdown-value ${selected.state === item.name && 'selected-item'}`} key={item.id} onClick={() => handleCities(item)}>{item.name}</div>
+                        return <div className={`state-name poppins-regular dropdown-value ${selected.stateId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleCities(item)}>{item.name}</div>
                     })}
                 </div>
             </div>
@@ -94,7 +96,7 @@ function SearchDropdown({display}) {
                 </div>
                 <div className="city-names dropdown-values">
                     {data.cities.map(item => {
-                        return <div className={`city-name poppins-regular dropdown-value ${selected.city === item.name && 'selected-item'}`} key={item.id} onClick={() => handleColleges(item)}>{item.name}</div>
+                        return <div className={`city-name poppins-regular dropdown-value ${selected.cityId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleColleges(item)}>{item.name}</div>
                     })}
                 </div>
                 {data.cities.length === 0 && <p className="length-zero poppins-regular">Select a state to view its cities</p>}
@@ -105,7 +107,7 @@ function SearchDropdown({display}) {
                 </div>
                 <div className="college-names dropdown-values">
                     {data.colleges.map(item => {
-                        return <div className={`college-name poppins-regular dropdown-value ${selected.college === item.name && 'selected-item'}`} key={item.id} onClick={() => handleSocieties(item)}>{item.name}</div>
+                        return <div className={`college-name poppins-regular dropdown-value ${selected.collegeId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleSocieties(item)}>{item.name}</div>
                     })}
                 </div>
                 {data.colleges.length === 0 && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
@@ -116,7 +118,7 @@ function SearchDropdown({display}) {
                 </div>
                 <div className="society-names dropdown-values">
                     {data.societies.map(item => {
-                        return <div className={`society-name poppins-regular dropdown-value ${selected.society === item.name && 'selected-item'}`} key={item.id} onClick={() => handleQuery(item)}>
+                        return <div className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleQuery(item)}>
                             <p>{item.name}</p>
                             <Tag tag={item.type} color={colorMapping[[item.type]]} />
                             </div>
