@@ -7,12 +7,21 @@ import {
   getSociety 
 } from '../controllers/search.js';
 
-const router = express.Router();
+const searchRoutes = (req, res) => {
+  const { stateId, cityId, collegeId, societyId } = req.query;
 
-router.get('/states', getStates);
-router.get('/:stateId/cities', getCities);
-router.get('/:stateId/:cityId/colleges', getColleges);
-router.get('/:stateId/:cityId/:collegeId/societies', getSocieties);
-router.get('/:stateId/:cityId/:collegeId/:societyId', getSociety);
+  if (stateId && cityId && collegeId && societyId) {
+      console.log(req.query);
+      getSociety(req, res);
+  } else if (stateId && cityId && collegeId) {
+      getSocieties(req, res);
+  } else if (stateId && cityId) {
+      getColleges(req, res);
+  } else if (stateId) {
+      getCities(req, res);
+  } else {
+      getStates(req, res);
+  }
+};
 
-export default router;
+export default searchRoutes;

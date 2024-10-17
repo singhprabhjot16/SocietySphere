@@ -21,7 +21,7 @@ export const getStates = async (req, res) => {
 };
 
 export const getCities = async (req, res) => {
-  const { stateId } = req.params;
+  const { stateId } = req.query;
   try {
     const cities = await prisma.city.findMany({
       where: { stateId: parseInt(stateId, 10) },
@@ -33,7 +33,7 @@ export const getCities = async (req, res) => {
 };
 
 export const getColleges = async (req, res) => {
-  const { stateId, cityId } = req.params;
+  const { stateId, cityId } = req.query;
   try {
     const colleges = await prisma.college.findMany({
       where: { cityId: parseInt(cityId, 10) },
@@ -45,7 +45,7 @@ export const getColleges = async (req, res) => {
 };
 
 export const getSocieties = async (req, res) => {
-  const { stateId, cityId, collegeId } = req.params;
+  const { stateId, cityId, collegeId } = req.query;
   try {
     const societies = await prisma.society.findMany({
       where: { collegeId: parseInt(collegeId, 10) },
@@ -57,7 +57,7 @@ export const getSocieties = async (req, res) => {
 };
 
 // export const getSociety = async (req, res) => {
-//   const { stateId, cityId, collegeId, societyId } = req.params;
+//   const { stateId, cityId, collegeId, societyId } = req.query;
 //   try {
 //     const society = await prisma.society.findUnique({
 //       where: { id: parseInt(societyId, 10) },
@@ -69,7 +69,7 @@ export const getSocieties = async (req, res) => {
 // };
 
 export const getSociety = async (req, res) => {
-  const { societyId } = req.params;
+  const { societyId } = req.query;
   try {
     const society = await getSocietyDetails(societyId);
     const teams = await getTeamsBySociety(societyId);
