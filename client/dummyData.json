@@ -177,7 +177,7 @@
         "description": "Won 1st place in hackathon.",
         "date": "2024-06-15",
         "society_id": 1,
-        "image_url": "https://example.com/images/achieve1.jpg",
+        "image_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.adobe.com%2Fcreativecloud%2Fphotography%2Fdiscover%2Fstock-photography.html&psig=AOvVaw2h1bkorsbQ--x1Mu6ayJrs&ust=1729363416703000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLDCwPPKmIkDFQAAAAAdAAAAABAE",
         "caption": "Victory"
       },
       {
@@ -186,7 +186,7 @@
         "description": "Won national robotics championship.",
         "date": "2024-05-30",
         "society_id": 2,
-        "image_url": "https://example.com/images/achieve2.jpg",
+        "image_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.adobe.com%2Fcreativecloud%2Fphotography%2Fdiscover%2Fstock-photography.html&psig=AOvVaw2h1bkorsbQ--x1Mu6ayJrs&ust=1729363416703000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLDCwPPKmIkDFQAAAAAdAAAAABAE",
         "caption": "Champion"
       }
     ],
