@@ -17,10 +17,25 @@ export const getSocietyDetails = async (societyId) => {
   }
 };
 
+// export const getTeamsBySociety = async (societyId) => {
+//   try {
+//     const teams = await prisma.team.findMany({
+//       where: { societyId: parseInt(societyId, 10) },
+//     });
+//     return teams;
+//   } catch (error) {
+//     console.log(error);
+//     throw new Error('Failed to retrieve teams');
+//   }
+// };
+
 export const getTeamsBySociety = async (societyId) => {
   try {
     const teams = await prisma.team.findMany({
       where: { societyId: parseInt(societyId, 10) },
+      include: {
+        student: true, // This includes the student details related to each team
+      },
     });
     return teams;
   } catch (error) {
