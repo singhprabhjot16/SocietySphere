@@ -9,7 +9,9 @@ function FAQ() {
                 
             </div>
             <div className="faq-container">
-                {dummyData.faqs.map((q, idx) => <Accordian question={q} key={idx}/>)}
+                {dummyData.faqs.map((q, idx) => 
+                    <Accordian title={q.question} content={q.answer} date={q.date} key={idx}/>
+                )}
             </div>
         </div>
     );
