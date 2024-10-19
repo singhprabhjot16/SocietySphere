@@ -34,7 +34,7 @@ export const getTeamsBySociety = async (societyId) => {
     const teams = await prisma.team.findMany({
       where: { societyId: parseInt(societyId, 10) },
       include: {
-        student: true, // This includes the student details related to each team
+        student: true,
       },
     });
     return teams;
