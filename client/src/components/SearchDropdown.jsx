@@ -3,6 +3,8 @@ import dummyData from "../../dummyData.json";
 import colorMapping from "../colorMapping.json";
 import "../styles/SearchDropdown.css";
 import Tag from "./Tag";
+import "../utilities/AppUtils.js";
+import AppUtils from "../utilities/AppUtils.js";
 
 function SearchDropdown({display}) {
     const [data, setData] = useState({
@@ -71,8 +73,12 @@ function SearchDropdown({display}) {
     }
 
     useEffect(() => {
-        setSearchURL(() => `http://localhost:5173/search?stateId=${selected.stateId}&cityId=${selected.cityId}&collegeId=${selected.collegeId}&societyId=${selected.societyId}`);
+        AppUtils.getSociety(selected.stateId, selected.cityId, selected.collegeId, selected.societyId);
     }, [selected.societyId]);
+
+    // useEffect(() => {
+    //     setSearchURL(() => `http://localhost:5173/search?stateId=${selected.stateId}&cityId=${selected.cityId}&collegeId=${selected.collegeId}&societyId=${selected.societyId}`);
+    // }, [selected.societyId]);
 
     useEffect(() => {
         setSelected((prev) => ({
