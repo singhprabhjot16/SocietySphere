@@ -6,11 +6,16 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    outline: 3px solid #0b86ca;
     border-radius: 15px;
     padding: 0em;
     margin-right: 3em;
     margin-bottom: 3em;
+    box-shadow: 0 1px 10px #ccc;
+    transition: all 0.3s;
+}
+
+.card-container:hover {
+    box-shadow: 0 3px 25px #ccc;
 }
 
 .member-image {

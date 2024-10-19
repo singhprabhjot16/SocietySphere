@@ -1,0 +1,13 @@
+.achievements-container {
+    min-height: 500px;
+    display: flex;
+    width: 100%;
+}
+
+.achievement-container {
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em 0em;
+    padding-left: 3em;
+}

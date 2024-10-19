@@ -10,7 +10,9 @@ function Achievements() {
         <div className="achievements-container">
             <div className="filler"></div>
             <div className="achievement-container">
-                <AchievementCard />
+                {achievements.map((achievement, idx) => 
+                    <AchievementCard achievement={achievement} key={idx}/>
+                )}
             </div>
         </div>
     );

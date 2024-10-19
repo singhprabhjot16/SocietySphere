@@ -12,7 +12,6 @@ function SearchDropdown({display}) {
         societies: []
     });
 
-    // Use Selected IDs instead of Strings
     const [selected, setSelected] = useState({
         stateId: null,
         cityId: null,
@@ -74,6 +73,22 @@ function SearchDropdown({display}) {
     useEffect(() => {
         setSearchURL(() => `http://localhost:5173/search?stateId=${selected.stateId}&cityId=${selected.cityId}&collegeId=${selected.collegeId}&societyId=${selected.societyId}`);
     }, [selected.societyId]);
+
+    useEffect(() => {
+        setSelected((prev) => ({
+            ...prev,
+            stateId: null,
+            cityId: null,
+            collegeId: null,
+            societyId: null
+        }));
+        setData((prev) => ({
+            ...prev,
+            cities: [],
+            colleges: [],
+            societies: []
+        }));
+    }, [display]);
 
     console.log(searchURL);
 
