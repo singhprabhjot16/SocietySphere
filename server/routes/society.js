@@ -25,7 +25,7 @@ import { updateGallery } from "../controllers/society/UpdateInformation/updateGa
 const router = express.Router();
 try {
   router.post("/:societyId", (req, res) => {
-  const { table } = req.query;
+  const { table } = req.headers['table-name'];
   console.log(table)
   switch (table) {
     case "team":
@@ -49,7 +49,7 @@ try {
 }
 
 router.delete("/:societyId", async (req, res) => {
-  const { table } = req.query;
+  const { table } = req.headers['table-name'];
 
   try {
     switch (table) {
@@ -77,7 +77,7 @@ router.delete("/:societyId", async (req, res) => {
 });
 
 router.put("/:societyId", async (req, res) => {
-  const { table } = req.query;
+  const { table } = req.headers['table-name'];
 
   try {
     switch (table) {
