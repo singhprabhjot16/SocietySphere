@@ -21,8 +21,6 @@ function SearchDropdown({display}) {
         societyId: null
     });
 
-    const [searchURL, setSearchURL] = useState("");
-
     function handleCities(item) {
         setData((prevData) => ({
             ...prevData,
@@ -95,8 +93,6 @@ function SearchDropdown({display}) {
             societies: []
         }));
     }, [display]);
-
-    console.log(searchURL);
 
     return (
         <div className="search-dropdown-super-container" style={{display: display}}>

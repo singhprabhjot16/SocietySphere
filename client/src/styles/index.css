@@ -47,3 +47,19 @@
     width: 5%;
     background-image: linear-gradient(to bottom, #0b86ca, hsl(201, 90%, 38%));
 }
+
+.nothin-here-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nothin-here-container img {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.nothin-here-container p {
+    
+}
