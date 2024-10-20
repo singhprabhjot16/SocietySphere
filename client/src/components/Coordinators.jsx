@@ -9,8 +9,8 @@ import AppUtils from "../utilities/AppUtils";
 import nothingHere from "../assets/nothing-here.jpg";
 import NothingHere from "./NothingHere";
 
-function Coordinators() {
-    const [coordinators, setCoordinators] = useState(dummyData.team);
+function Coordinators({ teams }) {
+    const [coordinators, setCoordinators] = useState(teams);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 

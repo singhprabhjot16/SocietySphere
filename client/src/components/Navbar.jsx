@@ -5,7 +5,7 @@ import search from "../assets/search.svg";
 import "../styles/Navbar.css";
 import SearchDropdown from "./SearchDropdown";
 
-function Navbar({ setSelectedSocietyId }) {
+function Navbar({ setSelected }) {
     const [isLogin, setIsLogin] = useState(false);
     const [display, setDisplay] = useState("none");
 
@@ -31,7 +31,7 @@ function Navbar({ setSelectedSocietyId }) {
                     {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society poppins-regular">Login as Admin</button>}
                 </div>
             </div>
-            <SearchDropdown display={display} setSelectedSocietyId={setSelectedSocietyId} />
+            <SearchDropdown display={display} setSelectedSociety={setSelected} />
         </>
     );
 }

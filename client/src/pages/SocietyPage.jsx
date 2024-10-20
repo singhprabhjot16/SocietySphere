@@ -13,11 +13,11 @@ function SocietyPage({ society }) {
             <SocietyHeroSection society={society} />
             <SocietyNavbar />
             <Routes>
-                <Route path="/coordinators" element={<Coordinators society={society} />} />
-                <Route path="/achievements" element={<Achievements society={society} />} />
-                <Route path="/announcements" element={<Announcements society={society} />} />
-                <Route path="/alumni" element={<Alumni society={society} />} />
-                <Route path="/faqs" element={<FAQs society={society} />} />
+                <Route path="/coordinators" element={<Coordinators teams={society.teams} />} />
+                <Route path="/achievements" element={<Achievements achievements={society.achievements} />} />
+                <Route path="/announcements" element={<Announcements announcements={society.announcements} />} />
+                <Route path="/alumni" element={<Alumni alumni={society.alumni} />} />
+                <Route path="/faqs" element={<FAQs faqs={society.faqs} />} />
             </Routes>
         </div>
     );

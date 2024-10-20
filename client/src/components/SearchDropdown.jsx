@@ -7,7 +7,7 @@ import "../utilities/AppUtils.js";
 import AppUtils from "../utilities/AppUtils.js";
 import SocietyPage from "../pages/SocietyPage.jsx";
 
-function SearchDropdown({ display, setSelectedSocietyId }) {
+function SearchDropdown({ display, setSelectedSociety }) {
     const [data, setData] = useState({
         states: [...dummyData.states],
         cities: [],
@@ -75,11 +75,17 @@ function SearchDropdown({ display, setSelectedSocietyId }) {
 
     useEffect(() => {
         if (selected.societyId) {
-            setSelectedSocietyId(selected.societyId);
-            AppUtils.getSociety(selected.stateId, selected.cityId, selected.collegeId, selected.societyId);
+            setSelectedSociety((prevData) => ({
+                ...prevData,
+                stateId: selected.stateId,
+                cityId: selected.cityId,
+                collegeId: selected.collegeId,
+                societyId: selected.societyId
+            }));
+            // AppUtils.getSociety(selected.stateId, selected.cityId, selected.collegeId, selected.societyId);
             setNavbarVisible(true);
         }
-    }, [selected.societyId, setSelectedSocietyId]);
+    }, [selected.societyId, setSelectedSociety]);
 
     useEffect(() => {
         if (display === "none") {
