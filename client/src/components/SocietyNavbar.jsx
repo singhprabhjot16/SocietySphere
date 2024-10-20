@@ -1,25 +1,32 @@
+import { Link, useLocation } from "react-router-dom";
 import "../styles/SocietyNavbar.css";
 import "../styles/index.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function SocietyNavbar() {
-    const [selected, setSelected] = useState("");
+    const location = useLocation();
 
-    function handleRouteClick(event) {
-        setSelected(event.target.name);
-    }
+    const routes = [
+        { name: "About Us", path: "/about" },
+        { name: "Coordinators", path: "/coordinators" },
+        { name: "Achievements", path: "/achievements" },
+        { name: "Announcements", path: "/announcements" },
+        { name: "Alumni", path: "/alumni" },
+        { name: "Photo Gallery", path: "/gallery" },
+        { name: "FAQs", path: "/faqs" }
+    ];
 
     return (
         <div className="society-navbar div-padding">
             <div className="routes">
-                <Link className={`route poppins-regular ${selected === "about" && 'selected'}`} to="/about" name="about" onClick={handleRouteClick}>About Us</Link>
-                <Link className={`route poppins-regular ${selected === "coordinators" && 'selected'}`} to="/coordinators" name="coordinators" onClick={handleRouteClick}>Coordinators</Link>
-                <Link className={`route poppins-regular ${selected === "achievements" && 'selected'}`} to="/achievements" name="achievements" onClick={handleRouteClick}>Achievements</Link>
-                <Link className={`route poppins-regular ${selected === "announcements" && 'selected'}`} to="/announcements" name="announcements" onClick={handleRouteClick}>Announcements</Link>
-                <Link className={`route poppins-regular ${selected === "alumni" && 'selected'}`} to="/alumni" name="alumni" onClick={handleRouteClick}>Alumni</Link>
-                <Link className={`route poppins-regular ${selected === "gallery" && 'selected'}`} to="/gallery" name="gallery" onClick={handleRouteClick}>Photo Gallery</Link>
-                <Link className={`route poppins-regular ${selected === "faqs" && 'selected'}`} to="/faqs" name="faqs" onClick={handleRouteClick}>FAQs</Link>
+                {routes.map((route) => (
+                    <Link
+                        key={route.path}
+                        className={`route poppins-regular ${location.pathname === route.path ? 'selected' : ''}`}
+                        to={route.path}
+                    >
+                        {route.name}
+                    </Link>
+                ))}
             </div>
             <button className="poppins-regular join-us">Join Us</button>
         </div>

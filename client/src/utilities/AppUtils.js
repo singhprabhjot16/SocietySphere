@@ -2,6 +2,57 @@ import APIConstants from "../constants/APIConstants.js";
 
 class AppUtils {
 
+    static getState = async (stateId) => {
+        try {
+          const response = await fetch(`${APIConstants.GET_SOCIETY_URL}stateId=${stateId}`, {
+            method: 'GET'
+          });
+      
+          if (!response.ok) {
+            throw new Error(`Error fetching states with ID ${stateId}: ${response.statusText}`);
+          }
+      
+          const data = await response.json();
+          console.log('State details:', data);
+        } catch (error) {
+          console.error('Error fetching state:', error);
+        }
+    };
+
+    static getCity = async (stateId, cityId) => {
+        try {
+            const response = await fetch(`${APIConstants.GET_SOCIETY_URL}stateId=${stateId}&cityId=${cityId}`, {
+                method: 'GET'
+            });
+        
+            if (!response.ok) {
+                throw new Error(`Error fetching city with ID ${cityId}: ${response.statusText}`);
+            }
+        
+            const data = await response.json();
+            console.log('City details:', data);
+        } catch (error) {
+            console.error('Error fetching city:', error);
+        }
+    };
+
+    static getCollege = async (stateId, cityId, collegeId) => {
+        try {
+            const response = await fetch(`${APIConstants.GET_SOCIETY_URL}stateId=${stateId}&cityId=${cityId}&collegeId=${collegeId}`, {
+                method: 'GET'
+            });
+        
+            if (!response.ok) {
+                throw new Error(`Error fetching college with ID ${collegeId}: ${response.statusText}`);
+            }
+        
+            const data = await response.json();
+            console.log('College details:', data);
+        } catch (error) {
+            console.error('Error fetching college:', error);
+        }
+    };
+
     static getSociety = async (stateId, cityId, collegeId, societyId) => {
         try {
           const response = await fetch(`${APIConstants.GET_SOCIETY_URL}stateId=${stateId}&cityId=${cityId}&collegeId=${collegeId}&societyId=${societyId}`, {

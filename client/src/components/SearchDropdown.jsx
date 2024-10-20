@@ -5,8 +5,9 @@ import "../styles/SearchDropdown.css";
 import Tag from "./Tag";
 import "../utilities/AppUtils.js";
 import AppUtils from "../utilities/AppUtils.js";
+import SocietyPage from "../pages/SocietyPage.jsx";
 
-function SearchDropdown({display}) {
+function SearchDropdown({ display, setSelectedSocietyId }) {
     const [data, setData] = useState({
         states: [...dummyData.states],
         cities: [],
@@ -73,80 +74,110 @@ function SearchDropdown({display}) {
     }
 
     useEffect(() => {
-        AppUtils.getSociety(selected.stateId, selected.cityId, selected.collegeId, selected.societyId);
-    }, [selected.societyId]);
-
-    // useEffect(() => {
-    //     setSearchURL(() => `http://localhost:5173/search?stateId=${selected.stateId}&cityId=${selected.cityId}&collegeId=${selected.collegeId}&societyId=${selected.societyId}`);
-    // }, [selected.societyId]);
+        if (selected.societyId) {
+            setSelectedSocietyId(selected.societyId);
+            AppUtils.getSociety(selected.stateId, selected.cityId, selected.collegeId, selected.societyId);
+            setNavbarVisible(true);
+        }
+    }, [selected.societyId, setSelectedSocietyId]);
 
     useEffect(() => {
-        setSelected((prev) => ({
-            ...prev,
-            stateId: null,
-            cityId: null,
-            collegeId: null,
-            societyId: null
-        }));
-        setData((prev) => ({
-            ...prev,
-            cities: [],
-            colleges: [],
-            societies: []
-        }));
-        setNavbarVisible(false);
+        if (display === "none") {
+            setSelected({
+                stateId: null,
+                cityId: null,
+                collegeId: null,
+                societyId: null
+            });
+            setData({
+                ...data,
+                cities: [],
+                colleges: [],
+                societies: []
+            });
+            setNavbarVisible(false);
+        }
     }, [display]);
 
     return (
-        <div className="search-dropdown-super-container" style={{display: display}}>
-        <div className="search-dropdown-container">
-            <div className="states search-dropdown">
-                <div className="state dropdown-headline">
-                    <p className="poppins-regular">States</p>
-                </div>
-                <div className="state-names dropdown-values">
-                    {data.states.map(item => {
-                        return <div className={`state-name poppins-regular dropdown-value ${selected.stateId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleCities(item)}>{item.name}</div>
-                    })}
-                </div>
-            </div>
-            <div className="cities search-dropdown">
-                <div className="city dropdown-headline">
-                    <p className="poppins-regular">City</p>
-                </div>
-                <div className="city-names dropdown-values">
-                    {data.cities.map(item => {
-                        return <div className={`city-name poppins-regular dropdown-value ${selected.cityId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleColleges(item)}>{item.name}</div>
-                    })}
-                </div>
-                {data.cities.length === 0 && <p className="length-zero poppins-regular">Select a state to view its cities</p>}
-            </div>
-            <div className="colleges search-dropdown">
-                <div className="college dropdown-headline">
-                    <p className="poppins-regular">Colleges</p>
-                </div>
-                <div className="college-names dropdown-values">
-                    {data.colleges.map(item => {
-                        return <div className={`college-name poppins-regular dropdown-value ${selected.collegeId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleSocieties(item)}>{item.name}</div>
-                    })}
-                </div>
-                {data.colleges.length === 0 && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
-            </div>
-            <div className="societies search-dropdown">
-                <div className="society dropdown-headline">
-                    <p className="poppins-regular">Society</p>
-                </div>
-                <div className="society-names dropdown-values">
-                    {data.societies.map(item => {
-                        return <div className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id && 'selected-item'}`} key={item.id} onClick={() => handleQuery(item)}>
-                            <p>{item.name}</p>
-                            <Tag tag={item.type} color={colorMapping[[item.type]]} />
+        <div className="search-dropdown-super-container" style={{ display: display }}>
+            <div className="search-dropdown-container">
+                {/* State Dropdown */}
+                <div className="states search-dropdown">
+                    <div className="state dropdown-headline">
+                        <p className="poppins-regular">States</p>
+                    </div>
+                    <div className="state-names dropdown-values">
+                        {data.states.map(item => (
+                            <div
+                                className={`state-name poppins-regular dropdown-value ${selected.stateId === item.id ? 'selected-item' : ''}`}
+                                key={item.id}
+                                onClick={() => handleCities(item)}
+                            >
+                                {item.name}
                             </div>
-                    })}
+                        ))}
+                    </div>
                 </div>
-                {data.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
+
+                {/* City Dropdown */}
+                <div className="cities search-dropdown">
+                    <div className="city dropdown-headline">
+                        <p className="poppins-regular">City</p>
+                    </div>
+                    <div className="city-names dropdown-values">
+                        {data.cities.map(item => (
+                            <div
+                                className={`city-name poppins-regular dropdown-value ${selected.cityId === item.id ? 'selected-item' : ''}`}
+                                key={item.id}
+                                onClick={() => handleColleges(item)}
+                            >
+                                {item.name}
+                            </div>
+                        ))}
+                    </div>
+                    {data.cities.length === 0 && <p className="length-zero poppins-regular">Select a state to view its cities</p>}
+                </div>
+
+                {/* College Dropdown */}
+                <div className="colleges search-dropdown">
+                    <div className="college dropdown-headline">
+                        <p className="poppins-regular">Colleges</p>
+                    </div>
+                    <div className="college-names dropdown-values">
+                        {data.colleges.map(item => (
+                            <div
+                                className={`college-name poppins-regular dropdown-value ${selected.collegeId === item.id ? 'selected-item' : ''}`}
+                                key={item.id}
+                                onClick={() => handleSocieties(item)}
+                            >
+                                {item.name}
+                            </div>
+                        ))}
+                    </div>
+                    {data.colleges.length === 0 && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
+                </div>
+
+                {/* Society Dropdown */}
+                <div className="societies search-dropdown">
+                    <div className="society dropdown-headline">
+                        <p className="poppins-regular">Society</p>
+                    </div>
+                    <div className="society-names dropdown-values">
+                        {data.societies.map(item => (
+                            <div
+                                className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
+                                key={item.id}
+                                onClick={() => handleQuery(item)}
+                            >
+                                <p>{item.name}</p>
+                                <Tag tag={item.type} color={colorMapping[item.type]} />
+                            </div>
+                        ))}
+                    </div>
+                    {data.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
+                </div>
             </div>
-        </div>
         </div>
     );
 }
