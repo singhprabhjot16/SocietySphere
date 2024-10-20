@@ -12,6 +12,7 @@
     margin-bottom: 3em;
     box-shadow: 0 1px 10px #ccc;
     transition: all 0.3s;
+    position: relative;
 }
 
 .card-container:hover {
@@ -26,6 +27,22 @@
     margin-bottom: 0.75em;
 }
 
+/* Card dims in edit mode */
+.card-container.edit-mode {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* Card returns to normal on hover when in edit mode */
+.card-container.edit-mode.hovered {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Card details remain the same */
 .card-details-container {
     display: flex;
     justify-content: center;
@@ -69,5 +86,63 @@
     height: 30px;
 }
 
+/* Additional styles for modal */
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2em;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+}
 
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
 
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.modal-button {
+    padding: 0.5em 1em;
+    background-color: #0b86ca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-button:hover {
+    background-color: hsl(201, 90%, 45%);
+}
+
+.modal-button.delete {
+    background-color: #e74c3c;
+}
+
+.modal-button.delete:hover {
+    background-color: #c0392b;
+}
