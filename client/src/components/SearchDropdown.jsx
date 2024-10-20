@@ -21,6 +21,8 @@ function SearchDropdown({display}) {
         societyId: null
     });
 
+    const [isNavbarVisible, setNavbarVisible] = useState(false);
+
     function handleCities(item) {
         setData((prevData) => ({
             ...prevData,
@@ -92,6 +94,7 @@ function SearchDropdown({display}) {
             colleges: [],
             societies: []
         }));
+        setNavbarVisible(false);
     }, [display]);
 
     return (
