@@ -5,6 +5,9 @@ import "../styles/Coordinators.css";
 import add from "../assets/add.svg";
 import edit from "../assets/edit.svg";
 import AddCoordinator from "./AddCoordinator";
+import AppUtils from "../utilities/AppUtils";
+import nothingHere from "../assets/nothing-here.jpg";
+import NothingHere from "./NothingHere";
 
 function Coordinators() {
     const [coordinators, setCoordinators] = useState(dummyData.team);
@@ -28,9 +31,11 @@ function Coordinators() {
         <div className="coordinators-container">
             <div className="filler"></div>
             <div className="members-container">
-                {coordinators.map((c, idx) => <CoordinatorCard info={c} key={idx} />)}
+                {!AppUtils.checkEmpty(coordinators) ? 
+                coordinators.map((c, idx) => <CoordinatorCard info={c} key={idx} />) :
+                <NothingHere />
+                }
             </div>
-
             <div className="changes-container">
                 <button onClick={toggleAddCoordinator} className="change-button poppins-regular">
                     <img src={add} alt="Add" className="icon"/>Add
