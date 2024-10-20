@@ -5,88 +5,85 @@ import "../styles/Coordinators.css";
 import add from "../assets/add.svg";
 import edit from "../assets/edit.svg";
 import AddCoordinator from "./AddCoordinator";
-import EditCoordinator from "./EditCoordinator";
+import EditCoordinator from "./EditCoordinator"; // Import EditCoordinator
 import AppUtils from "../utilities/AppUtils";
+import nothingHere from "../assets/nothing-here.jpg";
 import NothingHere from "./NothingHere";
 
-function Coordinators({ teams }) {
-    const [coordinators, setCoordinators] = useState(teams);
+function Coordinators() {
+    const [coordinators, setCoordinators] = useState(dummyData.team);
     const [isAdding, setIsAdding] = useState(false);
-    const [isEditingMode, setIsEditingMode] = useState(false); // To enable edit mode
-    const [selectedCoordinator, setSelectedCoordinator] = useState(null); // The selected coordinator for editing
+    const [isEditing, setIsEditing] = useState(false); // Track editing state
+    const [selectedCoordinator, setSelectedCoordinator] = useState(null);
 
-    // Handle adding a new coordinator
     function handleAdd(formData) {
         setCoordinators(prevCoordinators => [...prevCoordinators, formData]);
         setIsAdding(false);
     }
 
-    // Toggle Add modal
     function toggleAddCoordinator() {
         setIsAdding(!isAdding);
     }
 
-    // Toggle Edit mode
     function toggleEditMode() {
-        setIsEditingMode(!isEditingMode);
+        setIsEditing(!isEditing); // Toggle edit mode
     }
 
-    // Open edit modal and set the selected coordinator
-    function handleEdit(coordinator) {
-        setSelectedCoordinator(coordinator);
-    }
-
-    // Handle updating an existing coordinator
-    function handleUpdate(updatedCoordinator) {
-        setCoordinators(prevCoordinators => 
-            prevCoordinators.map(c => 
-                c.id === updatedCoordinator.id ? updatedCoordinator : c
+    function handleEdit(updatedCoordinator) {
+        setCoordinators(prevCoordinators =>
+            prevCoordinators.map(c =>
+                c.member_name === selectedCoordinator.member_name ? updatedCoordinator : c
             )
         );
-        setSelectedCoordinator(null); // Close edit modal
+        setIsEditing(false);
     }
 
-    // Handle deleting a coordinator
-    function handleDelete(coordinatorId) {
-        setCoordinators(prevCoordinators => prevCoordinators.filter(c => c.id !== coordinatorId));
-        setSelectedCoordinator(null); // Close edit modal
+    function handleDelete(coordinatorToDelete) {
+        setCoordinators(prevCoordinators =>
+            prevCoordinators.filter(c => c !== coordinatorToDelete)
+        );
+        setIsEditing(false);
+    }
+
+    function startEditing(coordinator) {
+        setSelectedCoordinator(coordinator);
     }
 
     return (
         <div className="coordinators-container">
             <div className="filler"></div>
             <div className="members-container">
-                {!AppUtils.checkEmpty(coordinators) ? 
-                coordinators.map((c, idx) => (
-                    <CoordinatorCard 
-                        info={c} 
-                        key={idx} 
-                        isEditingMode={isEditingMode}  // Pass editing mode status
-                        onEdit={() => handleEdit(c)}  // Handle edit on hover
-                    />
-                )) :
-                <NothingHere />
+                {!AppUtils.checkEmpty(coordinators)
+                    ? coordinators.map((c, idx) => (
+                          <div
+                              key={idx}
+                              onClick={() => isEditing && startEditing(c)} // Only allow click in edit mode
+                              className={isEditing ? "card-wrapper greyscale" : "card-wrapper"} // Add greyscale class when editing
+                          >
+                              <CoordinatorCard info={c} key={idx} />
+                          </div>
+                      ))
+                    : <NothingHere />
                 }
             </div>
             <div className="changes-container">
                 <button onClick={toggleAddCoordinator} className="change-button poppins-regular">
-                    <img src={add} alt="Add" className="icon"/>Add
+                    <img src={add} alt="Add" className="icon" /> Add
                 </button>
                 <button onClick={toggleEditMode} className="change-button poppins-regular">
-                    <img src={edit} alt="Edit" className="icon"/>Edit
+                    <img src={edit} alt="Edit" className="icon" /> Edit
                 </button>
             </div>
 
             {isAdding && <AddCoordinator handleAdd={handleAdd} toggleFunction={toggleAddCoordinator} />}
-            
-            {/* Edit modal opens if a card is selected */}
-            {selectedCoordinator && 
+            {selectedCoordinator && isEditing && (
                 <EditCoordinator
-                    coordinator={selectedCoordinator} 
-                    handleUpdate={handleUpdate} 
-                    handleDelete={handleDelete} 
+                    selectedCoordinator={selectedCoordinator}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    toggleFunction={() => setIsEditing(false)}
                 />
-            }
+            )}
         </div>
     );
 }
