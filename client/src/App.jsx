@@ -34,20 +34,27 @@ function App() {
             selectedSociety.collegeId,
             selectedSociety.societyId
         );
+        setSelectedSociety((prev) => ({
+            ...prev,
+            stateId: null,
+            cityId: null,
+            collegeId: null,
+            societyId: null
+        }))
         setSocietyData(data);
     };
-    useEffect(() => {
-        console.log('useEffect triggered with selectedSociety:', selectedSociety);
+    // useEffect(() => {
+    //     console.log('useEffect triggered with selectedSociety:', selectedSociety);
         if (selectedSociety.societyId) {
             console.log("Entered if condition");
             fetchSocietyDetails();
         }
-    }, [setSelectedSociety]);
+    // }, [selectedSociety]);
     console.log(selectedSociety)
     return (
         <div>
             <Navbar setSelected={setSelectedSociety} />
-            {selectedSociety.societyId ? (
+            {societyData ? (
                 <SocietyPage society={societyData} />
             ) : (
                 <Home />
