@@ -43,13 +43,12 @@ function App() {
         }))
         setSocietyData(data);
     };
-    // useEffect(() => {
-    //     console.log('useEffect triggered with selectedSociety:', selectedSociety);
-        if (selectedSociety.societyId) {
-            console.log("Entered if condition");
-            fetchSocietyDetails();
-        }
-    // }, [selectedSociety]);
+
+    if (selectedSociety.societyId) {
+        console.log("Entered if condition");
+        fetchSocietyDetails();
+    }
+    
     console.log(selectedSociety)
     return (
         <div>

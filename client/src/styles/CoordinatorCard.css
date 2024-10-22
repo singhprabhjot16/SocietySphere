@@ -11,7 +11,21 @@
     margin-right: 3em;
     margin-bottom: 3em;
     box-shadow: 0 1px 10px #ccc;
-    transition: all 0.3s;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.card-wrapper {
+    transition: filter 0.3s ease; /* Apply smooth transition for greyscale filter */
+}
+
+.greyscale {
+    filter: grayscale(100%); /* Default greyscale for all cards in edit mode */
+}
+
+/* Greyscale override when hovering */
+.card-wrapper:hover {
+    filter: grayscale(0%); /* Remove greyscale on hover */
+    /* box-shadow: 0 3px 25px #ccc; */
 }
 
 .card-container:hover {
@@ -68,6 +82,3 @@
 .social-icon:hover {
     height: 30px;
 }
-
-
-
