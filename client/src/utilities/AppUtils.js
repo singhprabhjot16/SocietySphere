@@ -92,14 +92,13 @@ class AppUtils {
     static updateSociety = async (societyId, updatedData, tableName) => {
         try {
           const response = await fetch(`${APIConstants.UPDATE_SOCIETY_URL}/${societyId}`, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'table-name': tableName
             },
             body: JSON.stringify(updatedData)
           });
-      
           const data = await response.json();
           console.log('Society updated:', data);
         } catch (error) {

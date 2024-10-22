@@ -9,13 +9,26 @@ import AppUtils from "../utilities/AppUtils";
 import nothingHere from "../assets/nothing-here.jpg";
 import NothingHere from "./NothingHere";
 
-function Coordinators({ teams }) {
+function Coordinators({ teams, societyId}) {
     const [coordinators, setCoordinators] = useState(teams);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
     function handleAdd(formData) {
         setCoordinators(prevCoordinators => [...prevCoordinators, formData]);
+        const modifiedFormData = {
+            imageUrl: "",
+            name: "",
+            memberRole: "",
+            // linkedin: ""
+            rollNo: ""
+        };
+
+        modifiedFormData.imageUrl = formData.imageUrl
+        modifiedFormData.name = formData.student.name
+        modifiedFormData.memberRole = formData.memberRole
+        modifiedFormData.rollNo = formData.rollNo
+        AppUtils.updateSociety(societyId, modifiedFormData, 'team')
         setIsAdding(false);
     }
     

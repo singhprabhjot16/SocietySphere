@@ -25,7 +25,7 @@ import { updateGallery } from "../controllers/society/UpdateInformation/updateGa
 const router = express.Router();
 try {
   router.post("/:societyId", (req, res) => {
-  const { table } = req.headers['table-name'];
+  const  table = req.headers['table-name'];
   console.log(table)
   switch (table) {
     case "team":

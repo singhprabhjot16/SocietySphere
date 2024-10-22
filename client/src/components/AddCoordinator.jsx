@@ -3,17 +3,32 @@ import "../styles/AddCoordinator.css";
 
 function AddCoordinator({ handleAdd, toggleFunction }) {
     const [formData, setFormData] = useState({
-        image_url: "",
-        member_name: "",
-        member_role: "",
-        linkedin: ""
+        imageUrl: "",
+        student: {
+            name: "",
+        },
+        memberRole: "",
+        // linkedin: ""
+        rollNo: ""
     });
 
     function handleChange(event) {
-        setFormData(oldData => ({
-            ...oldData,
-            [event.target.name]: event.target.value
-        }));
+        const { name, value } = event.target;
+
+        if (name === "student.name") {
+            setFormData((oldData) => ({
+                ...oldData,
+                student: {
+                    ...oldData.student,
+                    name: value
+                }
+            }));
+        } else {
+            setFormData((oldData) => ({
+                ...oldData,
+                [name]: value
+            }));
+        }
     }
 
     function handleSubmit(event) {
@@ -27,26 +42,34 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
                 <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 
-                        value={formData.name} 
+                        value={formData.student.name} 
                         placeholder="Name" 
                         onChange={handleChange} 
-                        name="member_name" 
+                        name="student.name" 
                     />
                     <input 
                         type="text" 
-                        value={formData.role} 
+                        value={formData.memberRole} 
                         placeholder="Role" 
                         onChange={handleChange} 
-                        name="member_role" 
+                        name="memberRole" 
                     />
-                    <input 
+                    {/* <input 
                         type="text" 
                         value={formData.linkedin} 
                         placeholder="LinkedIn Profile" 
                         onChange={handleChange} 
                         name="linkedin" 
+                    /> */}
+
+                    <input 
+                        type="text" 
+                        value={formData.rollNo} 
+                        placeholder="Roll Number" 
+                        onChange={handleChange} 
+                        name="rollNo" 
                     />
-                    <input type="file" onChange={handleChange} name="image_url" />
+                    <input type="file" onChange={handleChange} name="imageUrl" />
                     <button type="submit">Add</button>
                     <button type="button" onClick={toggleFunction}>Cancel</button>
                 </form>

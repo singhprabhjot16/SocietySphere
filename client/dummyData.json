@@ -82,62 +82,45 @@
         "type": "Cultural"
       }
     ],
-    "team": [
+    "teams": [
       {
         "id": 1,
-        "member_name": "Charlie Black",
-        "member_role": "President",
-        "society_id": 1,
-        "image_url": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
-        "caption": "President of Coding Club"
+        "caption": "this is our first test...",
+        "imageUrl": "image.png",
+        "memberRole": "Vice President",
+        "societyId": 1,
+        "student": {
+          "id": 1,
+          "name": "Sunaina",
+          "rollNo": "06320802721",
+          "studentId": 1
+        }
       },
       {
         "id": 2,
-        "member_name": "Dana Green",
-        "member_role": "Vice President",
-        "society_id": 2,
-        "image_url": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        "caption": "Vice President of Robotics Club"
+        "caption": "Vice President of Robotics Club",
+        "imageUrl": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
+        "memberRole": "Vice President",
+        "societyId": 2,
+        "student": {
+          "id": 2,
+          "name": "Dana Green",
+          "rollNo": "06320802722",
+          "studentId": 2
+        }
       },
       {
-        "id": 2,
-        "member_name": "Dana Green",
-        "member_role": "Vice President",
-        "society_id": 2,
-        "image_url": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        "caption": "Vice President of Robotics Club"
-      },
-      {
-        "id": 2,
-        "member_name": "Dana Green",
-        "member_role": "Vice President",
-        "society_id": 2,
-        "image_url": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        "caption": "Vice President of Robotics Club"
-      },
-      {
-        "id": 2,
-        "member_name": "Dana Green",
-        "member_role": "Vice President",
-        "society_id": 2,
-        "image_url": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        "caption": "Vice President of Robotics Club"
-      },
-      {
-        "id": 1,
-        "member_name": "Charlie Black",
-        "member_role": "President",
-        "society_id": 1,
-        "image_url": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
-        "caption": "President of Coding Club"
-      },
-      {
-        "id": 1,
-        "member_name": "Charlie Black",
-        "member_role": "President",
-        "society_id": 1,
-        "image_url": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
-        "caption": "President of Coding Club"
+        "id": 3,
+        "caption": "President of Coding Club",
+        "imageUrl": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+        "memberRole": "President",
+        "societyId": 1,
+        "student": {
+          "id": 3,
+          "name": "Charlie Black",
+          "rollNo": "06320802723",
+          "studentId": 3
+        }
       }
     ],
     "gallery": [
