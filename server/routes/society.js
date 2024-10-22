@@ -24,22 +24,22 @@ import { updateGallery } from "../controllers/society/UpdateInformation/updateGa
 
 const router = express.Router();
 try {
-  router.post("/:societyId", (req, res) => {
+  router.post("/:societyId", async (req, res) => {
   const  table = req.headers['table-name'];
   console.log(table)
   switch (table) {
     case "team":
-      return addTeam(req, res);
+      return await addTeam(req, res);
     case "gallery":
-      return addGallery(req, res);
+      return await addGallery(req, res);
     case "announcement":
-      return addAnnouncement(req, res);
+      return await addAnnouncement(req, res);
     case "achievement":
-      return addAchievement(req, res);
+      return await addAchievement(req, res);
     case "faq":
-      return addFAQ(req, res);
+      return await addFAQ(req, res);
     case "alumni":
-      return addAlumni(req, res);
+      return await addAlumni(req, res);
     default:
       return res.status(400).json({ error: "Invalid table specified" });
     }

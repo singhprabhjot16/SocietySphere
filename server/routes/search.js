@@ -8,7 +8,6 @@ import {
 } from '../controllers/search.js';
 
 const searchRoutes = (req, res) => {
-    console.log("hi")
   const { stateId, cityId, collegeId, societyId } = req.query;
 
   if (stateId && cityId && collegeId && societyId) {
