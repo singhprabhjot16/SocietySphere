@@ -13,20 +13,20 @@ function SocietyPage({ society }) {
         <div>
             <SocietyHeroSection society={society} />
             <SocietyNavbar />
-            {/* <Routes>
-                <Route path="/coordinators" element={<Coordinators teams={society.teams} />} />
+            <Routes>
+                <Route path="/coordinators" element={<Coordinators teams={society.teams} societyId={society.society.id} />} />
                 <Route path="/achievements" element={<Achievements achievements={society.achievements} />} />
                 <Route path="/announcements" element={<Announcements announcements={society.announcements} />} />
                 <Route path="/alumni" element={<Alumni alumni={society.alumni} />} />
                 <Route path="/faqs" element={<FAQs faqs={society.faqs} />} />
-            </Routes> */}
-            <Routes>
+            </Routes>
+            {/* <Routes>
                 <Route path="/coordinators" element={<Coordinators teams={dummyData.team} />} />
                 <Route path="/achievements" element={<Achievements achievements={dummyData.achievements} />} />
                 <Route path="/announcements" element={<Announcements announcements={dummyData.announcements} />} />
                 <Route path="/alumni" element={<Alumni alumni={dummyData.alumni} />} />
                 <Route path="/faqs" element={<FAQs faqs={dummyData.faqs} />} />
-            </Routes>
+            </Routes> */}
 
         </div>
     );

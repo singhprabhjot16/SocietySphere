@@ -3,6 +3,7 @@ import linkedinIcon from "../assets/linkedin.svg";
 import "../styles/CoordinatorCard.css";
 
 function CoordinatorCard({ info, isEditingMode, onEdit }) {
+    console.log('info: ', info)
     const [isHovered, setIsHovered] = useState(false);
 
     // Handle hover state to trigger editing in edit mode
@@ -26,10 +27,10 @@ function CoordinatorCard({ info, isEditingMode, onEdit }) {
             onMouseLeave={handleMouseLeave}
             onClick={isEditingMode ? onEdit : null} // Only trigger onClick if in edit mode
         >
-            <img src={info.image_url} alt="" className="member-image" />
+            <img src={info.imageUrl} alt="" className="member-image"/>
             <div className="card-details-container">
-                <p className="member-name poppins-medium">{info.member_name}</p>
-                <p className="member-role poppins-regular">{info.member_role}</p>
+                <p className="member-name poppins-medium">{info.student.name}</p>
+                <p className="member-role poppins-regular">{info.memberRole}</p>
                 <div className="socials">
                     <a href={info.linkedin_url} target="_blank" rel="noreferrer">
                         <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
