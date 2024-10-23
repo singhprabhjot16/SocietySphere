@@ -81,7 +81,10 @@ function Coordinators() {
                     selectedCoordinator={selectedCoordinator}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}
-                    toggleFunction={() => setIsEditing(false)}
+                    toggleFunction={() => {
+                        setIsEditing(false);
+                        setSelectedCoordinator(null); // Reset selected coordinator when closing
+                    }}
                 />
             )}
         </div>
