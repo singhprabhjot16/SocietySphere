@@ -5,8 +5,8 @@ import AchievementCard from "./AchievementCard";
 import AppUtils from "../utilities/AppUtils";
 import NothingHere from "./NothingHere";
 
-function Achievements() {
-    const [achievements, setAchievements] = useState(dummyData.achievements);
+function Achievements({ societyAchievements }) {
+    const [achievements, setAchievements] = useState(societyAchievements);
 
     return (
         <div className="achievements-container">
