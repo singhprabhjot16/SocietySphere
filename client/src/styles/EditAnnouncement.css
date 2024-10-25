@@ -1,0 +1,83 @@
+.edit-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.edit-card-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visual */
+    width: 400px; /* Width of the form */
+    text-align: center; /* Center the form elements */
+}
+
+.edit-card-container input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.edit-card-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0b86ca; /* Button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.edit-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.edit-card-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visual */
+    width: 400px; /* Width of the form */
+    text-align: center; /* Center the form elements */
+}
+
+.edit-card-container input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.edit-card-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0b86ca; /* Button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
