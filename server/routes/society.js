@@ -49,7 +49,7 @@ try {
 }
 
 router.delete("/:societyId", async (req, res) => {
-  const { table } = req.headers['table-name'];
+  const table = req.headers['table-name'];
 
   try {
     switch (table) {
@@ -77,7 +77,7 @@ router.delete("/:societyId", async (req, res) => {
 });
 
 router.put("/:societyId", async (req, res) => {
-  const { table } = req.headers['table-name'];
+  const table = req.headers['table-name'];
 
   try {
     switch (table) {
