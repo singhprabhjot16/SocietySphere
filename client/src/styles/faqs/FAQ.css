@@ -1,0 +1,11 @@
+.faqs-container {
+    display: flex;
+    width: 100%;
+    min-height: 500px;
+}
+
+.faq-container {
+    width: 85%;
+    padding: 1em 0em;
+    padding-left: 2em;
+}
