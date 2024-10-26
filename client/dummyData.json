@@ -1,220 +1,154 @@
 {
-    "states": [
-      { "id": 1, "name": "California" },
-      { "id": 2, "name": "New York" },
-      { "id": 3, "name": "Texas" }
-    ],
-    "cities": [
-      { "id": 1, "name": "Los Angeles", "state_id": 1 },
-      { "id": 2, "name": "San Francisco", "state_id": 1 },
-      { "id": 3, "name": "New York City", "state_id": 2 },
-      { "id": 4, "name": "Dallas", "state_id": 3 },
-      { "id": 5, "name": "Austin", "state_id": 3 }
-    ],
-    "colleges": [
-      {
-        "id": 1,
-        "name": "University of California, Los Angeles (UCLA)",
-        "college_head": "Dr. John Doe",
-        "admin_email": "admin@ucla.edu",
-        "college_email": "info@ucla.edu",
-        "password_hash": "hashedpassword123",
-        "city_id": 1
-      },
-      {
-        "id": 2,
-        "name": "Stanford University",
-        "college_head": "Dr. Jane Smith",
-        "admin_email": "admin@stanford.edu",
-        "college_email": "info@stanford.edu",
-        "password_hash": "hashedpassword123",
-        "city_id": 2
-      },
-      {
-        "id": 3,
-        "name": "New York University (NYU)",
-        "college_head": "Dr. Emily Johnson",
-        "admin_email": "admin@nyu.edu",
-        "college_email": "info@nyu.edu",
-        "password_hash": "hashedpassword123",
-        "city_id": 3
-      }
-    ],
-    "societies": [
-      {
-        "id": 1,
-        "name": "Coding Club",
-        "society_head": "Alice Johnson",
-        "society_email": "coding@ucla.edu",
-        "admin_email": "alice@ucla.edu",
-        "password_hash": "hashedpassword456",
-        "college_id": 1,
-        "type": "Technical"
-      },
-      {
-        "id": 2,
-        "name": "Robotics Club",
-        "society_head": "Bob Brown",
-        "society_email": "robotics@stanford.edu",
-        "admin_email": "bob@stanford.edu",
-        "password_hash": "hashedpassword789",
-        "college_id": 2,
-        "type": "Technical"
-      },
-      {
-        "id": 3,
-        "name": "Litum",
-        "society_head": "Bob Odenkirk",
-        "society_email": "litum@ucla.edu",
-        "admin_email": "bob@ucla.edu",
-        "password_hash": "hashedpassword209",
-        "college_id": 1,
-        "type": "Literary"
-      },
-      {
-        "id": 4,
-        "name": "Dance Society",
-        "society_head": "Carol White",
-        "society_email": "dance@nyu.edu",
-        "admin_email": "carol@nyu.edu",
-        "password_hash": "hashedpassword101",
-        "college_id": 3,
-        "type": "Cultural"
-      }
-    ],
-    "teams": [
-      {
-        "id": 1,
-        "caption": "this is our first test...",
-        "imageUrl": "image.png",
-        "memberRole": "Vice President",
-        "societyId": 1,
-        "student": {
-          "id": 1,
-          "name": "Sunaina",
-          "rollNo": "06320802721",
-          "studentId": 1
-        }
-      },
-      {
-        "id": 2,
-        "caption": "Vice President of Robotics Club",
-        "imageUrl": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        "memberRole": "Vice President",
-        "societyId": 2,
-        "student": {
-          "id": 2,
-          "name": "Dana Green",
-          "rollNo": "06320802722",
-          "studentId": 2
-        }
-      },
-      {
-        "id": 3,
-        "caption": "President of Coding Club",
-        "imageUrl": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
-        "memberRole": "President",
-        "societyId": 1,
-        "student": {
-          "id": 3,
-          "name": "Charlie Black",
-          "rollNo": "06320802723",
-          "studentId": 3
-        }
-      }
-    ],
-    "gallery": [
-      {
-        "id": 1,
-        "image_url": "https://example.com/images/event1.jpg",
-        "caption": "Coding Club Event",
-        "society_id": 1
-      },
-      {
-        "id": 2,
-        "image_url": "https://example.com/images/event2.jpg",
-        "caption": "Robotics Competition",
-        "society_id": 2
-      }
-    ],
-    "announcements": [
-      {
-        "id": 1,
-        "title": "Upcoming Hackathon",
-        "content": "Join us for a hackathon next month!",
-        "date": "2024-07-20",
-        "society_id": 1
-      },
-      {
-        "id": 2,
-        "title": "Robotics Workshop",
-        "content": "Attend our robotics workshop this weekend.",
-        "date": "2024-07-22",
-        "society_id": 2
-      }
-    ],
-    "achievements": [
-      {
-        "id": 1,
-        "title": "Hackathon Winner",
-        "description": "In the heart of a sprawling metropolis, where towering skyscrapers touched the sky and neon lights bathed the streets in a constant glow, there existed a world that few knew. Beneath the bustling city, in the forgotten alleys and hidden underground passageways, a secret society thrived. Known only by whispers and rumors, this clandestine group had been influencing the course of history for centuries, weaving its intricate plans through the fabric of civilization.The origins of the society were shrouded in mystery, but ancient texts hinted that it had been founded during a time when empires rose and fell like tides. Its members were said to possess knowledge that transcended the understanding of ordinary people, knowledge that allowed them to foresee events and manipulate them to their advantage. Over the ages, they had gathered influential leaders, brilliant minds, and skilled tacticians, creating a web of power that stretched across continents.As the world advanced into the digital age, the society adapted. Its members communicated through encrypted channels, their meetings held in virtual spaces that left no trace. They no longer relied solely on political and financial influence; now, they controlled data, information, and technology. The society had eyes and ears everywhere, and they used their vast resources to predict global trends, market shifts, and even societal unrest. What the world saw as chance or coincidence was, more often than not, the result of the society's careful planning.Yet, despite its reach and power, the society's existence remained a closely guarded secret. Only a select few ever caught a glimpse of its machinations, and those who did often disappeared from the public eye, either recruited or silenced. The world continued to turn, unaware that the course of its future was being guided by unseen handIn the midst of this, a young hacker named Kiera stumbled upon a fragment of the society's digital footprint. What began as a simple curiosity turned into an obsession, and before long, she found herself being pursued by forces far greater than she could comprehend. Her skills in navigating the dark web had granted her a glimpse behind the curtain, but now she was faced with a choice: flee and forget what she had uncovered, or dive deeper into the mystery and risk becoming part of the very thing she sought to expose.Kiera's journey took her through the underbelly of the city, where she encountered people who had crossed paths with the society in one way or another—some who sought its protection, others who wanted to see it fall. Each person had their own story, their own motive, and Kiera quickly realized that nothing was as it seemed. The society's influence was so pervasive that even those who believed they were fighting against it were, in some way, playing into its hands.As Kiera delved deeper, she discovered a plot that threatened the very foundation of the modern world. A new technology, developed in secret by the society, had the potential to reshape the future of humanity. It was a tool that could predict human behavior with unprecedented accuracy, allowing those who controlled it to shape society at will. Governments, corporations, even entire nations could be manipulated with precision, and the consequences of such power falling into the wrong hands were terrifying.With time running out, Kiera teamed up with an unlikely group of allies—a disillusioned ex-member of the society, a rogue AI developer, and a journalist determined to expose the truth. Together, they embarked on a perilous journey to uncover the full extent of the society's plans and to stop them before it was too late.The stakes had never been higher. If they failed, the society would achieve total control over the world, and freedom as they knew it would become a thing of the past. But if they succeeded, they could bring down a centuries-old conspiracy and restore power to the people. The future hung in the balance, and Kiera knew that every move they made would determine the fate of humanity.As the final confrontation loomed, Kiera couldn't shake the feeling that they were still playing into the society's hands. Every step they took seemed to have been anticipated, every move countered. It was as if the society had foreseen their rebellion and was allowing them to get close, only to crush them at the last moment. But there was no turning back now. They had come too far, and the truth was within their grasp.In the end, the society's greatest weapon was not its technology, its wealth, or its influence—it was the belief that it was unstoppable. And if Kiera and her allies could shatter that belief, they might just have a chance.",
-        "date": "2024-06-15",
-        "society_id": 1,
-        "image_url": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "caption": "Victory"
-      },
-      {
-        "id": 2,
-        "title": "Robotics Champion",
-        "description": "Won national robotics championship.",
-        "date": "2024-05-30",
-        "society_id": 2,
-        "image_url": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "caption": "Champion"
-      },
-      {
-        "id": 2,
-        "title": "Robotics Champion",
-        "description": "Won national robotics championship.",
-        "date": "2024-05-30",
-        "society_id": 2,
-        "image_url": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "caption": "Champion"
-      },
-      {
-        "id": 2,
-        "title": "Robotics Champion",
-        "description": "Won national robotics championship.",
-        "date": "2024-05-30",
-        "society_id": 2,
-        "image_url": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "caption": "Champion"
-      },
-      {
-        "id": 2,
-        "title": "Robotics Champion",
-        "description": "Won national robotics championship.",
-        "date": "2024-05-30",
-        "society_id": 2,
-        "image_url": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "caption": "Champion"
-      }
-    ],
-    "faqs": [
-      {
-        "id": 1,
-        "question": "How to join the Coding Club?",
-        "answer": "Attend our next meeting on Wednesday at 5 PM.",
-        "date": "2024-07-16",
-        "society_id": 1
-      },
-      {
-        "id": 2,
-        "question": "What is the Robotics Club's next event?",
-        "answer": "We have a workshop on building robots this Saturday.",
-        "date": "2024-07-18",
-        "society_id": 2
-      }
-    ]
-  }
-  
+  "states": [
+    { "id": 1, "name": "California" },
+    { "id": 2, "name": "New York" },
+    { "id": 3, "name": "Texas" }
+  ],
+  "cities": [
+    { "id": 1, "name": "Los Angeles", "stateId": 1 },
+    { "id": 2, "name": "San Francisco", "stateId": 1 },
+    { "id": 3, "name": "New York City", "stateId": 2 },
+    { "id": 4, "name": "Dallas", "stateId": 3 },
+    { "id": 5, "name": "Austin", "stateId": 3 }
+  ],
+  "colleges": [
+    {
+      "id": 1,
+      "name": "University of California, Los Angeles (UCLA)",
+      "collegeHead": "Dr. John Doe",
+      "adminEmail": "admin@ucla.edu",
+      "collegeEmail": "info@ucla.edu",
+      "passwordHash": "hashedpassword123",
+      "cityId": 1
+    },
+    {
+      "id": 2,
+      "name": "Stanford University",
+      "collegeHead": "Dr. Jane Smith",
+      "adminEmail": "admin@stanford.edu",
+      "collegeEmail": "info@stanford.edu",
+      "passwordHash": "hashedpassword123",
+      "cityId": 2
+    },
+    {
+      "id": 3,
+      "name": "New York University (NYU)",
+      "collegeHead": "Dr. Emily Johnson",
+      "adminEmail": "admin@nyu.edu",
+      "collegeEmail": "info@nyu.edu",
+      "passwordHash": "hashedpassword123",
+      "cityId": 3
+    }
+  ],
+  "societies": [
+    {
+      "id": 1,
+      "name": "Coding Club",
+      "societyHead": "Alice Johnson",
+      "societyEmail": "coding@ucla.edu",
+      "adminEmail": "alice@ucla.edu",
+      "passwordHash": "hashedpassword456",
+      "collegeId": 1,
+      "type": "Technical"
+    },
+    {
+      "id": 2,
+      "name": "Robotics Club",
+      "societyHead": "Bob Brown",
+      "societyEmail": "robotics@stanford.edu",
+      "adminEmail": "bob@stanford.edu",
+      "passwordHash": "hashedpassword789",
+      "collegeId": 2,
+      "type": "Technical"
+    },
+    {
+      "id": 3,
+      "name": "Litum",
+      "societyHead": "Bob Odenkirk",
+      "societyEmail": "litum@ucla.edu",
+      "adminEmail": "bob@ucla.edu",
+      "passwordHash": "hashedpassword209",
+      "collegeId": 1,
+      "type": "Literary"
+    },
+    {
+      "id": 4,
+      "name": "Dance Society",
+      "societyHead": "Carol White",
+      "societyEmail": "dance@nyu.edu",
+      "adminEmail": "carol@nyu.edu",
+      "passwordHash": "hashedpassword101",
+      "collegeId": 3,
+      "type": "Cultural"
+    }
+  ],
+  "teams": [
+    
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "imageUrl": "https://example.com/images/event1.jpg",
+      "caption": "Coding Club Event",
+      "societyId": 1
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://example.com/images/event2.jpg",
+      "caption": "Robotics Competition",
+      "societyId": 2
+    }
+  ],
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Upcoming Hackathon",
+      "content": "Join us for a hackathon next month!",
+      "date": "2024-07-20",
+      "societyId": 1
+    },
+    {
+      "id": 2,
+      "title": "Robotics Workshop",
+      "content": "Attend our robotics workshop this weekend.",
+      "date": "2024-07-22",
+      "societyId": 2
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Hackathon Winner",
+      "description": "In the heart of a sprawling metropolis, where towering skyscrapers touched the sky and neon lights bathed the streets in a constant glow, there existed a world that few knew. Beneath the bustling city, in the forgotten alleys and hidden underground passageways, a secret society thrived. Known only by whispers and rumors, this clandestine group had been influencing the course of history for centuries, weaving its intricate plans through the fabric of civilization.The origins of the society were shrouded in mystery, but ancient texts hinted that it had been founded during a time when empires rose and fell like tides. Its members were said to possess knowledge that transcended the understanding of ordinary people, knowledge that allowed them to foresee events and manipulate them to their advantage. Over the ages, they had gathered influential leaders, brilliant minds, and skilled tacticians, creating a web of power that stretched across continents.As the world advanced into the digital age, the society adapted. Its members communicated through encrypted channels, their meetings held in virtual spaces that left no trace. They no longer relied solely on political and financial influence; now, they controlled data, information, and technology. The society had eyes and ears everywhere, and they used their vast resources to predict global trends, market shifts, and even societal unrest. What the world saw as chance or coincidence was, more often than not, the result of the society's careful planning.Yet, despite its reach and power, the society's existence remained a closely guarded secret. Only a select few ever caught a glimpse of its machinations, and those who did often disappeared from the public eye, either recruited or silenced. The world continued to turn, unaware that the course of its future was being guided by unseen handIn the midst of this, a young hacker named Kiera stumbled upon a fragment of the society's digital footprint. What began as a simple curiosity turned into an obsession, and before long, she found herself being pursued by forces far greater than she could comprehend. Her skills in navigating the dark web had granted her a glimpse behind the curtain, but now she was faced with a choice: flee and forget what she had uncovered, or dive deeper into the mystery and risk becoming part of the very thing she sought to expose.Kiera's journey took her through the underbelly of the city, where she encountered people who had crossed paths with the society in one way or another—some who sought its protection, others who wanted to see it fall. Each person had their own story, their own motive, and Kiera quickly realized that nothing was as it seemed. The society's influence was so pervasive that even those who believed they were fighting against it were, in some way, playing into its hands.As Kiera delved deeper, she discovered a plot that threatened the very foundation of the modern world. A new technology, developed in secret by the society, had the potential to reshape the future of humanity. It was a tool that could predict human behavior with unprecedented accuracy, allowing those who controlled it to shape society at will. Governments, corporations, even entire nations could be manipulated with precision, and the consequences of such power falling into the wrong hands were terrifying.With time running out, Kiera teamed up with an unlikely group of allies—a disillusioned ex-member of the society, a rogue AI developer, and a journalist determined to expose the truth. Together, they embarked on a perilous journey to uncover the full extent of the society's plans and to stop them before it was too late.The stakes had never been higher. If they failed, the society would achieve total control over the world, and freedom as they knew it would become a thing of the past. But if they succeeded, they could bring down a centuries-old conspiracy and restore power to the people. The future hung in the balance, and Kiera knew that every move they made would determine the fate of humanity.As the final confrontation loomed, Kiera couldn't shake the feeling that they were still playing into the society's hands. Every step they took seemed to have been anticipated, every move countered. It was as if the society had foreseen their rebellion and was allowing them to get close, only to crush them at the last moment. But there was no turning back now. They had come too far, and the truth was within their grasp.In the end, the society's greatest weapon was not its technology, its wealth, or its influence—it was the belief that it was unstoppable. And if Kiera and her allies could shatter that belief, they might just have a chance.",
+      "date": "2024-06-15",
+      "societyId": 1,
+      "imageUrl": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "caption": "Victory"
+    },
+    {
+      "id": 2,
+      "title": "Robotics Champion",
+      "description": "Won national robotics championship.",
+      "date": "2024-05-30",
+      "societyId": 2,
+      "imageUrl": "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "caption": "Champion"
+    }
+  ],
+  "faqs": [
+    {
+      "id": 1,
+      "question": "How to join the Coding Club?",
+      "answer": "Attend our next meeting on Wednesday at 5 PM.",
+      "date": "2024-07-16",
+      "societyId": 1
+    },
+    {
+      "id": 2,
+      "question": "What is the Robotics Club's next event?",
+      "answer": "We have a workshop on building robots this Saturday.",
+      "date": "2024-07-18",
+      "societyId": 2
+    }
+  ]
+}

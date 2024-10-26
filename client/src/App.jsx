@@ -2,19 +2,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Home from "./pages/Home";
-import Footer from "./components/Footer"
-// import HeroSection from "./components/HeroSection"
-import Navbar from "./components/Navbar"
+import Footer from "./components/general/Footer"
+import Navbar from "./components/general/Navbar"
 import SocietyPage from './pages/SocietyPage';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import SocietyNavbar from './components/SocietyNavbar';
-// import About from './components/About';
-// import Coordinators from './components/Coordinators';
-// import Achievements from './components/Achievements';
-// import Announcements from './components/Announcements';
-// import Alumni from './components/Alumni';
-// import PhotoGallery from './components/PhotoGallery';
-// import FAQ from './components/FAQ';
 import './constants/APIConstants'
 import AppUtils from './utilities/AppUtils.js'
 
@@ -49,7 +39,8 @@ function App() {
         fetchSocietyDetails();
     }
     
-    console.log(selectedSociety)
+    console.log(selectedSociety);
+    console.log(societyData);
     return (
         <div>
             <Navbar setSelected={setSelectedSociety} />

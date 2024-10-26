@@ -1,4 +1,4 @@
-import HeroSection from "../components/HeroSection";
+import HeroSection from "../components/general/HeroSection";
 import "../styles/index.css"
 
 function Home() {
