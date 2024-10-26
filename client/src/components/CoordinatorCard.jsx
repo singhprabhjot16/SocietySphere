@@ -5,7 +5,6 @@ import "../styles/CoordinatorCard.css";
 function CoordinatorCard({ info, isEditingMode, onEdit }) {
     console.log('info: ', info)
     const [isHovered, setIsHovered] = useState(false);
-
     // Handle hover state to trigger editing in edit mode
     function handleMouseEnter() {
         if (isEditingMode) {
@@ -27,7 +26,9 @@ function CoordinatorCard({ info, isEditingMode, onEdit }) {
             onMouseLeave={handleMouseLeave}
             onClick={isEditingMode ? onEdit : null} // Only trigger onClick if in edit mode
         >
-            <img src={info.imageUrl} alt="" className="member-image"/>
+
+            {/* <iframe src={`https://drive.google.com/file/d/${info.imageUrl}/preview`} width="240" height="180" allow="autoplay"></iframe> */}
+            <img src={`https://drive.google.com/thumbnail?id=${info.imageUrl}`} alt="member" className="member-image" />
             <div className="card-details-container">
                 <p className="member-name poppins-medium">{info.student.name}</p>
                 <p className="member-role poppins-regular">{info.memberRole}</p>

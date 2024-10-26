@@ -3,20 +3,22 @@ import "../styles/EditCoordinator.css";
 
 function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggleFunction }) {
     const [formData, setFormData] = useState({
-        image_url: "",
-        member_name: "",
-        member_role: "",
+        imageUrl: "",
+        student: {
+            name: "",
+        },
+        memberRole: "",
         linkedin: ""
     });
-
+    console.log("selected coordinator", selectedCoordinator)
     // Populate the form with the selected coordinator's data
     useEffect(() => {
         if (selectedCoordinator) {
             setFormData({
-                image_url: selectedCoordinator.image_url || "",
-                member_name: selectedCoordinator.member_name || "",
-                member_role: selectedCoordinator.member_role || "",
-                linkedin: selectedCoordinator.linkedin || ""
+                image_url: selectedCoordinator.image_url || "default value",
+                member_name: selectedCoordinator.student.name || "default value",
+                member_role: selectedCoordinator.memberRole || "default value",
+                linkedin: selectedCoordinator.linkedin || "default value"
             });
         }
     }, [selectedCoordinator]);
@@ -38,6 +40,8 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
         handleDelete(selectedCoordinator); // Call delete function
         toggleFunction(); // Close modal
     }
+
+    
 
     return (
         <div className="edit-container">

@@ -4,12 +4,12 @@ const prisma = new PrismaClient();
 
 export const deleteTeam = async (req, res) => {
   const { societyId } = req.params;
-  const { id } = req.body;
+  const { memberId } = req.body;
 
   try {
     await prisma.team.deleteMany({
       where: {
-        id: id,
+        id: memberId,
         societyId: parseInt(societyId, 10),
       },
     });

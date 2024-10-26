@@ -26,11 +26,18 @@ function Coordinators({ teams, societyId}) {
             rollNo: ""
         };
 
-        modifiedFormData.imageUrl = formData.imageUrl
-        modifiedFormData.name = formData.student.name
-        modifiedFormData.memberRole = formData.memberRole
-        modifiedFormData.rollNo = formData.rollNo
-        AppUtils.updateSociety(societyId, modifiedFormData, 'team')
+        // modifiedFormData.imageUrl = formData.imageUrl
+        // modifiedFormData.name = formData.student.name
+        // modifiedFormData.memberRole = formData.memberRole
+        // modifiedFormData.rollNo = formData.rollNo
+        const formDataToSend = new FormData();
+        formDataToSend.append('memberRole', formData.memberRole);
+        formDataToSend.append('rollNo', formData.rollNo);
+        formDataToSend.append('name', formData.student.name);
+        formDataToSend.append('imageUrl', formData.imageUrl);
+        console.log(formDataToSend)
+        // AppUtils.updateSociety(societyId, modifiedFormData, 'team')
+        AppUtils.updateSociety(societyId, formDataToSend, 'team')
         setIsAdding(false);
     }
 

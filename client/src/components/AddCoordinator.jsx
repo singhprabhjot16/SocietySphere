@@ -3,7 +3,7 @@ import "../styles/AddCoordinator.css";
 
 function AddCoordinator({ handleAdd, toggleFunction }) {
     const [formData, setFormData] = useState({
-        imageUrl: "",
+        imageUrl: null,
         student: {
             name: "",
         },
@@ -11,6 +11,14 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
         // linkedin: ""
         rollNo: ""
     });
+
+    const handleFileChange = (event) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            imageUrl: event.target.files[0] 
+        }));
+    };
+    
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -69,7 +77,7 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
                         onChange={handleChange} 
                         name="rollNo" 
                     />
-                    <input type="file" onChange={handleChange} name="imageUrl" />
+                    <input type="file" onChange={handleFileChange} name="imageUrl" />
                     <button type="submit">Add</button>
                     <button type="button" onClick={toggleFunction}>Cancel</button>
                 </form>
