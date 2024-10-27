@@ -9,8 +9,8 @@ import NothingHere from "../reusable/NothingHere";
 import AppUtils from "../../utilities/AppUtils";
 import dummyData from "../../../dummyData.json";
 
-function Achievements() {
-    const [achievements, setAchievements] = useState(dummyData.achievements);
+function Achievements({ achievement, societyId}) {
+    const [achievements, setAchievements] = useState(achievement);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedAchievement, setSelectedAchievement] = useState(null);
@@ -21,6 +21,13 @@ function Achievements() {
 
     function handleAddAchievement(newAchievement) {
         setAchievements(prevAchievements => [...prevAchievements, newAchievement]);
+        const formDataToSend = new FormData();
+        formDataToSend.append('title', newAchievement.title);
+        formDataToSend.append('caption', newAchievement.caption);
+        formDataToSend.append('description', newAchievement.description);
+        formDataToSend.append('imageUrl', newAchievement.imageUrl);
+        console.log("form data to send", formDataToSend);
+        AppUtils.updateSociety(societyId, formDataToSend, 'achievement');
     }
 
     function toggleEditAchievement() {

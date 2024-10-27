@@ -16,7 +16,7 @@ function AchievementCard({ achievement }) {
     return (
         <>
             <div className="achievement-card-container" onClick={handleClick}>
-                <img src={achievement.imageUrl} alt="" className="achievement-image" />
+                <img src={`https://drive.google.com/thumbnail?id=${achievement.imageUrl}`} alt="" className="achievement-image" />
                 <div className="details-container">
                     <div className="title-container">
                         <p className="achievement-title poppins-medium">{achievement.title}</p>

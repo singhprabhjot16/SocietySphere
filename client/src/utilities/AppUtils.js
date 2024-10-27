@@ -13,7 +13,8 @@ class AppUtils {
           }
       
           const data = await response.json();
-          console.log('List of states:', data);
+          return data;
+
         } catch (error) {
           console.error('Error fetching states:', error);
         }
@@ -31,6 +32,7 @@ class AppUtils {
         
             const data = await response.json();
             console.log('List of cities:', data);
+            return data;
         } catch (error) {
             console.error('Error fetching cities:', error);
         }
@@ -48,6 +50,7 @@ class AppUtils {
         
             const data = await response.json();
             console.log('List of colleges', data);
+            return data;
         } catch (error) {
             console.error('Error fetching colleges:', error);
         }
@@ -65,6 +68,7 @@ class AppUtils {
       
           const data = await response.json();
           console.log('list of societies:', data);
+          return data;
         } catch (error) {
           console.error('Error fetching societies:', error);
         }
@@ -101,6 +105,7 @@ class AppUtils {
           });
           const data = await response.json();
           console.log('Society updated:', data);
+          return data;
         } catch (error) {
           console.error('Error updating society:', error);
         }
@@ -119,6 +124,7 @@ class AppUtils {
       
           const data = await response.json();
           console.log('Society created:', data);
+          return data;
         } catch (error) {
           console.error('Error creating society:', error);
         }
@@ -135,6 +141,7 @@ class AppUtils {
       
           const data = await response.json();
           console.log('Society deleted:', data);
+          return data;
         } catch (error) {
           console.error('Error deleting society:', error);
         }

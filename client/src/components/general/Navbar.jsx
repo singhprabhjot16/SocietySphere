@@ -22,10 +22,10 @@ function Navbar({ setSelected }) {
                         <img src={explore} alt="" className="navbar-route-logo"/>
                         <p className="navbar-route-name poppins-regular">Explore</p>
                     </div>
-                    <div className="navbar-route">
+                    {/* <div className="navbar-route">
                         <img src={search} alt="" className="navbar-route-logo"/>
                         <p className="navbar-route-name poppins-regular">Search</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="navbar-right-div">
                     {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society poppins-regular">Login as Admin</button>}

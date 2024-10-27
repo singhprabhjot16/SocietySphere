@@ -4,9 +4,9 @@ import "../../styles/achievements/AddAchievement.css";
 function AddAchievement({ handleAdd, toggleFunction }) {
     const [formData, setFormData] = useState({
         title: "",
-        date: "",
+        description: "",
         caption: "",
-        image_url: ""
+        imageUrl: null
     });
 
     function handleChange(event) {
@@ -15,6 +15,13 @@ function AddAchievement({ handleAdd, toggleFunction }) {
             [event.target.name]: event.target.value
         }));
     }
+
+    const handleFileChange = (event) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            imageUrl: event.target.files[0] 
+        }));
+    };
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -35,22 +42,22 @@ function AddAchievement({ handleAdd, toggleFunction }) {
                     />
                     <input
                         type="text"
-                        value={formData.date}
-                        placeholder="Date"
-                        onChange={handleChange}
-                        name="date"
-                    />
-                    <input
-                        type="text"
                         value={formData.caption}
                         placeholder="Caption"
                         onChange={handleChange}
                         name="caption"
                     />
+                    <textarea
+                        type=""
+                        value={formData.description}
+                        placeholder="Description"
+                        onChange={handleChange}
+                        name="description"
+                    />
                     <input
                         type="file"
-                        onChange={handleChange}
-                        name="image_url"
+                        onChange={handleFileChange}
+                        name="imageUrl"
                     />
                     <button type="submit">Save</button>
                     <button type="button" onClick={toggleFunction}>Cancel</button>

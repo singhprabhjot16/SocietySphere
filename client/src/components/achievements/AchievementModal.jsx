@@ -4,7 +4,7 @@ function AchievementModal({ achievement, onClose }) {
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <img src={achievement.imageUrl} alt="" className="modal-image" />
+                <img src={`https://drive.google.com/thumbnail?id=${achievement.imageUrl}`} alt="" className="modal-image" />
                 <div className="modal-details">
                     <div className="modal-title-container">
                         <p className="modal-title poppins-bold">{achievement.title}</p>

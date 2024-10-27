@@ -4,15 +4,35 @@ import colorMapping from "../../colorMapping.json";
 import "../../styles/general/SearchDropdown.css";
 import Tag from "../reusable/Tag.jsx";
 import "../../utilities/AppUtils.js";
+import AppUtils from "../../utilities/AppUtils.js";
 
 function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
     const [data, setData] = useState({
-        states: [...dummyData.states],
+        states: [],
         cities: [],
         colleges: [],
         societies: []
     });
-
+    
+    useEffect(() => {
+        const fetchStates = async () => {
+            try {
+                const states = await AppUtils.getStates();
+                console.log("States:", states);
+                setData((prevData) => ({
+                    ...prevData,
+                    states: states,
+                    cities: [],
+                    colleges: [],
+                    societies: []
+                }));
+            } catch (error) {
+                console.error('Error fetching states:', error);
+            }
+        };
+        fetchStates();
+    }, []);
+    
     const [selected, setSelected] = useState({
         stateId: null,
         cityId: null,
@@ -23,12 +43,6 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
     const [isNavbarVisible, setNavbarVisible] = useState(false);
 
     function handleCities(item) {
-        setData((prevData) => ({
-            ...prevData,
-            cities: [...dummyData.cities].filter(i => i.stateId === item.id),
-            colleges: [],
-            societies: []
-        }));
         setSelected((prevSelected) => ({
             ...prevSelected,
             stateId: item.id,
@@ -38,12 +52,28 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         }));
     }
 
+    useEffect(() => {
+        const fetchCities = async () => {
+            try {
+                const cities = await AppUtils.getCities(selected.stateId);
+                setData((prevData) => ({
+                    ...prevData,
+                    cities: cities,
+                    colleges: [],
+                    societies: []
+                }));
+            } catch (error) {
+                console.error('Error fetching cities:', error);
+            }
+        };
+    
+        if (selected.stateId) {
+            fetchCities();
+        }
+    }, [selected.stateId]);
+    
+
     function handleColleges(item) {
-        setData((prevData) => ({
-            ...prevData,
-            colleges: [...dummyData.colleges].filter(i => i.cityId === item.id),
-            societies: []
-        }));
         setSelected((prevSelected) => ({
             ...prevSelected,
             cityId: item.id,
@@ -52,17 +82,52 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         }));
     }
 
+    useEffect(() => {
+        const fetchColleges = async () => {
+            try {
+                const colleges = await AppUtils.getColleges(selected.stateId, selected.cityId);
+                setData((prevData) => ({
+                    ...prevData,
+                    colleges: colleges,
+                    societies: []
+                }));
+            } catch (error) {
+                console.error('Error fetching colleges:', error);
+            }
+        };
+    
+        if (selected.cityId) {
+            fetchColleges();
+        }
+    }, [selected.cityId]);
+    
+
     function handleSocieties(item) {
-        setData((prevData) => ({
-            ...prevData,
-            societies: [...dummyData.societies].filter(i => i.collegeId === item.id)
-        }));
         setSelected((prevSelected) => ({
             ...prevSelected,
             collegeId: item.id,
             societyId: null
         }));
     }
+
+    useEffect(() => {
+        const fetchSocieties = async () => {
+            try {
+                const societies = await AppUtils.getSocieties(selected.stateId, selected.cityId, selected.collegeId);
+                setData((prevData) => ({
+                    ...prevData,
+                    societies: societies
+                }));
+            } catch (error) {
+                console.error('Error fetching societies:', error);
+            }
+        };
+    
+        if (selected.collegeId) {
+            fetchSocieties();
+        }
+    }, [selected.collegeId]);
+    
 
     function handleQuery(item) {
         setSelected((prevSelected) => ({
@@ -113,13 +178,14 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                         <p className="poppins-regular">States</p>
                     </div>
                     <div className="state-names dropdown-values">
-                        {data.states.map(item => (
+                        {data?.states.map(item => (
                             <div
                                 className={`state-name poppins-regular dropdown-value ${selected.stateId === item.id ? 'selected-item' : ''}`}
                                 key={item.id}
                                 onClick={() => handleCities(item)}
                             >
                                 {item.name}
+                                {console.log(item)}
                             </div>
                         ))}
                     </div>
@@ -131,7 +197,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                         <p className="poppins-regular">City</p>
                     </div>
                     <div className="city-names dropdown-values">
-                        {data.cities.map(item => (
+                        {data?.cities.map(item => (
                             <div
                                 className={`city-name poppins-regular dropdown-value ${selected.cityId === item.id ? 'selected-item' : ''}`}
                                 key={item.id}
@@ -150,7 +216,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                         <p className="poppins-regular">Colleges</p>
                     </div>
                     <div className="college-names dropdown-values">
-                        {data.colleges.map(item => (
+                        {data?.colleges.map(item => (
                             <div
                                 className={`college-name poppins-regular dropdown-value ${selected.collegeId === item.id ? 'selected-item' : ''}`}
                                 key={item.id}
@@ -180,7 +246,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                             </div>
                         ))}
                     </div>
-                    {data.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
+                    {data?.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
                 </div>
             </div>
         </div>

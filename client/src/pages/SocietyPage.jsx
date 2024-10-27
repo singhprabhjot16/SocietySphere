@@ -17,7 +17,7 @@ function SocietyPage({ society }) {
             <Routes>
                 <Route path="/about" element={<About about={society?.about} societyId={society?.society?.id} /> } />
                 <Route path="/coordinators" element={<Coordinators teams={society.teams} societyId={society?.society?.id} />} />
-                <Route path="/achievements" element={<Achievements societyAchievements={society.achievements} societyId={society?.society?.id} />} />
+                <Route path="/achievements" element={<Achievements achievement={society.achievements} societyId={society?.society?.id} />} />
                 <Route path="/announcements" element={<Announcements announcements={society.announcements} societyId={society?.society?.id} />} />
                 <Route path="/alumni" element={<Alumni alumni={society.alumni} societyId={society?.society?.id} />} />
                 <Route path="/faqs" element={<FAQs faqs={society.faqs} societyId={society?.society?.id} />} />

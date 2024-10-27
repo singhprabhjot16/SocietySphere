@@ -10,7 +10,7 @@ import AppUtils from "../../utilities/AppUtils";
 import NothingHere from "../reusable/NothingHere";
 
 function Coordinators({ teams, societyId}) {
-    const [coordinators, setCoordinators] = useState(dummyData.teams);
+    const [coordinators, setCoordinators] = useState(teams);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedCoordinator, setSelectedCoordinator] = useState(null);
