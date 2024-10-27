@@ -94,10 +94,10 @@ class AppUtils {
           const response = await fetch(`${APIConstants.UPDATE_SOCIETY_URL}/${societyId}`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              // 'Content-Type': 'application/json',
               'table-name': tableName
             },
-            body: JSON.stringify(updatedData)
+            body: (updatedData)
           });
           const data = await response.json();
           console.log('Society updated:', data);

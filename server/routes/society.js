@@ -21,10 +21,12 @@ import { updateAlumni } from "../controllers/society/UpdateInformation/updateAlu
 import { updateAnnouncement } from "../controllers/society/UpdateInformation/updateAnnouceInfo.js";
 import { updateFAQ } from "../controllers/society/UpdateInformation/updateFAQInfo.js";
 import { updateGallery } from "../controllers/society/UpdateInformation/updateGalleryInfo.js";
+import multer from 'multer';
 
+const upload = multer({ dest: 'uploads/', limits: { fileSize: 5 * 1024 * 1024 }});
 const router = express.Router();
 try {
-  router.post("/:societyId", async (req, res) => {
+  router.post("/:societyId", upload.single('imageUrl'), async (req, res) => {
   const  table = req.headers['table-name'];
   console.log(table)
   switch (table) {

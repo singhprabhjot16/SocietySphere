@@ -1,13 +1,13 @@
-import SocietyHeroSection from "../components/SocietyHeroSection";
-import SocietyNavbar from "../components/SocietyNavbar";
+import SocietyHeroSection from "../components/general/SocietyHeroSection";
+import SocietyNavbar from "../components/general/SocietyNavbar";
 import { Route, Routes } from "react-router-dom";
-import Coordinators from "../components/Coordinators";
-import Achievements from "../components/Achievements";
-import Announcements from "../components/Announcements";
-import Alumni from "../components/Alumni";
-import FAQs from "../components/FAQ";
-import About from "../components/About";
+import Coordinators from "../components/coordinators/Coordinators";
+import Achievements from "../components/achievements/Achievements";
+import Announcements from "../components/announcements/Announcements";
+import Alumni from "../components/almuni/Alumni";
+import FAQs from "../components/faqs/FAQ";
 import dummyData from "../../dummyData.json";
+import About from "../components/about-us/About";
 
 function SocietyPage({ society }) {
     return (
@@ -15,12 +15,12 @@ function SocietyPage({ society }) {
             <SocietyHeroSection society={society} />
             <SocietyNavbar />
             <Routes>
-                <Route path="/about" element={<About societyData={society.society} />} />
-                <Route path="/coordinators" element={<Coordinators teams={society.teams} societyId={society.society.id} />} />
-                <Route path="/achievements" element={<Achievements societyAchievements={society.achievements} />} />
-                <Route path="/announcements" element={<Announcements announcements={society.announcements} />} />
-                <Route path="/alumni" element={<Alumni alumni={society.alumni} />} />
-                <Route path="/faqs" element={<FAQs faqs={society.faqs} />} />
+                <Route path="/about" element={<About about={society?.about} societyId={society?.society?.id} /> } />
+                <Route path="/coordinators" element={<Coordinators teams={society.teams} societyId={society?.society?.id} />} />
+                <Route path="/achievements" element={<Achievements societyAchievements={society.achievements} societyId={society?.society?.id} />} />
+                <Route path="/announcements" element={<Announcements announcements={society.announcements} societyId={society?.society?.id} />} />
+                <Route path="/alumni" element={<Alumni alumni={society.alumni} societyId={society?.society?.id} />} />
+                <Route path="/faqs" element={<FAQs faqs={society.faqs} societyId={society?.society?.id} />} />
             </Routes>
             {/* <Routes>
                 <Route path="/coordinators" element={<Coordinators teams={dummyData.team} />} />
