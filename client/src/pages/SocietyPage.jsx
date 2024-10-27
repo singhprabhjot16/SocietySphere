@@ -6,6 +6,7 @@ import Achievements from "../components/Achievements";
 import Announcements from "../components/Announcements";
 import Alumni from "../components/Alumni";
 import FAQs from "../components/FAQ";
+import About from "../components/About";
 import dummyData from "../../dummyData.json";
 
 function SocietyPage({ society }) {
@@ -14,6 +15,7 @@ function SocietyPage({ society }) {
             <SocietyHeroSection society={society} />
             <SocietyNavbar />
             <Routes>
+                <Route path="/about" element={<About societyData={society.society} />} />
                 <Route path="/coordinators" element={<Coordinators teams={society.teams} societyId={society.society.id} />} />
                 <Route path="/achievements" element={<Achievements societyAchievements={society.achievements} />} />
                 <Route path="/announcements" element={<Announcements announcements={society.announcements} />} />

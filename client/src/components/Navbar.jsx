@@ -16,7 +16,7 @@ function Navbar({ setSelected }) {
     return (
         <>
             <div className="navbar div-padding">
-                <p className="website-name dm-serif-display-regular">SocietySphere</p>
+                <p className="website-name dm-serif-display-regular">Club Connect</p>
                 <div className="navbar-routes">
                     <div className="navbar-route" onClick={showSearchDropdown}>
                         <img src={explore} alt="" className="navbar-route-logo"/>
