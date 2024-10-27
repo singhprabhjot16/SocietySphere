@@ -9,6 +9,12 @@
     margin-right: 70px;
 }
 
+.website-name-hero {
+    font-size: 4em;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
 .poppins-thin {
     font-family: "Poppins", sans-serif;
     font-weight: 100;

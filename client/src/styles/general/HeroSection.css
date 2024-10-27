@@ -11,15 +11,9 @@
     flex-direction: column;
 }
 
-.website-name-hero {
-    font-size: 5em;
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-}
-
 .website-tagline {
     margin-top: 10px;
-    letter-spacing: 0.85em;
+    letter-spacing: 0.5em;
 }
 
 .hero-section-image-2 {
