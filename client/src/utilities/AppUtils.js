@@ -163,6 +163,32 @@ class AppUtils {
         return false;
     }
 
-};
+    static societyHeadLogin = async (email, password) => {
+      try {
+          const response = await fetch(`${APIConstants.LOGIN_URL}`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  societyEmail: email,
+                  password: password
+              })
+          });
+
+          if (!response.ok) {
+              throw new Error(`Login failed: ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          console.log('Login successful:', data);
+          return data;
+      } catch (error) {
+          console.error('Error during login:', error);
+          throw error;
+      }
+    }
+
+}
 
 export default AppUtils;

@@ -1,17 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import explore from "../../assets/explore.svg";
 import profile from "../../assets/profile.svg";
 import search from "../../assets/search.svg";
 import "../../styles/general/Navbar.css";
 import SearchDropdown from "./SearchDropdown";
+import LoginForm from "./LoginForm";
 
 function Navbar({ setSelected }) {
     const [isLogin, setIsLogin] = useState(false);
     const [display, setDisplay] = useState("none");
+    const [showLoginForm, setShowLoginForm] = useState(false); // New state to toggle login form
 
     function showSearchDropdown() {
         setDisplay(display === "flex" ? "none" : "flex");
     }
+
+    // Handler to show the login form
+    function handleShowLoginForm() {
+        setShowLoginForm(true);
+    }
+
+    function handleLogout() {
+        sessionStorage.removeItem("jwtToken");
+        setIsLogin(false);  // Update the login state to logged out
+        console.log("User logged out successfully");
+    }
+    
+    useEffect(() => {
+        const token = sessionStorage.getItem("jwtToken");
+        if (token) {
+            setIsLogin(true);  // Assume user is logged in if token exists
+        }
+    }, []);
 
     return (
         <>
@@ -28,10 +48,13 @@ function Navbar({ setSelected }) {
                     </div> */}
                 </div>
                 <div className="navbar-right-div">
-                    {isLogin ? <img src={profile} alt="" className="navbar-route-logo profile"/> : <button className="register-society poppins-regular">Login as Admin</button>}
+                    {isLogin ? 
+                        <button onClick={handleLogout} className="register-society poppins-regular">Logout</button> : 
+                        <button onClick={handleShowLoginForm} className="register-society poppins-regular">Login as Admin</button>}
                 </div>
             </div>
             <SearchDropdown display={display} setSelectedSociety={setSelected} setDisplay={setDisplay} />
+            {showLoginForm && <LoginForm setIsLogin={setIsLogin} setShowLoginForm={setShowLoginForm} />}
         </>
     );
 }
