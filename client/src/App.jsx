@@ -32,6 +32,7 @@ function App() {
                 selectedSociety.societyId
             );
             setSocietyData(data);
+            console.log("Society Data is: ", societyData);
         }
     };
 
@@ -53,19 +54,15 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' />
-                
-                {/* {selectedSociety.societyId ? ( */}
-                    <Route path='/society/' element={<SocietyPage society={societyData} />}>
-                        <Route path='about' element={<About about={societyData?.about} />} />
-                        <Route path='coordinators' element={<Coordinators teams={societyData?.teams} />} />
-                        <Route path='achievements' element={<Achievements achievement={societyData?.achievements} />} />
-                        <Route path='announcements' element={<Announcements announcements={societyData?.announcements} />} />
-                        <Route path='alumni' element={<Alumni alumni={societyData?.alumni} />} />
-                        <Route path='faqs' element={<FAQs faqs={societyData?.faqs} />} />
-                    </Route>
-                {/* ) : (
-                    <Route path='/' element={<Home />} />
-                )} */}
+
+                <Route path='/society/' element={<SocietyPage society={societyData} />}>
+                    <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id}/>} />
+                    <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id}/>} />
+                    <Route path='achievements' element={<Achievements achievement={societyData?.achievements} />} />
+                    <Route path='announcements' element={<Announcements announcements={societyData?.announcements} />} />
+                    <Route path='alumni' element={<Alumni alumni={societyData?.alumni} />} />
+                    <Route path='faqs' element={<FAQs faqs={societyData?.faqs} />} />
+                </Route>
             </Routes>
             <Footer />
         </>

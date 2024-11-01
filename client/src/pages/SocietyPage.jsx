@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom"; // Import Outlet
 function SocietyPage({ society }) {
     return (
         <div>
-            <SocietyHeroSection society={society} />
+            <SocietyHeroSection society={society?.society} />
             <SocietyNavbar />
             <Outlet />
         </div>

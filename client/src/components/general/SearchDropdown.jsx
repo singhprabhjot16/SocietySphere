@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import dummyData from "../../../dummyData.json";
 import colorMapping from "../../colorMapping.json";
 import "../../styles/general/SearchDropdown.css";
 import Tag from "../reusable/Tag.jsx";
@@ -237,15 +236,12 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                     </div>
                     <div className="society-names dropdown-values">
                         {data.societies.map(item => (
-                            <Link to='society/about'>
-                            <div
+                            <Link 
+                                to='society/about' key={item.id}
                                 className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
-                                key={item.id}
-                                onClick={() => handleQuery(item)}
-                            >
+                                onClick={() => handleQuery(item)}>
                                 <p>{item.name}</p>
                                 <Tag tag={item.type} color={colorMapping[item.type]} />
-                            </div>
                             </Link>
                         ))}
                     </div>
