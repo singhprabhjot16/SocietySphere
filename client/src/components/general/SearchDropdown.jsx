@@ -5,6 +5,7 @@ import "../../styles/general/SearchDropdown.css";
 import Tag from "../reusable/Tag.jsx";
 import "../../utilities/AppUtils.js";
 import AppUtils from "../../utilities/AppUtils.js";
+import { Link } from "react-router-dom";
 
 function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
     const [data, setData] = useState({
@@ -32,7 +33,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         };
         fetchStates();
     }, []);
-    
+
     const [selected, setSelected] = useState({
         stateId: null,
         cityId: null,
@@ -236,6 +237,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                     </div>
                     <div className="society-names dropdown-values">
                         {data.societies.map(item => (
+                            <Link to='society/about'>
                             <div
                                 className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
                                 key={item.id}
@@ -244,6 +246,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                                 <p>{item.name}</p>
                                 <Tag tag={item.type} color={colorMapping[item.type]} />
                             </div>
+                            </Link>
                         ))}
                     </div>
                     {data?.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}

@@ -6,15 +6,15 @@ function SocietyNavbar() {
     const location = useLocation();
 
     const routes = [
-        { name: "About Us", path: "/about" },
-        { name: "Coordinators", path: "/coordinators" },
-        { name: "Achievements", path: "/achievements" },
-        { name: "Announcements", path: "/announcements" },
-        { name: "Alumni", path: "/alumni" },
-        { name: "Photo Gallery", path: "/gallery" },
-        { name: "FAQs", path: "/faqs" }
+        { name: "About Us", path: "/society/about" },
+        { name: "Coordinators", path: "/society/coordinators" },
+        { name: "Achievements", path: "/society/achievements" },
+        { name: "Announcements", path: "/society/announcements" },
+        { name: "Alumni", path: "/society/alumni" },
+        { name: "Photo Gallery", path: "/society/gallery" },
+        { name: "FAQs", path: "/society/faqs" }
     ];
-
+    
     return (
         <div className="society-navbar div-padding">
             <div className="routes">

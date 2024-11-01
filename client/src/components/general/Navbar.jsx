@@ -5,6 +5,7 @@ import search from "../../assets/search.svg";
 import "../../styles/general/Navbar.css";
 import SearchDropdown from "./SearchDropdown";
 import LoginForm from "./LoginForm";
+import { Link } from "react-router-dom";
 
 function Navbar({ setSelected }) {
     const [isLogin, setIsLogin] = useState(false);
@@ -36,7 +37,7 @@ function Navbar({ setSelected }) {
     return (
         <>
             <div className="navbar div-padding">
-                <p className="website-name dm-serif-display-regular">Club Connect</p>
+                <Link to='/' className="website-name dm-serif-display-regular">Club Connect</Link>
                 <div className="navbar-routes">
                     <div className="navbar-route" onClick={showSearchDropdown}>
                         <img src={explore} alt="" className="navbar-route-logo"/>
@@ -49,8 +50,9 @@ function Navbar({ setSelected }) {
                 </div>
                 <div className="navbar-right-div">
                     {isLogin ? 
-                        <button onClick={handleLogout} className="register-society poppins-regular">Logout</button> : 
-                        <button onClick={handleShowLoginForm} className="register-society poppins-regular">Login as Admin</button>}
+                        <Link to='/'><button onClick={handleLogout} className="register-society poppins-regular">Logout</button></Link> : 
+                        <Link to='login'><button onClick={handleShowLoginForm} className="register-society poppins-regular">Login as Admin</button></Link>
+                    }
                 </div>
             </div>
             <SearchDropdown display={display} setSelectedSociety={setSelected} setDisplay={setDisplay} />
