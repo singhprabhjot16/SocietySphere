@@ -12,6 +12,7 @@ import Achievements from './components/achievements/Achievements';
 import Announcements from './components/announcements/Announcements';
 import Alumni from './components/almuni/Alumni';
 import FAQs from './components/faqs/FAQ';
+import PhotoGallery from './components/photo-gallery/PhotoGallery';
 
 function App() {
     // const navigate = useNavigate();

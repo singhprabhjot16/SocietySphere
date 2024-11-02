@@ -1,4 +1,4 @@
-function PhotoGallery() {
+function PhotoGallery({ gallery }) {
     return (
         <div className="photo-gallery-container">
             <p></p>
