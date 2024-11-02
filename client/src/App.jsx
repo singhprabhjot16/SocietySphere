@@ -12,6 +12,7 @@ import Achievements from './components/achievements/Achievements';
 import Announcements from './components/announcements/Announcements';
 import Alumni from './components/almuni/Alumni';
 import FAQs from './components/faqs/FAQ';
+import PhotoGallery from './components/photo-gallery/PhotoGallery';
 
 function App() {
     // const navigate = useNavigate();
@@ -61,6 +62,7 @@ function App() {
                     <Route path='achievements' element={<Achievements achievement={societyData?.achievements} />} />
                     <Route path='announcements' element={<Announcements announcements={societyData?.announcements} />} />
                     <Route path='alumni' element={<Alumni alumni={societyData?.alumni} />} />
+                    <Route path='gallery' element={<PhotoGallery gallery={societyData?.gallery} />} />
                     <Route path='faqs' element={<FAQs faqs={societyData?.faqs} />} />
                 </Route>
             </Routes>
