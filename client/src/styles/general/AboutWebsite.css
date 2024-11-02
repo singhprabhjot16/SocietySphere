@@ -1,0 +1,47 @@
+.who-are-we-heading {
+    padding: 0.5em 1em;
+    font-size: 2em;
+    background-image: linear-gradient(to right, #0832ff, #0020c3);
+    color: white;
+    text-align: center;
+}
+
+.who-are-we-content {
+    margin: 3em;
+    text-align: justify;
+}
+
+.what-can-you-do-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.what-can-you-do {
+    display: flex;
+    transition: all 0.3s;
+}
+
+.what-can-you-do:hover {
+    cursor: default;
+    box-shadow: 2px 10px 15px #ccc;
+}
+
+.number {
+    font-size: 5em;
+    height: 100%;
+    background-color: #0832ff;
+    padding: 0 2em;
+    color: transparent;
+    -webkit-text-stroke: white 2px;
+    max-width: 50px;
+}
+
+.what-can-you-do-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.what-can-you-do-content p {
+
+}

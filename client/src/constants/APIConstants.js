@@ -10,6 +10,8 @@ class APIConstants {
     
     static GET_SOCIETY_URL = this.BASE_URL + ":" + this.BACKEND_PORT + "/" + "search?";
 
+    static LOGIN_URL = this.BASE_URL + ":" + this.BACKEND_PORT + "/" + "societyHead/Login";
+
 }
 
 export default APIConstants;

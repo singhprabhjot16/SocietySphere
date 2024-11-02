@@ -1,65 +1,71 @@
-
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom'; // No BrowserRouter here
 import Home from "./pages/Home";
-import Footer from "./components/Footer"
-// import HeroSection from "./components/HeroSection"
-import Navbar from "./components/Navbar"
+import Footer from "./components/general/Footer";
+import Navbar from "./components/general/Navbar";
 import SocietyPage from './pages/SocietyPage';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import SocietyNavbar from './components/SocietyNavbar';
-// import About from './components/About';
-// import Coordinators from './components/Coordinators';
-// import Achievements from './components/Achievements';
-// import Announcements from './components/Announcements';
-// import Alumni from './components/Alumni';
-// import PhotoGallery from './components/PhotoGallery';
-// import FAQ from './components/FAQ';
-import './constants/APIConstants'
-import AppUtils from './utilities/AppUtils.js'
+import LoginForm from './components/general/LoginForm';
+import AppUtils from './utilities/AppUtils';
+import About from './components/about-us/About';
+import Coordinators from './components/coordinators/Coordinators';
+import Achievements from './components/achievements/Achievements';
+import Announcements from './components/announcements/Announcements';
+import Alumni from './components/almuni/Alumni';
+import FAQs from './components/faqs/FAQ';
 
 function App() {
-    const [societyData, setSocietyData] = useState(null)
+    // const navigate = useNavigate();
+    const [societyData, setSocietyData] = useState(null);
     const [selectedSociety, setSelectedSociety] = useState({
         stateId: null,
         cityId: null,
         collegeId: null,
-        societyId: null
+        societyId: null,
     });
+
     const fetchSocietyDetails = async () => {
-        console.log("Fetching details for societyId:", selectedSociety.societyId);
-        const data = await AppUtils.getSocietyDetails(
-            selectedSociety.stateId,
-            selectedSociety.cityId,
-            selectedSociety.collegeId,
-            selectedSociety.societyId
-        );
-        setSelectedSociety((prev) => ({
-            ...prev,
-            stateId: null,
-            cityId: null,
-            collegeId: null,
-            societyId: null
-        }))
-        setSocietyData(data);
+        if (selectedSociety.societyId) {
+            const data = await AppUtils.getSocietyDetails(
+                selectedSociety.stateId,
+                selectedSociety.cityId,
+                selectedSociety.collegeId,
+                selectedSociety.societyId
+            );
+            setSocietyData(data);
+            console.log("Society Data is: ", societyData);
+        }
     };
 
-    if (selectedSociety.societyId) {
-        console.log("Entered if condition");
-        fetchSocietyDetails();
-    }
-    
-    console.log(selectedSociety)
+    useEffect(() => {
+        if (selectedSociety.societyId) {
+            fetchSocietyDetails();
+        }
+    }, [selectedSociety.societyId]);
+
+    // useEffect(() => {
+    //     navigate('/');
+    // }, [navigate]);
+
+    console.log(selectedSociety.societyId);
+
     return (
-        <div>
+        <>
             <Navbar setSelected={setSelectedSociety} />
-            {societyData ? (
-                <SocietyPage society={societyData} />
-            ) : (
-                <Home />
-            )}
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/login' />
+
+                <Route path='/society/' element={<SocietyPage society={societyData} />}>
+                    <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id}/>} />
+                    <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id}/>} />
+                    <Route path='achievements' element={<Achievements achievement={societyData?.achievements} />} />
+                    <Route path='announcements' element={<Announcements announcements={societyData?.announcements} />} />
+                    <Route path='alumni' element={<Alumni alumni={societyData?.alumni} />} />
+                    <Route path='faqs' element={<FAQs faqs={societyData?.faqs} />} />
+                </Route>
+            </Routes>
             <Footer />
-        </div>
+        </>
     );
 }
 

@@ -1,0 +1,22 @@
+.hero-section {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.website {
+    display: flex;
+    flex-direction: column;
+}
+
+.website-tagline {
+    margin-top: 10px;
+    letter-spacing: 0.5em;
+}
+
+.hero-section-image-2 {
+    height: 60%;
+    margin-right: 3em;
+}

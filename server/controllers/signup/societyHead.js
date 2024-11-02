@@ -45,11 +45,12 @@ export const signup = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-    const { adminEmail, password } = req.body;
+    const { societyEmail, password } = req.body;
+    console.log(req.body);
 
-    const society = await prisma.society.findUnique({
+    const society = await prisma.society.findFirst({
       where: {
-        adminEmail,
+        societyEmail,
       },
     });
   
@@ -64,7 +65,8 @@ export const login = async (req, res) => {
     }
   
     const token = jwt.sign({ societyId: society.id }, JWT_SECRET, { expiresIn: '1h' });
-  
+    
+    console.log("Logged in");
     res.json(
         {society, token}
       );
