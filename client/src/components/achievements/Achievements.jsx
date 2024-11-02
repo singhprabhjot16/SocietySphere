@@ -26,7 +26,7 @@ function Achievements({ achievement, societyId}) {
         formDataToSend.append('caption', newAchievement.caption);
         formDataToSend.append('description', newAchievement.description);
         formDataToSend.append('imageUrl', newAchievement.imageUrl);
-        console.log("form data to send", formDataToSend);
+        console.log("form data to send", formDataToSend, societyId);
         AppUtils.updateSociety(societyId, formDataToSend, 'achievement');
     }
 

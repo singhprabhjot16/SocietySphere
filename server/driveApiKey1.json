@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "societysphere",
+  "private_key_id": "842806e1f544d79dca63d8d7902db88460627d60",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAPwfm3jAGHvl6\nq3sdxbsA5ZR+6MfdGWDsQqIC8wQMKdA3EGn8uLmcnQzz8GJ9Z3BjBBb3gVCUP4Dr\neqSWOUwPGHuwe+qcMVRy6aR+nS0045nk09J2BDCHWxMkjryPSt8qHqWeOUJSfNiF\nGH2JdDlQQYYukqvstzz7XNigvARPBjXC3qfoal5HM/sSHjAkc+ojWY71UgU7sbGh\n9Z61ojtuttz8RpcI+aqcQ5RZH8KizfXEQJJ2mr+KFUFORN/npJ8tisWqIvSdTw5K\nAU5deTILJnXtCxaTggBcDqmF8rlBLzz2v1FxUMwFtO99xmnd8oYblSW6v4XB44HZ\n6L42y1YTAgMBAAECggEABe8sKEU9iELWgqHeeAnNfvaXQd+fo8SPyFs6MwsbWeDE\ni56XFvUAzcPPTYxjDenufy/2IYe9XAYlzZ8Ii5aTMXgZAVah5FZle/KYYEwrxBEu\ng/DB82CnutXl3mAFlArEnsE5bYvo7zDpYhpibabHyiFrqe5fHjx9xmiUS0nifCnw\nLDx/FJLl/wrTaNwjObZnP7q4qZ1DBR54vyPjDrZyl0WrIjg8cskAWFzxnc0Dyyis\nQAnc/2yYwTYXGLydUw++zmGL8AD7cm1YeKqW30Q9xKdNmjyPtdqe9Y/nzVZPFy0a\nvKePJVMOqdCqcedfzXdJeIwS02HVKezeBqc0/Pcc0QKBgQDvrF3Uh70AXbEVEce2\nD7UhtJhIxUBkF1keUhqaP12zkpWLbJfW/yHwa6fBrwD00TRGtG/QtDeJK0/m9szt\nrJU2MCMTe9/H0SmlqjhxLa6Ru+l3e1w9562V2KvIm4tJ2V+cW6kD1WC8UGCuMJuu\n7AAL810RUqhBAvdGuSHVhpBcawKBgQDNV5bN7WXMA3m646tgqh1xesfODelO1vcG\nxRUTkkv1W0ZYSEO8PUobdOgBZFB1+YeJQuzYX9xLBXMvt8498gj5G7ss3AS7PCoa\ni2c62RgRM2OvKKVcuzntt4owGhjsXs076B2KnlD/BUOErX2HFP0da7mdRTUwyEh8\n/fKcvWDW+QKBgQCiR10IyBeKpeV+1Jkahqwn9DWgIB6nJr/qrcDha8IwEjI7Qv3U\nTs9WEC54D9xf5z60GPwUndF0iOUDB1xeGRq2pAU77gXpL5A5YXXx+/JVLpy3j8k3\nCSUZbqlxnQ/Eou//2Hgp5lInb2zmxHbFC3pEnTUIw6S00CNJuZRVFVWtnQKBgQDF\n0CEo1A+Cz75O+dA42OhwT5V3vRMKri9eyDEbn42pGXrUxRjrmCdx99cgsCCK5g1Z\nf61mbEJtyxxB1dHK/wUB5WMVPgcY0EbHN5AEsupqd5UKQh+7C2osxOlMmXd1DYas\ntVjwFr90TP/UKsWIggGsfABdrzQkgGzEbGdx80X9EQKBgQCpmROs1Wb6kPGegQYB\nbG8rqh2Gk9gNYjo7+qfj8MZ9gk2Ri5cAA5iMrnvaK/JWRdvdKynYl4uAa3s1s4df\nymyLiHwI1gT6/eC1EL6/Y3AsZ7Wf5Q11zYd0o6Iscf5KOTMiHEd4coeKOwkuWUbA\nj1v8jgmLOhUIHw21XPBxwTmILw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "test1-682@societysphere.iam.gserviceaccount.com",
+  "client_id": "110325413658601047622",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test1-682%40societysphere.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

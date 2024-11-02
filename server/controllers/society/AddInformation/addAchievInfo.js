@@ -52,7 +52,7 @@ async function uploadFileToDrive(filePath, fileName) {
       media: media,
       fields: 'id,webViewLink',
     });
-
+    console.log("response: ", response)
     return response;
   // } catch (error) {
   //   console.log(error)
@@ -69,20 +69,20 @@ export const addAchievement = async (req, res) => {
       const achievementDetails = achievement; 
       
       // Log the achievement details
-      console.log("Achievement details: ", achievementDetails);
       
       // Handle image upload if an image file is provided
+      console.log("Achievement details: ", achievementDetails, "image file: ", imageFile, societyId);
       let imageUrl = null;
       if (imageFile) {
         const driveUrl = await uploadFileToDrive(imageFile.path, imageFile.filename);
         imageUrl = driveUrl.data.id; // Extract the URL or ID from the response
         console.log("Image uploaded on drive: ", driveUrl.data);
       }
-
+      
       // Create the achievement record in the database
       await prisma.achievement.create({
         data: { 
-          ...achievementDetails,
+          ...achievement,
           imageUrl: imageUrl || null, // Store the image URL if available
           societyId: parseInt(societyId, 10),
         },
@@ -91,6 +91,6 @@ export const addAchievement = async (req, res) => {
 
     res.status(201).json({ message: 'Achievements added successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to add achievements', details: error.message });
+    res.status(500).json({ error: 'Failed to add achievements', details: error });
   }
 };
