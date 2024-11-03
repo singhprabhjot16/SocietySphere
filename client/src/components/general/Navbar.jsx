@@ -17,9 +17,9 @@ function Navbar({ setSelected }) {
     }
 
     // Handler to show the login form
-    function handleShowLoginForm() {
-        setShowLoginForm(true);
-    }
+    // function handleShowLoginForm() {
+    //     setShowLoginForm(true);
+    // }
 
     function handleLogout() {
         sessionStorage.removeItem("jwtToken");
@@ -51,7 +51,7 @@ function Navbar({ setSelected }) {
                 <div className="navbar-right-div">
                     {isLogin ? 
                         <Link to='/'><button onClick={handleLogout} className="register-society poppins-regular">Logout</button></Link> : 
-                        <Link to='login'><button onClick={handleShowLoginForm} className="register-society poppins-regular">Login as Admin</button></Link>
+                        <Link to='login'><button className="register-society poppins-regular">Login as Admin</button></Link>
                     }
                 </div>
             </div>

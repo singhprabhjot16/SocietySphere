@@ -54,7 +54,7 @@ function App() {
             <Navbar setSelected={setSelectedSociety} />
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/login' />
+                <Route path='/login' element={<LoginForm />} />
 
                 <Route path='/society/' element={<SocietyPage society={societyData} />}>
                     <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id}/>} />
@@ -62,6 +62,7 @@ function App() {
                     <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} />} />
                     <Route path='announcements' element={<Announcements announcements={societyData?.announcements} societyId={societyData?.society?.id} />} />
                     <Route path='alumni' element={<Alumni alumni={societyData?.alumni} societyId={societyData?.society?.id} />} />
+                    <Route path='gallery' element={<PhotoGallery gallery={societyData?.gallery} societyId={societyData?.society?.id} />} />
                     <Route path='faqs' element={<FAQs faqs={societyData?.faqs} societyId={societyData?.society?.id} />} />
                 </Route>
             </Routes>

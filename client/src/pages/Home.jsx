@@ -4,7 +4,7 @@ import "../styles/index.css"
 
 function Home() {
     return (
-        <div className="padding-div">
+        <div className="padding-div" style={{transform: "translateY(60px)"}}>
             <HeroSection />
             <AboutWebsite />
         </div>

@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"; // Import Outlet
 
 function SocietyPage({ society }) {
     return (
-        <div>
+        <div style={{transform: "translateY(60px)"}}>
             <SocietyHeroSection society={society?.society} />
             <SocietyNavbar />
             <Outlet />
