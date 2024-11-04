@@ -22,7 +22,7 @@ function AchievementCard({ achievement }) {
                         <p className="achievement-title poppins-medium">{achievement.title}</p>
                         <p className="achievement-date poppins-thin">{achievement.date}</p>
                     </div>
-                    <p className="caption poppins-regular">{achievement.caption}</p>
+                    <p className="caption poppins-regular">{achievement.description}</p>
                 </div>
             </div>
             {isModalOpen && (

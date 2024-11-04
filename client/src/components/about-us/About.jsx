@@ -49,7 +49,7 @@ function About({ about, societyId }) {
                         <div className="contact">
                             <p className="contact-heading poppins-medium">Contact</p>
                             <p className="contact-content poppins-regular">
-                                {aboutData?.societyHead}&nbsp;({aboutData?.adminEmail})
+                                {aboutData?.societyHead}&nbsp;({aboutData?.societyEmail})
                             </p>
                         </div>
                     </>
