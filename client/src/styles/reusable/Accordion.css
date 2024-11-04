@@ -21,8 +21,8 @@
 }
 
 .expand-contract-icon {
-    height: 1.5em;
-    filter: invert(42%) sepia(10%) saturate(14%) hue-rotate(314deg) brightness(60%) contrast(88%);
+    height: 0.75em;
+    /* filter: invert(42%) sepia(10%) saturate(14%) hue-rotate(314deg) brightness(60%) contrast(88%); */
 }
 
 .question-date {
@@ -47,17 +47,17 @@
     }
 
     100% {
-        transform: rotate(45deg);
+        transform: rotate(180deg);
     }
 }
 
 .animate-backwards {
-    animation: rotate-backwards 0.4s backwards;
+    animation: rotate-backwards 0.3s backwards;
 }
 
 @keyframes rotate-backwards {
     0% {
-        transform: rotate(45deg);
+        transform: rotate(180deg);
     }
 
     100% {

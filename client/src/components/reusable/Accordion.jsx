@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../styles/reusable/Accordion.css";
-import add from "../../assets/add.svg";
+import arrowDown from "../../assets/arrow-down.svg";
 
 function Accordian({title, content, date}) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -19,7 +19,7 @@ function Accordian({title, content, date}) {
                     <span className="pipe poppins-thin">  |  </span>
                     <span className="question-date poppins-thin">{date}</span>
                 </div>
-                <img src={add} alt="" className={`${animated ? "animate-forwards" : "animate-backwards"} expand-contract-icon`} />
+                <img src={arrowDown} alt="" className={`${animated ? "animate-forwards" : "animate-backwards"} expand-contract-icon`} />
             </div>
             <div className="answer-title-container" style={{display: isExpanded ? "block" : "none"}}>
                 <p className='question-answer poppins-regular'>{content}</p>
