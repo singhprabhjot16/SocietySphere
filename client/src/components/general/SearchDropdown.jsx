@@ -5,6 +5,7 @@ import Tag from "../reusable/Tag.jsx";
 import "../../utilities/AppUtils.js";
 import AppUtils from "../../utilities/AppUtils.js";
 import { Link } from "react-router-dom";
+import arrowDown from "../../assets/arrow-down.svg";
 
 function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
     const [data, setData] = useState({
@@ -13,6 +14,26 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         colleges: [],
         societies: []
     });
+
+    const [openAccordion, setOpenAccordion] = useState({
+        technical: false,
+        nonTechnical: false,
+        dance: false,
+        literary: false,
+        music: false,
+        fashion: false
+    });
+
+    function toggleAccordion(type) {
+        setOpenAccordion((prevState) => ({
+            ...prevState,
+            [type]: !prevState[type]
+        }));
+    }
+    
+    function getFilteredSocieties(type) {
+        return data.societies.filter((society) => society.type === type);
+    }
     
     useEffect(() => {
         const fetchStates = async () => {
@@ -229,23 +250,67 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                     {data.colleges.length === 0 && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
                 </div>
 
-                {/* Society Dropdown */}
+                {/* Society Dropdown */} 
                 <div className="societies search-dropdown">
                     <div className="society dropdown-headline">
                         <p className="poppins-regular">Society</p>
                     </div>
-                    <div className="society-names dropdown-values">
-                        {data.societies.map(item => (
-                            <Link 
-                                to='society/about' key={item.id}
-                                className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
-                                onClick={() => handleQuery(item)}>
-                                <p>{item.name}</p>
-                                <Tag tag={item.type} color={colorMapping[item.type]} />
-                            </Link>
-                        ))}
+
+                    {/* Technical Accordion */}
+                    {data?.societies.length === 0 ? 
+                    <p className="length-zero poppins-regular">Select a college to view its societies</p> :
+                    <>
+                    <div className="accordion">
+                        <div className="accordion-header dropdown-value" onClick={() => toggleAccordion("technical")}>
+                            <p className="poppins-regular">Technical</p>
+                            <img className={`${openAccordion.technical ? "animate-forwards" : "animate-backwards"}expand-contract-icon`} src={arrowDown} alt="" />
+                        </div>
+                        {openAccordion.technical && (
+                            <div className="accordion-content">
+                                {getFilteredSocieties("Technical").map((item) => (
+                                    <Link 
+                                        to="society/about" key={item.id}
+                                        className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
+                                        onClick={() => handleQuery(item)}>
+                                        <p>{item.name}</p>
+                                        <Tag tag={item.type} color={colorMapping[item.type]} />
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </div>
-                    {data?.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
+
+                    {/* Non-Technical Accordion */}
+                    <div className="accordion">
+                        <div className="accordion-header" onClick={() => toggleAccordion("nonTechnical")}>
+                            <p className="poppins-regular dropdown-value">Non-Technical</p>
+                        </div>
+                        {openAccordion.nonTechnical && (
+                            <div className="accordion-subcategories">
+                                {["dance", "literary", "music", "fashion"].map((subcategory) => (
+                                    <div key={subcategory} className="accordion">
+                                        <div className="accordion-header" onClick={() => toggleAccordion(subcategory)}>
+                                            <p className="poppins-regular dropdown-value">{subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}</p>
+                                        </div>
+                                        {openAccordion[subcategory] && (
+                                            <div className="accordion-content">
+                                                {getFilteredSocieties(subcategory.charAt(0).toUpperCase() + subcategory.slice(1)).map((item) => (
+                                                    <Link 
+                                                        to="society/about" key={item.id}
+                                                        className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
+                                                        onClick={() => handleQuery(item)}>
+                                                        <p>{item.name}</p>
+                                                        <Tag tag={item.type} color={colorMapping[item.type]} />
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    </>}
                 </div>
             </div>
         </div>

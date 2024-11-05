@@ -35,10 +35,8 @@
 }
 
 .dropdown-value {
-    padding: 0.5em 0;
+    padding: 0.5em 1em;
     transition: all 0.1s;
-    padding-left: 1em;
-    padding-right: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,3 +68,43 @@
     margin: 1.2em 0em 1em 1.2em;
 }
 
+.society-name {
+    padding-left: 2em;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.expand-contract-icon {
+    height: 0.25em;
+}
+
+.animate-forwards {
+    animation: rotate-forwards 0.4s forwards;
+}
+
+@keyframes rotate-forwards {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.animate-backwards {
+    animation: rotate-backwards 0.3s backwards;
+}
+
+@keyframes rotate-backwards {
+    0% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
