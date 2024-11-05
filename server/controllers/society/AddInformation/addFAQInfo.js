@@ -3,16 +3,16 @@ const prisma = new PrismaClient();
 
 export const addFAQ = async (req, res) => {
   const { societyId } = req.params;
-  const { faqs } = req.body;
+  const { question, answer } = req.body;
 
   try {
-    await prisma.fAQ.createMany({
-      data: faqs.map(faq => ({
-        ...faq,
+    await prisma.fAQ.create({
+      data: {
+        question, answer,
         societyId: parseInt(societyId, 10),
-      })),
+      },
     });
-    res.status(201).json({ message: 'FAQs added successfully' });
+    res.status(201).json({ message: 'FAQ added successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to add FAQs', details: error.message });
   }

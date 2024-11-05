@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 
 export const updateFAQ = async (req, res) => {
   const { societyId } = req.params;
-  const { faqs } = req.body;
+  const { faq } = req.body;
 
   try {
-    for (const faq of faqs) {
+    // for (const faq of faqs) {
       const { id, question, answer } = faq;
 
       await prisma.fAQ.update({
@@ -18,7 +18,7 @@ export const updateFAQ = async (req, res) => {
           societyId: parseInt(societyId, 10),
         },
       });
-    }
+    // }
     res.status(200).json({ message: 'FAQs updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to update FAQs', details: error.message });

@@ -6,17 +6,30 @@ import AddFAQ from "./AddFAQ";
 import EditFAQ from "./EditFAQ";
 import addIcon from "../../assets/add.svg";
 import editIcon from "../../assets/edit.svg";
+import AppUtils from "../../utilities/AppUtils";
+import NothingHere from "../reusable/NothingHere";
 
-function FAQ() {
-    const [faqs, setFaqs] = useState(dummyData.faqs);
+function FAQ({ faq, societyId }) {
+    const [faqs, setFaqs] = useState(faq);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedFAQ, setSelectedFAQ] = useState(null);
 
     function handleAdd(formData) {
-        setFaqs(prevFaqs => [...prevFaqs, formData]);
+        setFaqs(prevCoordinators => [...prevCoordinators, formData]);
+        const modifiedFormData = {
+            question: "",
+            answer: ""
+        };
+
+        const formDataToSend = new FormData();
+        formDataToSend.append('question', formData.question);
+        formDataToSend.append('answer', formData.answer);
+        console.log(formDataToSend)
+        AppUtils.updateSociety(societyId, formDataToSend, 'faq')
         setIsAdding(false);
     }
+
 
     function toggleAddFAQ() {
         setIsAdding(!isAdding);
@@ -50,14 +63,18 @@ function FAQ() {
         <div className="faqs-container">
             <div className="filler"></div>
             <div className="faq-container">
-                {faqs.map((q, idx) => 
-                    <div
-                        key={idx}
-                        onClick={() => isEditing && startEditing(q)}
-                        className={isEditing ? "card-wrapper greyscale" : "card-wrapper"}
-                    >
-                        <Accordian title={q.question} content={q.answer} date={q.date} key={idx}/>
-                    </div>
+                {Array.isArray(faqs) && faqs.length > 0 ? (
+                    faqs.map((q, idx) =>
+                        <div
+                            key={idx}
+                            onClick={() => isEditing && startEditing(q)}
+                            className={isEditing ? "card-wrapper greyscale" : "card-wrapper"}
+                        >
+                            <Accordian title={q.question} content={q.answer} date={q.date} key={idx} />
+                        </div>
+                    )
+                ) : (
+                    <NothingHere />
                 )}
             </div>
             <div className="changes-container">
