@@ -78,10 +78,17 @@
 }
 
 .expand-contract-icon {
-    height: 0.25em;
+    height: 0.5em;
 }
 
-.animate-forwards {
+.number-of-societies {
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* .animate-forwards {
     animation: rotate-forwards 0.4s forwards;
 }
 
@@ -107,4 +114,4 @@
     100% {
         transform: rotate(0deg);
     }
-}
+} */
