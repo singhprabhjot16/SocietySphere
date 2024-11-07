@@ -1,0 +1,17 @@
+.number-length-container {
+    background-color: #0832ff;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-length-container p {
+    color: white;
+    font-size: 0.75em;
+}
+
+
+
