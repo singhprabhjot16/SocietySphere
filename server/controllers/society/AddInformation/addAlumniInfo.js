@@ -50,7 +50,7 @@ export const addAlumni = async (req, res) => {
 
   try {
     // for (const alum of alumni) {
-      const { name, rollNo, ...alumDetails } = alum;
+      const { name, rollNo, ...alumDetails } = alumni;
 
       let student = await prisma.student.findUnique({ where: { rollNo } });
 

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import colorMapping from "../../colorMapping.json";
+import { useEffect, useState, useRef } from "react";
 import "../../styles/general/SearchDropdown.css";
-import Tag from "../reusable/Tag.jsx";
 import "../../utilities/AppUtils.js";
 import AppUtils from "../../utilities/AppUtils.js";
 import { Link } from "react-router-dom";
+import arrowDown from "../../assets/arrow-down.svg";
+import arrowUp from "../../assets/arrow-up.svg"
+import NumberLength from "../reusable/NumberLength.jsx";
 
 function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
     const [data, setData] = useState({
@@ -13,7 +14,72 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         colleges: [],
         societies: []
     });
+
+    const [openAccordion, setOpenAccordion] = useState({
+        technical: false,
+        nonTechnical: false,
+        dance: false,
+        literary: false,
+        music: false,
+        fashion: false
+    });
+
+    const [selected, setSelected] = useState({
+        stateId: null,
+        cityId: null,
+        collegeId: null,
+        societyId: null
+    });
+
+    const [isNavbarVisible, setNavbarVisible] = useState(false);
+
+    const containerRef = useRef(null);
+
+    function toggleAccordion(type) {
+        setOpenAccordion((prevState) => ({
+            ...prevState,
+            [type]: !prevState[type]
+        }));
+    }
     
+    function getFilteredSocieties(type) {
+        return data.societies.filter((society) => society.type === type);
+    }
+
+    function handleCities(item) {
+        setSelected((prevSelected) => ({
+            ...prevSelected,
+            stateId: item.id,
+            cityId: null,
+            collegeId: null,
+            societyId: null
+        }));
+    }
+
+    function handleColleges(item) {
+        setSelected((prevSelected) => ({
+            ...prevSelected,
+            cityId: item.id,
+            collegeId: null,
+            societyId: null
+        }));
+    }
+
+    function handleSocieties(item) {
+        setSelected((prevSelected) => ({
+            ...prevSelected,
+            collegeId: item.id,
+            societyId: null
+        }));
+    }
+
+    function handleQuery(item) {
+        setSelected((prevSelected) => ({
+            ...prevSelected,
+            societyId: item.id
+        }));
+    }
+
     useEffect(() => {
         const fetchStates = async () => {
             try {
@@ -32,25 +98,6 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         };
         fetchStates();
     }, []);
-
-    const [selected, setSelected] = useState({
-        stateId: null,
-        cityId: null,
-        collegeId: null,
-        societyId: null
-    });
-
-    const [isNavbarVisible, setNavbarVisible] = useState(false);
-
-    function handleCities(item) {
-        setSelected((prevSelected) => ({
-            ...prevSelected,
-            stateId: item.id,
-            cityId: null,
-            collegeId: null,
-            societyId: null
-        }));
-    }
 
     useEffect(() => {
         const fetchCities = async () => {
@@ -71,16 +118,6 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
             fetchCities();
         }
     }, [selected.stateId]);
-    
-
-    function handleColleges(item) {
-        setSelected((prevSelected) => ({
-            ...prevSelected,
-            cityId: item.id,
-            collegeId: null,
-            societyId: null
-        }));
-    }
 
     useEffect(() => {
         const fetchColleges = async () => {
@@ -100,15 +137,6 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
             fetchColleges();
         }
     }, [selected.cityId]);
-    
-
-    function handleSocieties(item) {
-        setSelected((prevSelected) => ({
-            ...prevSelected,
-            collegeId: item.id,
-            societyId: null
-        }));
-    }
 
     useEffect(() => {
         const fetchSocieties = async () => {
@@ -127,14 +155,6 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
             fetchSocieties();
         }
     }, [selected.collegeId]);
-    
-
-    function handleQuery(item) {
-        setSelected((prevSelected) => ({
-            ...prevSelected,
-            societyId: item.id
-        }));
-    }
 
     useEffect(() => {
         if (selected.societyId) {
@@ -165,12 +185,33 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                 colleges: [],
                 societies: []
             });
+            setOpenAccordion((prevAccordion) => ({
+                ...prevAccordion,
+                technical: false,
+                nonTechnical: false,
+                dance: false,
+                literary: false,
+                music: false,
+                fashion: false
+            }));
             setNavbarVisible(false);
         }
     }, [display]);
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setDisplay("none");
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [setDisplay]);
+
     return (
-        <div className="search-dropdown-super-container" style={{ display: display }}>
+        <div className="search-dropdown-super-container" style={{ display: display }} ref={containerRef}>
             <div className="search-dropdown-container">
                 {/* State Dropdown */}
                 <div className="states search-dropdown">
@@ -196,6 +237,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                     <div className="city dropdown-headline">
                         <p className="poppins-regular">City</p>
                     </div>
+                    {!AppUtils.checkEmpty(selected.stateId) && 
                     <div className="city-names dropdown-values">
                         {data?.cities.map(item => (
                             <div
@@ -207,7 +249,8 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                             </div>
                         ))}
                     </div>
-                    {data.cities.length === 0 && <p className="length-zero poppins-regular">Select a state to view its cities</p>}
+                    }
+                    {AppUtils.checkEmpty(selected.stateId) && <p className="length-zero poppins-regular">Select a state to view its cities</p>}
                 </div>
 
                 {/* College Dropdown */}
@@ -215,6 +258,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                     <div className="college dropdown-headline">
                         <p className="poppins-regular">Colleges</p>
                     </div>
+                    {!AppUtils.checkEmpty(selected.cityId) &&
                     <div className="college-names dropdown-values">
                         {data?.colleges.map(item => (
                             <div
@@ -226,26 +270,82 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                             </div>
                         ))}
                     </div>
-                    {data.colleges.length === 0 && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
+                    }
+                    {AppUtils.checkEmpty(selected.cityId) && <p className="length-zero poppins-regular">Select a city to view its colleges</p>}
                 </div>
 
-                {/* Society Dropdown */}
+                {/* Society Dropdown */} 
                 <div className="societies search-dropdown">
                     <div className="society dropdown-headline">
                         <p className="poppins-regular">Society</p>
                     </div>
-                    <div className="society-names dropdown-values">
-                        {data.societies.map(item => (
-                            <Link 
-                                to='society/about' key={item.id}
-                                className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
-                                onClick={() => handleQuery(item)}>
-                                <p>{item.name}</p>
-                                <Tag tag={item.type} color={colorMapping[item.type]} />
-                            </Link>
-                        ))}
+
+                    {/* Technical Accordion */}
+                    {AppUtils.checkEmpty(selected.collegeId) ? 
+                    <p className="length-zero poppins-regular">Select a college to view its societies</p> :
+                    <>
+                    <div className="accordion">
+                        <div className="accordion-header dropdown-value" onClick={() => toggleAccordion("technical")}>
+                            <p className={`${openAccordion.technical ? "poppins-medium" : "poppins-regular"}`}>Technical</p>
+                            <div className="number-of-societies">
+                                <NumberLength length={getFilteredSocieties("Technical").length} />
+                                <img className="expand-contract-icon" src={openAccordion.technical ? arrowUp : arrowDown} alt="" />
+                            </div>
+                        </div>
+                        {openAccordion.technical && (
+                            <div className="accordion-content">
+                                {AppUtils.checkEmpty(getFilteredSocieties("Technical")) ? 
+                                <p className="society-name length-zero poppins-regular">No Society Found</p> : getFilteredSocieties("Technical").map((item) => (
+                                    <Link 
+                                        to="society/about" key={item.id}
+                                        className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
+                                        onClick={() => handleQuery(item)}>
+                                        <p>{item.name}</p>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </div>
-                    {data?.societies.length === 0 && <p className="length-zero poppins-regular">Select a college to view its societies</p>}
+
+                    {/* Non-Technical Accordion */}
+                    <div className="accordion">
+                        <div className="accordion-header dropdown-value" onClick={() => toggleAccordion("nonTechnical")}>
+                            <p className={`${openAccordion.nonTechnical ? "poppins-medium" : "poppins-regular"}`}>Non-Technical</p>
+                            <div className="number-of-societies">
+                                    <NumberLength length={getFilteredSocieties("nonTechnical").length} />
+                                    <img className="expand-contract-icon" src={openAccordion.nonTechnical ? arrowUp : arrowDown} alt="" />
+                            </div>
+                        </div>
+                        {openAccordion.nonTechnical && (
+                            <div className="accordion-subcategories">
+                                {["dance", "literary", "music", "fashion"].map((subcategory) => (
+                                    <div key={subcategory} className="accordion">
+                                        <div className="accordion-header dropdown-value" onClick={() => toggleAccordion(subcategory)}>
+                                            <p className={`${openAccordion[subcategory] ? "poppins-medium" : "poppins-regular"}`}>{subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}</p>
+                                            <div className="number-of-societies">
+                                                <NumberLength length={getFilteredSocieties(subcategory).length} />
+                                                <img className="expand-contract-icon" src={openAccordion[subcategory] ? arrowUp : arrowDown} alt="" />
+                                            </div>
+                                        </div>
+                                        {openAccordion[subcategory] && (
+                                            <div className="accordion-content">
+                                                {AppUtils.checkEmpty(getFilteredSocieties(subcategory.charAt(0).toUpperCase() + subcategory.slice(1))) ? 
+                                                <p className="society-name length-zero poppins-regular">No Society Found</p> : getFilteredSocieties(subcategory.charAt(0).toUpperCase() + subcategory.slice(1)).map((item) => (
+                                                    <Link 
+                                                        to="society/about" key={item.id}
+                                                        className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}
+                                                        onClick={() => handleQuery(item)}>
+                                                        <p>{item.name}</p>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    </>}
                 </div>
             </div>
         </div>
