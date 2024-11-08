@@ -4,11 +4,12 @@ const prisma = new PrismaClient();
 
 export const updateFAQ = async (req, res) => {
   const { societyId } = req.params;
-  const { faq } = req.body;
+  const { id, question, answer } = req.body;
+  console.log(question);
 
   try {
     // for (const faq of faqs) {
-      const { id, question, answer } = faq;
+      // const { id, question, answer } = faq;
 
       await prisma.fAQ.update({
         where: { id },

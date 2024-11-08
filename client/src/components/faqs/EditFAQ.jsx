@@ -13,7 +13,8 @@ function EditFAQ({ selectedFAQ, handleEdit, handleDelete, toggleFunction }) {
             setFormData({
                 question: selectedFAQ.question || "",
                 answer: selectedFAQ.answer || "",
-                date: selectedFAQ.date || ""
+                date: selectedFAQ.date || "",
+                id: selectedFAQ.id || ""
             });
         }
     }, [selectedFAQ]);

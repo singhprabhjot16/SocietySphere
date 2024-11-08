@@ -60,7 +60,7 @@ function App() {
                     <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id}/>} />
                     <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id}/>} />
                     <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} />} />
-                    <Route path='announcements' element={<Announcements announcements={societyData?.announcements} societyId={societyData?.society?.id} />} />
+                    <Route path='announcements' element={<Announcements announcement={societyData?.announcements} societyId={societyData?.society?.id} />} />
                     <Route path='alumni' element={<Alumni alumni={societyData?.alumni} societyId={societyData?.society?.id} />} />
                     <Route path='gallery' element={<PhotoGallery gallery={societyData?.gallery} societyId={societyData?.society?.id} />} />
                     <Route path='faqs' element={<FAQs faq={societyData?.faqs} societyId={societyData?.society?.id} />} />

@@ -3,14 +3,14 @@ const prisma = new PrismaClient();
 
 export const addAnnouncement = async (req, res) => {
   const { societyId } = req.params;
-  const { announcements } = req.body;
+  const { title, content } = req.body;
 
   try {
-    await prisma.announcement.createMany({
-      data: announcements.map(announcement => ({
-        ...announcement,
+    await prisma.announcement.create({
+      data: {
+        title, content,
         societyId: parseInt(societyId, 10),
-      })),
+    },
     });
     res.status(201).json({ message: 'Announcements added successfully' });
   } catch (error) {
