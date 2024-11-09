@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Accordian from "../reusable/Accordion";
 import "../../styles/faqs/FAQ.css";
 import AppUtils from "../../utilities/AppUtils";
@@ -24,11 +24,7 @@ function Announcements({ announcement, societyId }) {
         const formDataToSend = new FormData();
         formDataToSend.append('title', formData.title);
         formDataToSend.append('content', formData.content);
-        console.log(formDataToSend);
-        
-        // Send to the API
         AppUtils.updateSociety(societyId, formDataToSend, 'announcement');
-        
         setIsAdding(false);
     }
 
@@ -40,13 +36,24 @@ function Announcements({ announcement, societyId }) {
         setIsEditing(!isEditing);
     }
 
-    function handleEdit(updatedAnnouncement) {
-        setAnnouncements(prevAnnouncements =>
-            prevAnnouncements.map(announcement =>
-                announcement.title === selectedAnnouncement.title ? updatedAnnouncement : announcement
-            )
-        );
-        setIsEditing(false);
+    function handleEdit(formData) {
+        console.log(formData);
+        setAnnouncements(prevCoordinators => [...prevCoordinators, formData]);
+        const modifiedFormData = {
+            title: "",
+            content: ""
+        };
+
+        const formDataToSend = new FormData();
+        formDataToSend.append('id', formData.id);   
+        formDataToSend.append('title', formData.title);
+        formDataToSend.append('content', formData.content);
+        console.log(formDataToSend);
+        
+        // Send to the API
+        AppUtils.editUpdateSociety(societyId, formData, 'announcement');
+        
+        // setIsEditing(false);
     }
 
     function handleDelete(announcementToDelete) {
@@ -56,22 +63,26 @@ function Announcements({ announcement, societyId }) {
         setIsEditing(false);
     }
 
-    function startEditing(announcement) {
-        setSelectedAnnouncement(announcement);
+    function startEditing(anc) {
+        setSelectedAnnouncement(anc);
     }
+
+    useEffect(() => {
+        console.log(selectedAnnouncement)
+    }, [selectedAnnouncement]);
 
     return (
         <div className="faqs-container">
             <div className="filler"></div>
             <div className="faq-container">
                 {Array.isArray(announcements) && announcements.length > 0 ? (
-                    announcements.map((q, idx) =>
+                    announcements.map((q, id) =>
                         <div
-                            key={idx}
+                            key={id}
                             onClick={() => isEditing && startEditing(q)}
                             className={isEditing ? "card-wrapper greyscale" : "card-wrapper"}
                         >
-                            <Accordian title={q.title} content={q.content} date={q.date} key={idx} />
+                            <Accordian title={q.title} content={q.content} date={q.date} key={id} />
                         </div>
                     )
                 ) : (
@@ -89,7 +100,7 @@ function Announcements({ announcement, societyId }) {
             {isAdding && <AddAnnouncement handleAdd={handleAdd} toggleFunction={toggleAddAnnouncement} />}
             {selectedAnnouncement && isEditing && (
                 <EditAnnouncement
-                    selectedFAQ={selectedAnnouncement}
+                    selectedAnnouncement={selectedAnnouncement}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}
                     toggleFunction={() => {

@@ -25,7 +25,6 @@ function FAQ({ faq, societyId }) {
         const formDataToSend = new FormData();
         formDataToSend.append('question', formData.question);
         formDataToSend.append('answer', formData.answer);
-        console.log(formDataToSend)
         AppUtils.updateSociety(societyId, formDataToSend, 'faq')
         setIsAdding(false);
     }
@@ -40,24 +39,18 @@ function FAQ({ faq, societyId }) {
     }
 
     function handleEdit(formData) {
-        setFaqs(prevCoordinators => [...prevCoordinators, formData]);
-        const modifiedFormData = {
-            question: "",
-            answer: "",
-            date: ""
-        };
+        // setFaqs(prevCoordinators => [...prevCoordinators, formData]);
+        // const modifiedFormData = {
+        //     question: "",
+        //     answer: "",
+        //     date: "" 
+        // };
 
         const formDataToSend = new FormData();
         formDataToSend.append('id', formData.id);
         formDataToSend.append('question', formData.question);
         formDataToSend.append('answer', formData.answer);
-        // console.log(formDataToSend.getAll(0));
-        // console.log(formDataToSend.values());
-        // console.log(formData.id);
-        console.log("FormDataToSend contents:");
-        for (let [key, value] of formDataToSend.entries()) {
-            console.log(key, value);
-        }
+
 
         AppUtils.editUpdateSociety(societyId, formData, 'faq')
     }

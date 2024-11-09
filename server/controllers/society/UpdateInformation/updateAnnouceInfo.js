@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 
 export const updateAnnouncement = async (req, res) => {
   const { societyId } = req.params;
-  const { announcements } = req.body;
+  const announcement = req.body;
 
   try {
-    for (const announcement of announcements) {
+    // for (const announcement of announcements) {
       const { id, title, content } = announcement;
 
       await prisma.announcement.update({
@@ -18,7 +18,7 @@ export const updateAnnouncement = async (req, res) => {
           societyId: parseInt(societyId, 10),
         },
       });
-    }
+    // }
     res.status(200).json({ message: 'Announcements updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to update announcements', details: error.message });

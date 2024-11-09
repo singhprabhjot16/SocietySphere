@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../../styles/faqs/EditFAQ.css";
 
 function EditAnnouncement({ selectedAnnouncement, handleEdit, handleDelete, toggleFunction }) {
+    console.log(selectedAnnouncement);
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -13,7 +14,8 @@ function EditAnnouncement({ selectedAnnouncement, handleEdit, handleDelete, togg
             setFormData({
                 title: selectedAnnouncement.title || "",
                 content: selectedAnnouncement.content || "",
-                date: selectedAnnouncement.date || ""
+                date: selectedAnnouncement.date || "",
+                id: selectedAnnouncement.id || ""
             });
         }
     }, [selectedAnnouncement]);
