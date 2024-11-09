@@ -19,7 +19,7 @@ export const updateFAQ = async (req, res) => {
     // for (const faq of faqs) {
       // const { id, question, answer } = faq;
 
-      await prisma.fAQ.update({
+      const response = await prisma.fAQ.update({
         where: { id },
         data: {
           question,
@@ -28,7 +28,7 @@ export const updateFAQ = async (req, res) => {
         },
       });
     // }
-    res.status(200).json({ message: 'FAQs updated successfully' });
+    res.status(200).json({ ...response, message: 'FAQs updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to update FAQs', details: error.message });
   }

@@ -323,7 +323,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                         </div>
                         {openAccordion.nonTechnical && (
                             <div className="accordion-subcategories">
-                                {["dance", "literary", "music", "fashion", "cultural"].map((subcategory) => (
+                                {["Dance", "Literary", "Music", "Fashion", "Cultural"].map((subcategory) => (
                                     <div key={subcategory} className="accordion">
                                         <div className="accordion-header dropdown-value" onClick={() => toggleAccordion(subcategory)}>
                                             <p className={`${openAccordion[subcategory] ? "poppins-medium" : "poppins-regular"}`}>{subcategory}</p>
