@@ -14,6 +14,8 @@ function PhotoGallery({galleryArray, societyId}) {
     const [isEditing, setIsEditing] = useState(false);
     const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+    console.log(galleryArray);
+
     function toggleAddPhoto() {
         setIsAdding(!isAdding);
     }

@@ -16,6 +16,7 @@ import PhotoGallery from './components/photo-gallery/PhotoGallery';
 
 function App() {
     // const navigate = useNavigate();
+    const [isLogin, setIsLogin] = useState(false);
     const [societyData, setSocietyData] = useState(null);
     const [selectedSociety, setSelectedSociety] = useState({
         stateId: null,
@@ -54,7 +55,7 @@ function App() {
             <Navbar setSelected={setSelectedSociety} />
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/login' element={<LoginForm />} />
+                <Route path='/login' element={<LoginForm setIsLogin={setIsLogin}/>} />
 
                 <Route path='/society/' element={<SocietyPage society={societyData} />}>
                     <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id}/>} />
@@ -62,7 +63,7 @@ function App() {
                     <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} />} />
                     <Route path='announcements' element={<Announcements announcement={societyData?.announcements} societyId={societyData?.society?.id} />} />
                     <Route path='alumni' element={<Alumni alumnis={societyData?.alumni} societyId={societyData?.society?.id} />} />
-                    <Route path='gallery' element={<PhotoGallery gallery={societyData?.galleries} societyId={societyData?.society?.id} />} />
+                    <Route path='gallery' element={<PhotoGallery galleryArray={societyData?.galleries} societyId={societyData?.society?.id} />} />
                     <Route path='faqs' element={<FAQs faq={societyData?.faqs} societyId={societyData?.society?.id} />} />
                 </Route>
             </Routes>

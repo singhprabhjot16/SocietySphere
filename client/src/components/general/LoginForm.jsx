@@ -3,7 +3,7 @@ import AppUtils from "../../utilities/AppUtils";
 import "../../styles/general/LoginForm.css"
 import login from "../../assets/login.svg";
 
-function LoginForm({ setIsLogin, setShowLoginForm }) {
+function LoginForm({ setIsLogin }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -15,7 +15,6 @@ function LoginForm({ setIsLogin, setShowLoginForm }) {
             if (data.token) {
                 sessionStorage.setItem("jwtToken", data.token);
                 setIsLogin(true);
-                setShowLoginForm(false);
                 console.log("Logged in successfully, token saved.");
             }
         } catch (error) {
