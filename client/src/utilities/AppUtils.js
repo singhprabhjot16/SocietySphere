@@ -122,10 +122,10 @@ class AppUtils {
       const response = await fetch(`${APIConstants.UPDATE_SOCIETY_URL}/${societyId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/json',
           'table-name': tableName
         },
-        body: JSON.stringify(updatedData)
+        body: (updatedData)
       });
       const data = await response.json();
       console.log('Society edit updated:', data);

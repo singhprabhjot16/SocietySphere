@@ -28,9 +28,10 @@ function EditFAQ({ selectedFAQ, handleEdit, handleDelete, toggleFunction }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        handleEdit(formData);
+        handleEdit({...formData, id: selectedFAQ?.id});
         toggleFunction();
     }
+    
 
     function handleDeleteClick() {
         handleDelete(selectedFAQ);

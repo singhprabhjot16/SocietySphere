@@ -28,7 +28,7 @@ const router = express.Router();
 try {
   router.post("/:societyId", upload.single('imageUrl'), async (req, res) => {
   const  table = req.headers['table-name'];
-  console.log(table)
+  console.log("Form Fields:", req.body);  // Should show form fields like `id`, `question`, `answer`
   switch (table) {
     case "team":
       return await addTeam(req, res);

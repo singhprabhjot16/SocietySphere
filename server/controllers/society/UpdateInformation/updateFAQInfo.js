@@ -1,26 +1,17 @@
 import { PrismaClient } from '@prisma/client';
-// import multer from 'multer';
-
-// const upload = multer(); // Initialize multer without any file handling
-
-
 const prisma = new PrismaClient();
 
 export const updateFAQ = async (req, res) => {
   const { societyId } = req.params;
-  // upload.none();
-  // const { id, question, answer } = req.body;
-  const id = parseInt(req.body.id, 10);
-  const question = req.body.question;
-  const answer = req.body.answer;
-  console.log(req);
+  const { id, question, answer } = req.body;
+  console.log('req: ', req);
 
   try {
     // for (const faq of faqs) {
       // const { id, question, answer } = faq;
 
       const response = await prisma.fAQ.update({
-        where: { id },
+        where: { id: parseInt(id, 10) },
         data: {
           question,
           answer,

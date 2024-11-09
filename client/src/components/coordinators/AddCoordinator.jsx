@@ -17,8 +17,7 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
             ...prevData,
             imageUrl: event.target.files[0] 
         }));
-    };
-    
+    };    
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -42,6 +41,7 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
     function handleSubmit(event) {
         event.preventDefault();
         handleAdd(formData);
+        console.log(formData.imageUrl)
     }
 
     return (

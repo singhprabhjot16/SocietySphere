@@ -37,12 +37,13 @@ function FAQ({ faq, societyId }) {
     setIsEditing(!isEditing);
   }
   function handleEdit(formData) {
+    console.log('formData: ', formData)
     const formDataToSend = new FormData();
     formDataToSend.append("id", formData.id);
     formDataToSend.append("question", formData.question);
     formDataToSend.append("answer", formData.answer);
-    // AppUtils.editUpdateSociety(societyId, formDataToSend, 'faq')
-    AppUtils.editUpdateSociety(societyId, formData, "faq")
+    // AppUtils.editUpdateSociety(societyId, formData, 'faq')
+    AppUtils.editUpdateSociety(societyId, formDataToSend, "faq")
       .then((response) => {
         console.log("response", response);
         if (response.message === "FAQs updated successfully") {
@@ -70,6 +71,7 @@ function FAQ({ faq, societyId }) {
   }
 
   function startEditing(faq) {
+    console.log('faq: ', faq)
     setSelectedFAQ(faq);
   }
 
