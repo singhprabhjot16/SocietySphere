@@ -80,6 +80,7 @@ model Team {
   studentId  Int
   imageUrl   String?
   caption    String?  @default("default_url")
+  linkedIn   String?
 }
 
 model Gallery {
@@ -128,4 +129,5 @@ model Alumni {
   studentId  Int
   imageUrl   String?
   caption    String?
+  linkedIn   String?
 }
