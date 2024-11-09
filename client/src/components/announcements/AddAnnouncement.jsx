@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/AddAnnouncement.css";
+import "../../styles/faqs/AddFAQ.css";
 
 function AddAnnouncement({ handleAdd, toggleFunction }) {
     const [formData, setFormData] = useState({

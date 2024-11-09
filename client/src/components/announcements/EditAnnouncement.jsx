@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../styles/EditAnnouncement.css";
+import "../../styles/faqs/EditFAQ.css";
 
 function EditAnnouncement({ selectedAnnouncement, handleEdit, handleDelete, toggleFunction }) {
     const [formData, setFormData] = useState({

@@ -41,8 +41,11 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
             [type]: !prevState[type]
         }));
     }
-    
+
     function getFilteredSocieties(type) {
+        if (type === "nonTechnical") {
+            return data.societies.filter((society) => society.type !== "Technical");
+        }
         return data.societies.filter((society) => society.type === type);
     }
 

@@ -111,6 +111,24 @@ class AppUtils {
         }
     };
 
+    static editUpdateSociety = async (societyId, updatedData, tableName) => {
+      try {
+        const response = await fetch(`${APIConstants.UPDATE_SOCIETY_URL}/${societyId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'formData',
+            'table-name': tableName
+          },
+          body: (updatedData)
+        });
+        const data = await response.json();
+        console.log('Society edit updated:', data);
+        return data;
+      } catch (error) {
+        console.error('Error edit updating society:', error);
+      }
+  };
+
     static createSociety = async (newSociety, tableName) => {
         try {
           const response = await fetch(`${APIConstants.UPDATE_SOCIETY_URL}`, {

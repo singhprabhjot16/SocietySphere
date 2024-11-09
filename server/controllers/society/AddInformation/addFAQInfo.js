@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 export const addFAQ = async (req, res) => {
   const { societyId } = req.params;
   const { question, answer } = req.body;
+  console.log(question);
 
   try {
     await prisma.fAQ.create({

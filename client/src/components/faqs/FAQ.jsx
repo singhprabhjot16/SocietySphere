@@ -39,13 +39,27 @@ function FAQ({ faq, societyId }) {
         setIsEditing(!isEditing);
     }
 
-    function handleEdit(updatedFAQ) {
-        setFaqs(prevFaqs =>
-            prevFaqs.map(faq =>
-                faq.question === selectedFAQ.question ? updatedFAQ : faq
-            )
-        );
-        setIsEditing(false);
+    function handleEdit(formData) {
+        setFaqs(prevCoordinators => [...prevCoordinators, formData]);
+        const modifiedFormData = {
+            question: "",
+            answer: "",
+            date: ""
+        };
+
+        const formDataToSend = new FormData();
+        formDataToSend.append('id', formData.id);
+        formDataToSend.append('question', formData.question);
+        formDataToSend.append('answer', formData.answer);
+        // console.log(formDataToSend.getAll(0));
+        // console.log(formDataToSend.values());
+        // console.log(formData.id);
+        console.log("FormDataToSend contents:");
+        for (let [key, value] of formDataToSend.entries()) {
+            console.log(key, value);
+        }
+
+        AppUtils.editUpdateSociety(societyId, formData, 'faq')
     }
 
     function handleDelete(faqToDelete) {
