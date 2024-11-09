@@ -48,8 +48,8 @@ model Society {
   aboutSociety  String
   prerequisites String    @default("")
   societyHead   String
-  societyEmail  String
-  adminEmail    String    @unique
+  societyEmail  String    @unique
+  adminEmail    String    
   passwordHash  String
   college       College   @relation(fields: [collegeId], references: [id], onDelete: Cascade)
   collegeId     Int

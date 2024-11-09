@@ -8,17 +8,17 @@ const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'my_jwt_secret_key';
 
 export const signup = async (req, res) => {
-    const societyData = req.body;
+  const societyData = req.body;
   const { name, aboutSociety, prerequisites, societyHead, societyEmail, adminEmail, password, collegeId, type } = societyData;
 
   const existingSociety = await prisma.society.findUnique({
     where: {
-      adminEmail,
+      societyEmail,
     },
   });
 
   if (existingSociety) {
-    throw new Error('Admin email already exists.');
+    throw new Error('Society email already exists.');
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
