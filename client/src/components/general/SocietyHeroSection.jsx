@@ -8,7 +8,7 @@ function SocietyHeroSection({ society }) {
         <div className="hero-section">
             <img src={heroSectionImage1} alt=""/>
             <div className="website">
-                <p className="website-name-hero dm-serif-display-regular">{society?.name}</p>
+                <p className="website-name-hero righteous-regular">{society?.name}</p>
             </div>
             <img src={heroSectionImage2} alt="" className="hero-section-image-2"/>
         </div>

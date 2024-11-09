@@ -37,7 +37,7 @@ function Navbar({ setSelected }) {
     return (
         <>
             <div className="navbar div-padding">
-                <Link to='/' className="website-name dm-serif-display-regular">Club Connect</Link>
+                <Link to='/' className="website-name righteous-regular">ClubConnect</Link>
                 <div className="navbar-routes">
                     <div className="navbar-route" onClick={showSearchDropdown}>
                         <img src={explore} alt="" className="navbar-route-logo"/>
