@@ -31,19 +31,29 @@
 }
 
 .submit-button {
-    width: 25%;
+    width: 100%;
     padding: 0.5em 0;
-    background-color: white;
-    border: 1px solid #333;
+    background-color: #0832ff;
+    border: 1px solid transparent;
+    color: white;
     border-radius: 999px;
     font-size: 0.85em;
     transition: all 0.2s;
 }
 
 .submit-button:hover {
-    background-color: #0832ff;
+    background-color: #001997;
     color: white;
-    border: 1px solid #0832ff;
+    border: 1px solid #001997;
     cursor: pointer;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    color: black;
+}
+
+.disable-button {
+    cursor: not-allowed;
 }
 

@@ -10,7 +10,7 @@ function Footer() {
                 <QueryForm />
             </div>
             <div className="footer-end div-padding">
-                <p className="website-name dm-serif-display-regular">SocietySphere</p>
+                <p className="website-name righteous-regular">ClubConnect</p>
                 <p className="poppins-regular copyright">Copyright © 2024. All Rights Reserved.</p>
             </div>
         </div>
