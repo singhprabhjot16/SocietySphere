@@ -45,7 +45,7 @@ async function uploadFileToDrive(filePath, fileName) {
   }
 export const addAlumni = async (req, res) => {
   const { societyId } = req.params;
-  const { alumni } = req.body;
+  const alumni  = req.body;
   const imageFile = req.file;
 
   try {
