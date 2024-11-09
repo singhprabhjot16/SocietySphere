@@ -214,7 +214,9 @@ class AppUtils {
   }
 
   static formatDate(dateStr) {
-    return dateStr.slice(0, 10).split('-').reverse().join('-');
+    if (!this.checkEmpty(dateStr)) {
+      return dateStr.slice(0, 10).split('-').reverse().join('-');
+    }
   }
   
 }

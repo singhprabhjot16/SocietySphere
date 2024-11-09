@@ -56,7 +56,7 @@ function Navbar({ setSelected }) {
                 </div>
             </div>
             <SearchDropdown display={display} setSelectedSociety={setSelected} setDisplay={setDisplay} />
-            {showLoginForm && <LoginForm setIsLogin={setIsLogin} setShowLoginForm={setShowLoginForm} />}
+            {/* {showLoginForm && <LoginForm setIsLogin={setIsLogin} setShowLoginForm={setShowLoginForm} />} */}
         </>
     );
 }
