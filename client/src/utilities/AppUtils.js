@@ -213,6 +213,10 @@ class AppUtils {
     }
   }
 
+  static formatDate(dateStr) {
+    return dateStr.slice(0, 10).split('-').reverse().join('-');
+  }
+  
 }
 
 export default AppUtils;

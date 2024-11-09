@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import "../../styles/achievements/AchievementCard.css";
 import AchievementModal from './AchievementModal';
+import AppUtils from '../../utilities/AppUtils';
 
 function AchievementCard({ achievement }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +21,7 @@ function AchievementCard({ achievement }) {
                 <div className="details-container">
                     <div className="title-container">
                         <p className="achievement-title poppins-medium">{achievement.title}</p>
-                        <p className="achievement-date poppins-thin">{achievement.date}</p>
+                        <p className="achievement-date poppins-thin">{AppUtils.formatDate(achievement.date)}</p>
                     </div>
                     <p className="caption poppins-regular">{achievement.description}</p>
                 </div>

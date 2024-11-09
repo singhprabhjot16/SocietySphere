@@ -28,6 +28,8 @@
 .details-container {
     width: 100%;
     margin: 8px 0px;
+    height: 30%;
+    overflow-y: hidden;
 }
 
 .title-container {
@@ -39,6 +41,7 @@
     border-bottom: 1px solid black;
     padding-bottom: 5px;
     margin-bottom: 5px;
+    height: 50%;
 }
 
 .achievement-title {
