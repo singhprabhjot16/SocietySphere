@@ -8,8 +8,8 @@ import AddCoordinator from "../coordinators/AddCoordinator";
 import AppUtils from "../../utilities/AppUtils";
 import NothingHere from "../reusable/NothingHere"; 
 
-function Alumni() {
-    const [alumni, setAlumni] = useState(dummyData.alumni); 
+function Alumni({alumnis}) {
+    const [alumni, setAlumni] = useState(alumnis); 
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
