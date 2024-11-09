@@ -4,6 +4,8 @@ class Constants {
 
     static NO_ITEMS_TO_EDIT = "No items available to edit";
 
+    static NON_TECHNICAL_CATEGORIES = ["Dance", "Literary", "Music", "Fashion"];
+    
 }
 
 export default Constants;

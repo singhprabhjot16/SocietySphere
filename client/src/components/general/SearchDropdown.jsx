@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import arrowDown from "../../assets/arrow-down.svg";
 import arrowUp from "../../assets/arrow-up.svg"
 import NumberLength from "../reusable/NumberLength.jsx";
+import Constants from "../../constants/Constants.js";
 
 function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
     const [data, setData] = useState({
@@ -21,7 +22,8 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
         dance: false,
         literary: false,
         music: false,
-        fashion: false
+        fashion: false,
+        cultural: false
     });
 
     const [selected, setSelected] = useState({
@@ -41,8 +43,11 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
             [type]: !prevState[type]
         }));
     }
-    
+
     function getFilteredSocieties(type) {
+        if (type === "nonTechnical") {
+            return data.societies.filter((society) => society.type !== "Technical");
+        }
         return data.societies.filter((society) => society.type === type);
     }
 
@@ -321,7 +326,7 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                                 {["dance", "literary", "music", "fashion", "cultural"].map((subcategory) => (
                                     <div key={subcategory} className="accordion">
                                         <div className="accordion-header dropdown-value" onClick={() => toggleAccordion(subcategory)}>
-                                            <p className={`${openAccordion[subcategory] ? "poppins-medium" : "poppins-regular"}`}>{subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}</p>
+                                            <p className={`${openAccordion[subcategory] ? "poppins-medium" : "poppins-regular"}`}>{subcategory}</p>
                                             <div className="number-of-societies">
                                                 <NumberLength length={getFilteredSocieties(subcategory).length} />
                                                 <img className="expand-contract-icon" src={openAccordion[subcategory] ? arrowUp : arrowDown} alt="" />
@@ -329,8 +334,8 @@ function SearchDropdown({ display, setSelectedSociety, setDisplay }) {
                                         </div>
                                         {openAccordion[subcategory] && (
                                             <div className="accordion-content">
-                                                {AppUtils.checkEmpty(getFilteredSocieties(subcategory.charAt(0).toUpperCase() + subcategory.slice(1))) ? 
-                                                <p className="society-name length-zero poppins-regular">No Society Found</p> : getFilteredSocieties(subcategory.charAt(0).toUpperCase() + subcategory.slice(1)).map((item) => (
+                                                {AppUtils.checkEmpty(getFilteredSocieties(subcategory)) ? 
+                                                <p className="society-name length-zero poppins-regular">No Society Found</p> : getFilteredSocieties(subcategory).map((item) => (
                                                     <Link 
                                                         to="society/about" key={item.id}
                                                         className={`society-name poppins-regular dropdown-value ${selected.societyId === item.id ? 'selected-item' : ''}`}

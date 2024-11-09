@@ -21,7 +21,7 @@ function EditAbout({ aboutData, handleEdit, toggleFunction }) {
             <textarea name="aboutSociety" placeholder="About Society" value={formData.aboutSociety} onChange={handleChange} />
             <textarea name="prerequisites" placeholder="Prerequisites" value={formData.prerequisites} onChange={handleChange} />
             <input name="societyHead" placeholder="Society Head" value={formData.societyHead} onChange={handleChange} />
-            <input name="adminEmail" placeholder="Admin Email" value={formData.adminEmail} onChange={handleChange} />
+            <input name="societyEmail" placeholder="society Email" value={formData.societyEmail} onChange={handleChange} />
             <button onClick={handleSubmit}>Save</button>
             <button onClick={toggleFunction}>Cancel</button>
         </div>

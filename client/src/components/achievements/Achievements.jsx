@@ -7,7 +7,6 @@ import add from "../../assets/add.svg";
 import edit from "../../assets/edit.svg";
 import NothingHere from "../reusable/NothingHere";
 import AppUtils from "../../utilities/AppUtils";
-import dummyData from "../../../dummyData.json";
 
 function Achievements({ achievement, societyId}) {
     const [achievements, setAchievements] = useState(achievement);

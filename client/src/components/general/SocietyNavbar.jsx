@@ -28,7 +28,7 @@ function SocietyNavbar() {
                     </Link>
                 ))}
             </div>
-            <button className="poppins-regular join-us">Join Us</button>
+            {/* <button className="poppins-regular join-us">Join Us</button> */}
         </div>
     );
 }
