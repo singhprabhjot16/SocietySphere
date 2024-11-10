@@ -18,8 +18,11 @@ function LoginForm({ setIsLogin }) {
                 console.log("Logged in successfully, token saved.");
             }
         } catch (error) {
-            console.error("Error during login:", error);
-            setErrorMessage("Login failed. Please check your credentials.");
+            if (error.response && error.response.data && error.response.data.error) {
+                setErrorMessage(error.response.data.error);
+            } else {
+                setErrorMessage("Login failed. Please check your credentials.");
+            }
         }
     }
 
