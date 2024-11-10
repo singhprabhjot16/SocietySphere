@@ -9,7 +9,7 @@ import EditAlumni from "./EditAlumni";
 import AppUtils from "../../utilities/AppUtils";
 import NothingHere from "../reusable/NothingHere";
 
-function Alumni({ alumnis, societyId, isLogin }) {
+function Alumni({ alumnis, societyId, isLogin, isSocietyHead }) {
     const [alumni, setAlumni] = useState(alumnis);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -89,7 +89,7 @@ function Alumni({ alumnis, societyId, isLogin }) {
                 }
             </div>
 
-            {isLogin && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddAlumni} className="change-button poppins-regular">
                     <img src={add} alt="Add" className="icon" /> Add
                 </button>

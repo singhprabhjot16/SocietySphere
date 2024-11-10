@@ -9,7 +9,7 @@ import EditCoordinator from "./EditCoordinator";
 import AppUtils from "../../utilities/AppUtils";
 import NothingHere from "../reusable/NothingHere";
 
-function Coordinators({ teams, societyId, isLogin }) {
+function Coordinators({ teams, societyId, isLogin, isSocietyHead }) {
     const [coordinators, setCoordinators] = useState(teams);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -86,7 +86,7 @@ function Coordinators({ teams, societyId, isLogin }) {
                 }
             </div>
 
-            {isLogin && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddCoordinator} className="change-button poppins-regular">
                     <img src={add} alt="Add" className="icon" /> Add
                 </button>

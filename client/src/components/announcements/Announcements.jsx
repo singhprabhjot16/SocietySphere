@@ -8,7 +8,7 @@ import EditAnnouncement from "./EditAnnouncement";
 import addIcon from "../../assets/add.svg";
 import editIcon from "../../assets/edit.svg";
 
-function Announcements({ announcement, societyId, isLogin }) {
+function Announcements({ announcement, societyId, isLogin, isSocietyHead }) {
     const [announcements, setAnnouncements] = useState(announcement);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -90,7 +90,7 @@ function Announcements({ announcement, societyId, isLogin }) {
                 )}
             </div>
 
-            {isLogin && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddAnnouncement} className="change-button poppins-regular">
                     <img src={addIcon} alt="Add" className="icon" /> Add
                 </button>

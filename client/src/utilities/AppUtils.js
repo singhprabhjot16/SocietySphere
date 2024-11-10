@@ -1,4 +1,5 @@
 import APIConstants from "../constants/APIConstants.js";
+import { jwtDecode } from 'jwt-decode';
 
 class AppUtils {
 
@@ -216,6 +217,19 @@ class AppUtils {
   static formatDate(dateStr) {
     if (!this.checkEmpty(dateStr)) {
       return dateStr.slice(0, 10).split('-').reverse().join('-');
+    }
+  }
+
+  static getLoggedInSocietyId() {
+    const token = sessionStorage.getItem("jwtToken");
+    if (!token) return null;
+  
+    try {
+        const decodedToken = jwtDecode(token);
+        return decodedToken.societyId;
+    } catch (error) {
+        console.error("Failed to decode token:", error);
+        return null;
     }
   }
   

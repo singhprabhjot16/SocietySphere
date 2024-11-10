@@ -17,6 +17,7 @@ import PhotoGallery from './components/photo-gallery/PhotoGallery';
 function App() {
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(false);
+    const [isSocietyHead, setIsSocietyHead] = useState(false);
     const [societyData, setSocietyData] = useState(null);
     const [selectedSociety, setSelectedSociety] = useState({
         stateId: null,
@@ -34,6 +35,16 @@ function App() {
                 selectedSociety.societyId
             );
             setSocietyData(data);
+            if(isLogin) {
+                const loggedInSocietyId = AppUtils.getLoggedInSocietyId();
+                console.log("logged in id : "+loggedInSocietyId);
+                if (loggedInSocietyId === selectedSociety.societyId) {
+                    setIsSocietyHead(true);  // Show buttons if the logged-in user is this society's head
+                }
+                else {
+                    setIsSocietyHead(false);
+                }
+            }
             console.log("Society Data is: ", societyData);
         }
     };
@@ -42,7 +53,7 @@ function App() {
         if (selectedSociety.societyId) {
             fetchSocietyDetails();
         }
-    }, [selectedSociety.societyId]);
+    }, [selectedSociety.societyId, isLogin]);
 
     useEffect(() => {
         navigate('/');
@@ -58,13 +69,13 @@ function App() {
                 <Route path='/login' element={<LoginForm setIsLogin={setIsLogin}/>} />
 
                 <Route path='/society/' element={<SocietyPage society={societyData} />}>
-                    <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id} isLogin={isLogin} />} />
-                    <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id} isLogin={isLogin} />} />
-                    <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} isLogin={isLogin} />} />
-                    <Route path='announcements' element={<Announcements announcement={societyData?.announcements} societyId={societyData?.society?.id} isLogin={isLogin} />} />
-                    <Route path='alumni' element={<Alumni alumnis={societyData?.alumni} societyId={societyData?.society?.id} isLogin={isLogin} />} />
-                    <Route path='gallery' element={<PhotoGallery galleryArray={societyData?.galleries} societyId={societyData?.society?.id} isLogin={isLogin} />} />
-                    <Route path='faqs' element={<FAQs faq={societyData?.faqs} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead}/>} />
+                    <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
+                    <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
+                    <Route path='announcements' element={<Announcements announcement={societyData?.announcements} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
+                    <Route path='alumni' element={<Alumni alumnis={societyData?.alumni} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
+                    <Route path='gallery' element={<PhotoGallery galleryArray={societyData?.galleries} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
+                    <Route path='faqs' element={<FAQs faq={societyData?.faqs} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
                 </Route>
             </Routes>
             <Footer />

@@ -9,7 +9,7 @@ import NothingHere from "../reusable/NothingHere";
 import AddAbout from "./AddAbout";
 import EditAbout from "./EditAbout"; 
 
-function About({ about, societyId, isLogin }) {
+function About({ about, societyId, isLogin, isSocietyHead }) {
     const [aboutData, setAboutData] = useState(about);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -60,7 +60,7 @@ function About({ about, societyId, isLogin }) {
                 )}
             </div>
 
-            {isLogin && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 {AppUtils.checkEmpty(aboutData) ? (
                     <button onClick={toggleAddMode} className="change-button poppins-regular">
                         <img src={add} alt="Add" className="icon" /> Add

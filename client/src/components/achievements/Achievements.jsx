@@ -8,7 +8,7 @@ import edit from "../../assets/edit.svg";
 import NothingHere from "../reusable/NothingHere";
 import AppUtils from "../../utilities/AppUtils";
 
-function Achievements({ achievement, societyId, isLogin }) {
+function Achievements({ achievement, societyId, isLogin, isSocietyHead }) {
     const [achievements, setAchievements] = useState(achievement);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -64,7 +64,7 @@ function Achievements({ achievement, societyId, isLogin }) {
                 )}
             </div>
 
-            {isLogin && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddAchievement} className="change-button poppins-regular">
                     <img src={add} alt="Add" className="icon" /> Add
                 </button>

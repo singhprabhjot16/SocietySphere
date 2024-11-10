@@ -8,7 +8,7 @@ import edit from "../../assets/edit.svg";
 import NothingHere from "../reusable/NothingHere";
 import AppUtils from "../../utilities/AppUtils";
 
-function PhotoGallery({ galleryArray, societyId, isLogin }) {
+function PhotoGallery({ galleryArray, societyId, isLogin, isSocietyHead }) {
     const [gallery, setGallery] = useState(galleryArray);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -64,7 +64,7 @@ function PhotoGallery({ galleryArray, societyId, isLogin }) {
                 )}
             </div>
 
-            {isLogin && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddPhoto} className="change-button poppins-regular">
                     <img src={add} alt="Add" className="icon" /> Add
                 </button>
