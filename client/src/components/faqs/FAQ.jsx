@@ -9,7 +9,7 @@ import editIcon from "../../assets/edit.svg";
 import AppUtils from "../../utilities/AppUtils";
 import NothingHere from "../reusable/NothingHere";
 
-function FAQ({ faq, societyId }) {
+function FAQ({ faq, societyId, isLogin }) {
   const [faqs, setFaqs] = useState(faq);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -98,7 +98,7 @@ function FAQ({ faq, societyId }) {
           <NothingHere />
         )}
       </div>
-      <div className="changes-container">
+      {isLogin && <div className="changes-container">
         <button
           onClick={toggleAddFAQ}
           className="change-button poppins-regular"
@@ -111,7 +111,7 @@ function FAQ({ faq, societyId }) {
         >
           <img src={editIcon} alt="Edit" className="icon" /> Edit
         </button>
-      </div>
+      </div>}
       {isAdding && (
         <AddFAQ handleAdd={handleAdd} toggleFunction={toggleAddFAQ} />
       )}

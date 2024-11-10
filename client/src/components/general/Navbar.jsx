@@ -7,8 +7,7 @@ import SearchDropdown from "./SearchDropdown";
 import LoginForm from "./LoginForm";
 import { Link } from "react-router-dom";
 
-function Navbar({ setSelected }) {
-    const [isLogin, setIsLogin] = useState(false);
+function Navbar({ setSelected, isLogin, setIsLogin }) {
     const [display, setDisplay] = useState("none");
     const [showLoginForm, setShowLoginForm] = useState(false); // New state to toggle login form
 
@@ -51,7 +50,7 @@ function Navbar({ setSelected }) {
                 <div className="navbar-right-div">
                     {isLogin ? 
                         <Link to='/'><button onClick={handleLogout} className="register-society poppins-regular">Logout</button></Link> : 
-                        <Link to='login'><button className="register-society poppins-regular">Login as Admin</button></Link>
+                        <Link to='login'><button className="register-society poppins-regular">Login</button></Link>
                     }
                 </div>
             </div>

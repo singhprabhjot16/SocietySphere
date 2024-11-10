@@ -8,7 +8,7 @@ import EditAnnouncement from "./EditAnnouncement";
 import addIcon from "../../assets/add.svg";
 import editIcon from "../../assets/edit.svg";
 
-function Announcements({ announcement, societyId }) {
+function Announcements({ announcement, societyId, isLogin }) {
     const [announcements, setAnnouncements] = useState(announcement);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -89,14 +89,16 @@ function Announcements({ announcement, societyId }) {
                     <NothingHere />
                 )}
             </div>
-            <div className="changes-container">
+
+            {isLogin && <div className="changes-container">
                 <button onClick={toggleAddAnnouncement} className="change-button poppins-regular">
                     <img src={addIcon} alt="Add" className="icon" /> Add
                 </button>
                 <button onClick={toggleEditMode} className="change-button poppins-regular">
                     <img src={editIcon} alt="Edit" className="icon" /> Edit
                 </button>
-            </div>
+            </div>}
+            
             {isAdding && <AddAnnouncement handleAdd={handleAdd} toggleFunction={toggleAddAnnouncement} />}
             {selectedAnnouncement && isEditing && (
                 <EditAnnouncement

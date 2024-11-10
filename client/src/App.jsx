@@ -15,7 +15,7 @@ import FAQs from './components/faqs/FAQ';
 import PhotoGallery from './components/photo-gallery/PhotoGallery';
 
 function App() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(false);
     const [societyData, setSocietyData] = useState(null);
     const [selectedSociety, setSelectedSociety] = useState({
@@ -44,27 +44,27 @@ function App() {
         }
     }, [selectedSociety.societyId]);
 
-    // useEffect(() => {
-    //     navigate('/');
-    // }, [navigate]);
+    useEffect(() => {
+        navigate('/');
+    }, [isLogin]);
 
     console.log(selectedSociety.societyId);
 
     return (
         <>
-            <Navbar setSelected={setSelectedSociety} />
+            <Navbar setSelected={setSelectedSociety} isLogin={isLogin} setIsLogin={setIsLogin}/>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<LoginForm setIsLogin={setIsLogin}/>} />
 
                 <Route path='/society/' element={<SocietyPage society={societyData} />}>
-                    <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id}/>} />
-                    <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id}/>} />
-                    <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} />} />
-                    <Route path='announcements' element={<Announcements announcement={societyData?.announcements} societyId={societyData?.society?.id} />} />
-                    <Route path='alumni' element={<Alumni alumnis={societyData?.alumni} societyId={societyData?.society?.id} />} />
-                    <Route path='gallery' element={<PhotoGallery galleryArray={societyData?.galleries} societyId={societyData?.society?.id} />} />
-                    <Route path='faqs' element={<FAQs faq={societyData?.faqs} societyId={societyData?.society?.id} />} />
+                    <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='announcements' element={<Announcements announcement={societyData?.announcements} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='alumni' element={<Alumni alumnis={societyData?.alumni} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='gallery' element={<PhotoGallery galleryArray={societyData?.galleries} societyId={societyData?.society?.id} isLogin={isLogin} />} />
+                    <Route path='faqs' element={<FAQs faq={societyData?.faqs} societyId={societyData?.society?.id} isLogin={isLogin} />} />
                 </Route>
             </Routes>
             <Footer />

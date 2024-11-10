@@ -1,4 +1,6 @@
 import { useState } from "react";
+import add from "../../assets/add.svg";
+import edit from "../../assets/edit.svg";
 import "../../styles/about-us/About.css";
 import "../../styles/about-us/AddAbout.css"
 import "../../styles/about-us/EditAbout.css"
@@ -7,7 +9,7 @@ import NothingHere from "../reusable/NothingHere";
 import AddAbout from "./AddAbout";
 import EditAbout from "./EditAbout"; 
 
-function About({ about, societyId }) {
+function About({ about, societyId, isLogin }) {
     const [aboutData, setAboutData] = useState(about);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -58,17 +60,17 @@ function About({ about, societyId }) {
                 )}
             </div>
 
-            <div className="changes-container">
+            {isLogin && <div className="changes-container">
                 {AppUtils.checkEmpty(aboutData) ? (
                     <button onClick={toggleAddMode} className="change-button poppins-regular">
-                        Add
+                        <img src={add} alt="Add" className="icon" /> Add
                     </button>
                 ) : (
                     <button onClick={toggleEditMode} className="change-button poppins-regular">
-                        Edit
+                        <img src={edit} alt="Edit" className="icon" /> Edit
                     </button>
                 )}
-            </div>
+            </div>}
 
             {isAdding && (
                 <div className="edit-container">
