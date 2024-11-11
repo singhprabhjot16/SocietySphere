@@ -16,6 +16,7 @@ import PhotoGallery from './components/photo-gallery/PhotoGallery';
 
 function App() {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
     const [isLogin, setIsLogin] = useState(false);
     const [isSocietyHead, setIsSocietyHead] = useState(false);
     const [societyData, setSocietyData] = useState(null);
@@ -27,6 +28,7 @@ function App() {
     });
 
     const fetchSocietyDetails = async () => {
+        setIsLoading(true);
         if (selectedSociety.societyId) {
             const data = await AppUtils.getSocietyDetails(
                 selectedSociety.stateId,
@@ -35,6 +37,7 @@ function App() {
                 selectedSociety.societyId
             );
             setSocietyData(data);
+            setIsLoading(false);
             if(isLogin) {
                 const loggedInSocietyId = AppUtils.getLoggedInSocietyId();
                 console.log("logged in id : "+loggedInSocietyId);
@@ -68,7 +71,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<LoginForm setIsLogin={setIsLogin}/>} />
 
-                <Route path='/society/' element={<SocietyPage society={societyData} />}>
+                <Route path='/society/' element={<SocietyPage society={societyData} isLoading={isLoading}/>}>
                     <Route path='about' element={<About about={societyData?.society} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead}/>} />
                     <Route path='coordinators' element={<Coordinators teams={societyData?.teams} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
                     <Route path='achievements' element={<Achievements achievement={societyData?.achievements} societyId={societyData?.society?.id} isLogin={isLogin} isSocietyHead={isSocietyHead} />} />
