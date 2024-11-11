@@ -39,8 +39,6 @@ function EditAlumni({ selectedAlumni, handleEdit, handleDelete, toggleFunction }
         toggleFunction(); // Close modal
     }
 
-    
-
     return (
         <div className="edit-container">
             <div className="edit-card-container">

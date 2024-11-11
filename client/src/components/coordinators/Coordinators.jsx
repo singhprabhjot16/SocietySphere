@@ -21,7 +21,7 @@ function Coordinators({ teams, societyId, isLogin, isSocietyHead }) {
             imageUrl: "",
             name: "",
             memberRole: "",
-            // linkedin: ""
+            linkedin: "",
             rollNo: ""
         };
 
@@ -34,6 +34,7 @@ function Coordinators({ teams, societyId, isLogin, isSocietyHead }) {
         formDataToSend.append('rollNo', formData.rollNo);
         formDataToSend.append('name', formData.student.name);
         formDataToSend.append('imageUrl', formData.imageUrl);
+        formDataToSend.append('linkedin', formData.linkedin);
         console.log(formDataToSend)
         // AppUtils.updateSociety(societyId, modifiedFormData, 'team')
         AppUtils.updateSociety(societyId, formDataToSend, 'team')

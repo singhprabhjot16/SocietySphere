@@ -33,7 +33,7 @@ function CoordinatorCard({ info, isEditingMode, onEdit }) {
                 <p className="member-name poppins-medium">{info.student.name}</p>
                 <p className="member-role poppins-regular">{info.memberRole}</p>
                 <div className="socials">
-                    <a href={info.linkedin_url} target="_blank" rel="noreferrer">
+                    <a href={info.linkedin} target="_blank" rel="noreferrer">
                         <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
                     </a>
                 </div>

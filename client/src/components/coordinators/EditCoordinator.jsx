@@ -41,8 +41,6 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
         toggleFunction(); // Close modal
     }
 
-    
-
     return (
         <div className="edit-container">
             <div className="edit-card-container">
