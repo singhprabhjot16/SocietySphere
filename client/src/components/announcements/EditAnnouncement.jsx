@@ -29,12 +29,14 @@ function EditAnnouncement({ selectedAnnouncement, handleEdit, handleDelete, togg
 
     function handleSubmit(event) {
         event.preventDefault();
-        handleEdit(formData);
+        handleEdit({...formData, id: selectedAnnouncement?.id});
         toggleFunction();
     }
 
-    function handleDeleteClick() {
-        handleDelete(selectedAnnouncement);
+    function handleDeleteClick(event) {
+        event.preventDefault();
+        console.log("id", selectedAnnouncement?.id);
+        handleDelete({id: selectedAnnouncement?.id});
         toggleFunction();
     }
 

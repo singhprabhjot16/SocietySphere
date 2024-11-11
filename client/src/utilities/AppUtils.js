@@ -113,7 +113,7 @@ class AppUtils {
   };
 
   static editUpdateSociety = async (societyId, updatedData, tableName) => {
-    console.log(updatedData);
+    console.log("updated data utils: ", updatedData);
     try {
       // const formDataObject = {};
       // updatedData.forEach((value, key) => {

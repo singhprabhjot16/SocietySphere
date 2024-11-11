@@ -38,28 +38,51 @@ function Announcements({ announcement, societyId, isLogin, isSocietyHead }) {
 
     function handleEdit(formData) {
         console.log(formData);
-        setAnnouncements(prevCoordinators => [...prevCoordinators, formData]);
+        // setAnnouncements(prevCoordinators => [...prevCoordinators, formData]);
         const modifiedFormData = {
             title: "",
             content: ""
         };
 
         const formDataToSend = new FormData();
-        formDataToSend.append('id', formData.id);   
+        formDataToSend.append('id', formData.id);
         formDataToSend.append('title', formData.title);
         formDataToSend.append('content', formData.content);
+        formDataToSend.append('date', formData.date);
         console.log(formDataToSend);
-        
+
         // Send to the API
-        AppUtils.editUpdateSociety(societyId, formData, 'announcement');
-        
+        AppUtils.editUpdateSociety(societyId, formDataToSend, 'announcement')
+            .then((response) => {
+                console.log("response", response);
+                if (response.message === "Announcements updated successfully") {
+                    // Update only the target FAQ in the array
+                    setAnnouncements((prevAnnouncements) =>
+                        prevAnnouncements.map((announcement) => {
+                            // console.log('Current FAQ:', faq); // Log each FAQ in the array
+                            // console.log('Matching IDs:', faq.id === response.id); // Log whether the ID matches
+                            return announcement.id === response.id ? response : announcement;
+                        })
+                    );
+
+                } else {
+                    console.error("Error updating announcement on frontend:", response.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error updating FAQ:", error);
+            });
+
         // setIsEditing(false);
     }
 
-    function handleDelete(announcementToDelete) {
+    function handleDelete({id}) {
         setAnnouncements(prevAnnouncements =>
-            prevAnnouncements.filter(announcement => announcement !== announcementToDelete)
+            prevAnnouncements.filter(announcement => announcement.id !== id)
         );
+        const formDataToSend = new FormData();
+        formDataToSend.append("id", id);
+        AppUtils.deleteSocietyData(societyId, formDataToSend, "announcement");
         setIsEditing(false);
     }
 
@@ -90,7 +113,7 @@ function Announcements({ announcement, societyId, isLogin, isSocietyHead }) {
                 )}
             </div>
 
-            {isLogin && isSocietyHead && <div className="changes-container">
+            {!isLogin && !isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddAnnouncement} className="change-button poppins-regular">
                     <img src={addIcon} alt="Add" className="icon" /> Add
                 </button>
@@ -98,7 +121,7 @@ function Announcements({ announcement, societyId, isLogin, isSocietyHead }) {
                     <img src={editIcon} alt="Edit" className="icon" /> Edit
                 </button>
             </div>}
-            
+
             {isAdding && <AddAnnouncement handleAdd={handleAdd} toggleFunction={toggleAddAnnouncement} />}
             {selectedAnnouncement && isEditing && (
                 <EditAnnouncement

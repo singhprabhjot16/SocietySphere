@@ -9,7 +9,7 @@ export const deleteAnnouncement = async (req, res) => {
     try {
       await prisma.announcement.deleteMany({
         where: {
-          id: id,
+          id: parseInt(id, 10),
           societyId: parseInt(societyId, 10),
         },
       });
