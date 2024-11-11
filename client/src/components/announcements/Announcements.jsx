@@ -113,7 +113,7 @@ function Announcements({ announcement, societyId, isLogin, isSocietyHead }) {
                 )}
             </div>
 
-            {!isLogin && !isSocietyHead && <div className="changes-container">
+            {isLogin && isSocietyHead && <div className="changes-container">
                 <button onClick={toggleAddAnnouncement} className="change-button poppins-regular">
                     <img src={addIcon} alt="Add" className="icon" /> Add
                 </button>
