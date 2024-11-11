@@ -8,7 +8,7 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
             name: "",
         },
         memberRole: "",
-        linkedin: ""
+        linkedIn: ""
     });
     console.log("selected coordinator", selectedCoordinator)
     // Populate the form with the selected coordinator's data
@@ -18,7 +18,7 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
                 image_url: selectedCoordinator.image_url || "default value",
                 member_name: selectedCoordinator.student.name || "default value",
                 member_role: selectedCoordinator.memberRole || "default value",
-                linkedin: selectedCoordinator.linkedin || "default value"
+                linkedIn: selectedCoordinator.linkedIn || "default value"
             });
         }
     }, [selectedCoordinator]);
@@ -61,10 +61,10 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
                     />
                     <input
                         type="text"
-                        value={formData.linkedin}
+                        value={formData.linkedIn}
                         placeholder="LinkedIn Profile"
                         onChange={handleChange}
-                        name="linkedin"
+                        name="linkedIn"
                     />
                     <input
                         type="file"

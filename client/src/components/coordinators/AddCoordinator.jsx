@@ -8,7 +8,7 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
             name: "",
         },
         memberRole: "",
-        linkedin: "",
+        linkedIn: "",
         rollNo: ""
     });
 
@@ -71,10 +71,10 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
                     />
                     <input 
                         type="text" 
-                        value={formData.linkedin} 
+                        value={formData.linkedIn} 
                         placeholder="LinkedIn Profile" 
                         onChange={handleChange} 
-                        name="linkedin" 
+                        name="linkedIn" 
                     />
                     <input type="file" onChange={handleFileChange} name="imageUrl" />
                     <button type="submit">Add</button>
