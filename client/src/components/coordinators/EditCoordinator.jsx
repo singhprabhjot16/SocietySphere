@@ -8,7 +8,7 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
             name: "",
         },
         memberRole: "",
-        linkedin: ""
+        linkedIn: ""
     });
     console.log("selected coordinator", selectedCoordinator)
     // Populate the form with the selected coordinator's data
@@ -49,8 +49,6 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
         toggleFunction(); // Close modal
     }
 
-    
-
     return (
         <div className="edit-container">
             <div className="edit-card-container">
@@ -71,10 +69,10 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
                     />
                     <input
                         type="text"
-                        value={formData.rollNo}
-                        placeholder="Roll No"
+                        value={formData.linkedin}
+                        placeholder="LinkedIn Profile"
                         onChange={handleChange}
-                        name="rollNo"
+                        name="linkedin"
                     />
                     <input type="file" onChange={handleFileChange} name="imageUrl" />
                     <button type="submit">Save</button>

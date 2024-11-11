@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../styles/reusable/Accordion.css";
 import arrowDown from "../../assets/arrow-down.svg";
+import AppUtils from "../../utilities/AppUtils";
 
 function Accordian({title, content, date}) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -17,7 +18,7 @@ function Accordian({title, content, date}) {
                 <div className="question-title">
                     <span className="question-title-content poppins-regular" style={{fontWeight: isExpanded && "500"}}>{title}</span>
                     <span className="pipe poppins-thin">  |  </span>
-                    <span className="question-date poppins-thin">{date}</span>
+                    <span className="question-date poppins-thin">{AppUtils.formatDate(date)}</span>
                 </div>
                 <img src={arrowDown} alt="" className={`${animated ? "animate-forwards" : "animate-backwards"} expand-contract-icon`} />
             </div>

@@ -21,7 +21,7 @@ function Alumni({ alumnis, societyId, isLogin, isSocietyHead }) {
             imageUrl: "",
             name: "",
             memberRole: "",
-            // linkedin: ""
+            linkedIn: "",
             rollNo: ""
         };
 
@@ -34,6 +34,7 @@ function Alumni({ alumnis, societyId, isLogin, isSocietyHead }) {
         formDataToSend.append('rollNo', formData.rollNo);
         formDataToSend.append('name', formData.student.name);
         formDataToSend.append('imageUrl', formData.imageUrl);
+        formDataToSend.append('linkedIn', formData.linkedIn);
         console.log(formDataToSend)
         // for (const value of formData.values()) {
         //     console.log(value);

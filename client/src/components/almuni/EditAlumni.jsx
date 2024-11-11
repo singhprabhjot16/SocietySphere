@@ -6,7 +6,7 @@ function EditAlumni({ selectedAlumni, handleEdit, handleDelete, toggleFunction }
         imageUrl: "",
         name: "",
         memberRole: "",
-        linkedin: ""
+        linkedIn: ""
     });
     // console.log("selected Alumni", selectedAlumni)
     // Populate the form with the selected coordinator's data
@@ -16,7 +16,7 @@ function EditAlumni({ selectedAlumni, handleEdit, handleDelete, toggleFunction }
                 image_url: selectedAlumni.image_url || "default value",
                 member_name: selectedAlumni.name || "default value",
                 member_role: selectedAlumni.memberRole || "default value",
-                linkedin: selectedAlumni.linkedin || "default value"
+                linkedIn: selectedAlumni.linkedIn || "default value"
             });
         }
     }, [selectedAlumni]);
@@ -39,8 +39,6 @@ function EditAlumni({ selectedAlumni, handleEdit, handleDelete, toggleFunction }
         toggleFunction(); // Close modal
     }
 
-    
-
     return (
         <div className="edit-container">
             <div className="edit-card-container">
@@ -61,10 +59,10 @@ function EditAlumni({ selectedAlumni, handleEdit, handleDelete, toggleFunction }
                     />
                     <input
                         type="text"
-                        value={formData.linkedin}
+                        value={formData.linkedIn}
                         placeholder="LinkedIn Profile"
                         onChange={handleChange}
-                        name="linkedin"
+                        name="linkedIn"
                     />
                     <input
                         type="file"

@@ -8,7 +8,7 @@ function HeroSection() {
         <div className="hero-section">
             <img src={heroSectionImage1} alt=""/>
             <div className="website">
-                <p className="website-name-hero righteous-regular">ClubConnect</p>
+                <p className="website-name-hero righteous-regular">CampusClub Connect</p>
                 <p className="website-tagline poppins-regular">Discover. Connect. Grow.</p>
             </div>
             <img src={heroSectionImage2} alt="" className="hero-section-image-2"/>
