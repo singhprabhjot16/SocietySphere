@@ -51,12 +51,19 @@ function Alumni({ alumnis, societyId, isLogin, isSocietyHead }) {
         setIsEditing(!isEditing);
     }
 
-    function handleEdit(updatedAlumni) {
-        setAlumni(prevAlumni =>
-            prevAlumni.map(c =>
-                c.member_name === selectedAlumni.member_name ? updatedAlumni : c
-            )
-        );
+    function handleEdit(formData) {
+        const formDataToSend = new FormData();
+        formDataToSend.append('role', formData.memberRole);
+        formDataToSend.append('rollNo', formData.rollNo);
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('imageUrl', formData.imageUrl);
+        console.log(formDataToSend)
+        AppUtils.editUpdateSociety(societyId, formDataToSend, 'alumni')
+        // setAlumni(prevAlumni =>
+        //     prevAlumni.map(c =>
+        //         c.member_name === selectedAlumni.member_name ? updatedAlumni : c
+        //     )
+        // );
         setIsEditing(false);
     }
 

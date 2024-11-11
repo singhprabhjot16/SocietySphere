@@ -50,7 +50,7 @@ try {
   console.log(error)
 }
 
-router.delete("/:societyId", async (req, res) => {
+router.delete("/:societyId", upload.single('imageUrl'), async (req, res) => {
   const table = req.headers['table-name'];
 
   try {

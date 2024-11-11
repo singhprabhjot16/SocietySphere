@@ -57,7 +57,7 @@ function FAQ({ faq, societyId, isLogin, isSocietyHead }) {
         );
         
         } else {
-          console.error("Error updating FAQ:", response.message);
+          console.error("Error updating FAQ on frontend:", response.message);
         }
       })
       .catch((error) => {
@@ -65,8 +65,11 @@ function FAQ({ faq, societyId, isLogin, isSocietyHead }) {
       });
   }
 
-  function handleDelete(faqToDelete) {
-    setFaqs((prevFaqs) => prevFaqs.filter((faq) => faq !== faqToDelete));
+  function handleDelete({id}) {
+    setFaqs((prevFaqs) => prevFaqs.filter((faq) => faq.id !== id));
+    const formDataToSend = new FormData();
+    formDataToSend.append("id", id);
+    AppUtils.deleteSocietyData(societyId, formDataToSend, "faq");
     setIsEditing(false);
   }
 

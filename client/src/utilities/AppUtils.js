@@ -155,13 +155,15 @@ class AppUtils {
     }
   };
 
-  static deleteSociety = async (societyId, tableName) => {
+  static deleteSocietyData = async (societyId, id,tableName) => {
+    console.log('cont id: ', id);
     try {
       const response = await fetch(`${APIConstants.UPDATE_SOCIETY_URL}/${societyId}`, {
         method: 'DELETE',
         headers: {
           'table-name': tableName
-        }
+        },
+        body: (id)
       });
 
       const data = await response.json();

@@ -3,7 +3,7 @@ import "../../styles/coordinators/EditCoordinator.css";
 
 function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggleFunction }) {
     const [formData, setFormData] = useState({
-        imageUrl: "",
+        imageUrl: null,
         student: {
             name: "",
         },
@@ -15,13 +15,21 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
     useEffect(() => {
         if (selectedCoordinator) {
             setFormData({
-                image_url: selectedCoordinator.image_url || "default value",
-                member_name: selectedCoordinator.student.name || "default value",
-                member_role: selectedCoordinator.memberRole || "default value",
-                linkedin: selectedCoordinator.linkedin || "default value"
+                image_url: selectedCoordinator.image_url || null,
+                name: selectedCoordinator.student.name || "default value",
+                memberRole: selectedCoordinator.memberRole || "default value",
+                rollNo: selectedCoordinator.rollNo || "default value",
+                id: selectedCoordinator.id || "default value"
             });
         }
     }, [selectedCoordinator]);
+
+    const handleFileChange = (event) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            imageUrl: event.target.files[0] 
+        }));
+    };
 
     function handleChange(event) {
         setFormData(oldData => ({
@@ -32,7 +40,7 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
 
     function handleSubmit(event) {
         event.preventDefault();
-        handleEdit(formData);
+        handleEdit({...formData, id: selectedCoordinator?.id});
         toggleFunction(); // Close the modal after editing
     }
 
@@ -49,30 +57,26 @@ function EditCoordinator({ selectedCoordinator, handleEdit, handleDelete, toggle
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        value={formData.member_name}
+                        value={formData.name}
                         placeholder="Name"
                         onChange={handleChange}
-                        name="member_name"
+                        name="name"
                     />
                     <input
                         type="text"
-                        value={formData.member_role}
+                        value={formData.memberRole}
                         placeholder="Role"
                         onChange={handleChange}
-                        name="member_role"
+                        name="memberRole"
                     />
                     <input
                         type="text"
-                        value={formData.linkedin}
-                        placeholder="LinkedIn Profile"
+                        value={formData.rollNo}
+                        placeholder="Roll No"
                         onChange={handleChange}
-                        name="linkedin"
+                        name="rollNo"
                     />
-                    <input
-                        type="file"
-                        onChange={handleChange}
-                        name="image_url"
-                    />
+                    <input type="file" onChange={handleFileChange} name="imageUrl" />
                     <button type="submit">Save</button>
                     <button type="button" onClick={handleDeleteClick} className="delete-button">Delete</button>
                     <button type="button" onClick={toggleFunction}>Cancel</button>

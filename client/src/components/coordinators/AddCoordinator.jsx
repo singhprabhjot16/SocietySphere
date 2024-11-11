@@ -17,7 +17,7 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
             ...prevData,
             imageUrl: event.target.files[0] 
         }));
-    };    
+    };
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -57,7 +57,7 @@ function AddCoordinator({ handleAdd, toggleFunction }) {
                     />
                     <input 
                         type="text" 
-                        value={formData.memberRole} 
+                        value={formData.memberRole}
                         placeholder="Role" 
                         onChange={handleChange} 
                         name="memberRole" 

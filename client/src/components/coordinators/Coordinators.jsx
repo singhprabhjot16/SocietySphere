@@ -48,13 +48,35 @@ function Coordinators({ teams, societyId, isLogin, isSocietyHead }) {
         setIsEditing(!isEditing);
     }
 
-    function handleEdit(updatedCoordinator) {
-        setCoordinators(prevCoordinators =>
-            prevCoordinators.map(c =>
-                c.member_name === selectedCoordinator.member_name ? updatedCoordinator : c
-            )
-        );
-        setIsEditing(false);
+    function handleEdit(formData) {
+        console.log('formData: ', formData)
+        const formDataToSend = new FormData();
+        formDataToSend.append('memberRole', formData.memberRole);
+        formDataToSend.append('rollNo', formData.rollNo);
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('imageUrl', formData.imageUrl);
+        formDataToSend.append('id', formData.id);
+        AppUtils.editUpdateSociety(societyId, formDataToSend, "team")
+        console.log("formDataToSend: ", formDataToSend)
+            // .then((response) => {
+            //     console.log("response", response);
+            //     if (response.message === "FAQs updated successfully") {
+            //         // Update only the target FAQ in the array
+            //         setCoordinators((prevFaqs) =>
+            //             prevFaqs.map((faq) => {
+            //                 console.log('Current FAQ:', faq); // Log each FAQ in the array
+            //                 console.log('Matching IDs:', faq.id === response.id); // Log whether the ID matches
+            //                 return faq.id === response.id ? response : faq;
+            //             })
+            //         );
+
+            //     } else {
+            //         console.error("Error updating FAQ on frontend:", response.message);
+            //     }
+            // })
+            // .catch((error) => {
+            //     console.error("Error updating FAQ:", error);
+            // });
     }
 
     function handleDelete(coordinatorToDelete) {
@@ -74,14 +96,14 @@ function Coordinators({ teams, societyId, isLogin, isSocietyHead }) {
             <div className="members-container">
                 {!AppUtils.checkEmpty(coordinators)
                     ? coordinators.map((c, idx) => (
-                          <div
-                              key={idx}
-                              onClick={() => isEditing && startEditing(c)}
-                              className={isEditing ? "card-wrapper greyscale" : "card-wrapper"}
-                          >
-                              <CoordinatorCard info={c} key={idx} />
-                          </div>
-                      ))
+                        <div
+                            key={idx}
+                            onClick={() => isEditing && startEditing(c)}
+                            className={isEditing ? "card-wrapper greyscale" : "card-wrapper"}
+                        >
+                            <CoordinatorCard info={c} key={idx} />
+                        </div>
+                    ))
                     : <NothingHere />
                 }
             </div>

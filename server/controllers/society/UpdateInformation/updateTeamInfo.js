@@ -63,8 +63,8 @@ async function uploadFileToDrive(filePath, fileName) {
     console.log("file uploaded on drive", driveUrl.data)
     // Extract the URL from the Cloudinary response
       console.log("team details: ", teamDetails)
-      await prisma.team.update({
-        where: { id },
+      const response = await prisma.team.update({
+        where: { id: parseInt(id, 10) },
         data: {
           ...teamDetails,
           imageUrl: driveUrl.data.id,
@@ -74,7 +74,7 @@ async function uploadFileToDrive(filePath, fileName) {
       });
       console.log("team: ")
     // }
-    res.status(201).json({ message: 'Teams updated successfully' });
+    res.status(201).json({...response, message: 'Teams updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to update teams', details: error });
   }

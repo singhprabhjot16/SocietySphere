@@ -33,8 +33,10 @@ function EditFAQ({ selectedFAQ, handleEdit, handleDelete, toggleFunction }) {
     }
     
 
-    function handleDeleteClick() {
-        handleDelete(selectedFAQ);
+    function handleDeleteClick(event) {
+        event.preventDefault();
+        console.log("id", selectedFAQ?.id);
+        handleDelete({id: selectedFAQ?.id});
         toggleFunction();
     }
 

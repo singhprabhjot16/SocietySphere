@@ -34,11 +34,18 @@ function Achievements({ achievement, societyId, isLogin, isSocietyHead }) {
     }
 
     function handleEditAchievement(updatedAchievement) {
-        setAchievements(prevAchievements =>
-            prevAchievements.map(ach =>
-                ach.id === selectedAchievement.id ? updatedAchievement : ach
-            )
-        );
+        const formDataToSend = new FormData();
+        formDataToSend.append('title', newAchievement.title);
+        formDataToSend.append('caption', newAchievement.caption);
+        formDataToSend.append('description', newAchievement.description);
+        formDataToSend.append('imageUrl', newAchievement.imageUrl);
+        console.log("form data to send", formDataToSend, societyId);
+        AppUtils.updateSociety(societyId, formDataToSend, 'achievement');
+        // setAchievements(prevAchievements =>
+        //     prevAchievements.map(ach =>
+        //         ach.id === selectedAchievement.id ? updatedAchievement : ach
+        //     )
+        // );
     }
 
     function handleDeleteAchievement(achievementToDelete) {
